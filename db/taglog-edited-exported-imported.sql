@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 07, 2019 at 11:58 PM
+-- Generation Time: Dec 10, 2019 at 05:41 PM
 -- Server version: 5.7.24
--- PHP Version: 7.3.7
+-- PHP Version: 7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -106,6 +106,32 @@ CREATE TABLE `categories` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `icon`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Car Industry', 'fa fa-car', '2019-12-08 06:41:50', '2019-12-08 06:41:50', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_company`
+--
+
+CREATE TABLE `category_company` (
+  `company_id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category_company`
+--
+
+INSERT INTO `category_company` (`company_id`, `category_id`) VALUES
+(1, 1),
+(2, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -119,6 +145,13 @@ CREATE TABLE `cities` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Dhaka', '2019-12-08 06:56:22', '2019-12-08 06:56:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,6 +188,13 @@ CREATE TABLE `companies` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `address`, `description`, `city_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Continental Motors', '191/1, Rahman\'s Regnum Center, Ground Floor, Bit Uttam Mir Shawkat Road  Tejgaon C/A,', 'Continental Motors is a premium luxury car importer that aims to serve those who truly appreciate luxury automobiles. We primarily import high end cars of the highest grades. Working closely with some of the biggest Automobile manufacturers of the world, we offer the best selection and also the most extensive customization options. We also have the necessary software, training and technical know-how to provide full service support for all European manufacturers. This makes Continental Motors the only luxury high end automobile importer in Bangladesh that provides full warranty on all vehicles imported with complete technical capacity.', 1, '2019-12-08 07:00:25', '2019-12-08 07:00:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -627,6 +667,14 @@ CREATE TABLE `media` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `model_type`, `model_id`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `size`, `manipulations`, `custom_properties`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Company', 1, 'logo', '5decf3bd727b9_continental-motor logo', '5decf3bd727b9_continental-motor-logo.png', 'image/png', 'public', 5661, '[]', '{\"generated_conversions\": {\"thumb\": true}}', '[]', 1, '2019-12-08 07:00:25', '2019-12-08 07:00:25'),
+(2, 'App\\User', 3, 'profile_picture', '5ded3a2a639ad_continental-motor logo', '5ded3a2a639ad_continental-motor-logo.png', 'image/png', 'public', 5661, '[]', '{\"generated_conversions\": {\"thumb\": true}}', '[]', 2, '2019-12-08 12:00:12', '2019-12-08 12:00:12');
+
 -- --------------------------------------------------------
 
 --
@@ -1019,7 +1067,9 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
-(1, 1);
+(1, 1),
+(2, 1),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -1081,7 +1131,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_country_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$szmj2ZhiCJ4eM6TRRbnkhuh/rBW6aLQra8j.x1BLpzO1ExCH1NKDa', NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$szmj2ZhiCJ4eM6TRRbnkhuh/rBW6aLQra8j.x1BLpzO1ExCH1NKDa', '2HcwjbJUQMacrfuJSpR1rUVvWo7CDKbzM5fcKlfrjNODstGSoQvreNDF7m4C', '', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Dewan Shajedur Rahman', 'ratan.mia@continental-motor.com', NULL, '$2y$10$aA.EEVecEwc2ieCNuUZaUeCU/B/awrSeXcmHMfBCnZJ.tG8nDJrPG', NULL, 'Dhaka', '2019-12-04', 'male', 'higher_secondary', '01713031718', NULL, NULL, NULL, NULL, NULL, '2019-12-08 11:55:13', '2019-12-08 11:55:13', NULL, 18, 4, NULL, NULL, NULL),
+(3, 'Dewan Shajedur Rahman', 'sales@continental-motor.com', NULL, '$2y$10$thSeees1aH8JrjHHZcql7OfaiPQNlAMMIQpCAdjiyVWJFHY1Wh.R.', NULL, 'Dhaka', '2019-12-04', 'male', 'higher_secondary', '01713031718', NULL, NULL, NULL, NULL, NULL, '2019-12-08 12:00:12', '2019-12-08 12:00:12', NULL, 18, 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1150,6 +1202,13 @@ ALTER TABLE `agent_user`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_company`
+--
+ALTER TABLE `category_company`
+  ADD KEY `company_id_fk_344255` (`company_id`),
+  ADD KEY `category_id_fk_344255` (`category_id`);
 
 --
 -- Indexes for table `cities`
@@ -1355,13 +1414,13 @@ ALTER TABLE `agents`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -1373,7 +1432,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1421,7 +1480,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1463,7 +1522,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `visas`
@@ -1502,61 +1561,6 @@ ALTER TABLE `agent_industry`
 ALTER TABLE `agent_user`
   ADD CONSTRAINT `agent_id_fk_698207` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_id_fk_698207` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `country_employer`
---
-ALTER TABLE `country_employer`
-  ADD CONSTRAINT `country_id_fk_698171` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `employer_id_fk_698171` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `employer_industry`
---
-ALTER TABLE `employer_industry`
-  ADD CONSTRAINT `employer_id_fk_698173` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `industry_id_fk_698173` FOREIGN KEY (`industry_id`) REFERENCES `industries` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `experiences`
---
-ALTER TABLE `experiences`
-  ADD CONSTRAINT `agent_fk_698290` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`id`),
-  ADD CONSTRAINT `destination_country_fk_698291` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
-  ADD CONSTRAINT `employer_fk_698298` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
-  ADD CONSTRAINT `industry_fk_698299` FOREIGN KEY (`industry_id`) REFERENCES `industries` (`id`),
-  ADD CONSTRAINT `user_fk_698289` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `industry_user`
---
-ALTER TABLE `industry_user`
-  ADD CONSTRAINT `industry_id_fk_698260` FOREIGN KEY (`industry_id`) REFERENCES `industries` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_id_fk_698260` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `permission_role`
---
-ALTER TABLE `permission_role`
-  ADD CONSTRAINT `permission_id_fk_698008` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `role_id_fk_698008` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `role_user`
---
-ALTER TABLE `role_user`
-  ADD CONSTRAINT `role_id_fk_698017` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_id_fk_698017` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `agents_fk_698264` FOREIGN KEY (`agents_id`) REFERENCES `employers` (`id`),
-  ADD CONSTRAINT `country_fk_698250` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
-  ADD CONSTRAINT `destination_country_fk_698258` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
-  ADD CONSTRAINT `employer_fk_698263` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
-  ADD CONSTRAINT `indurstry_fk_698265` FOREIGN KEY (`indurstry_id`) REFERENCES `industries` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
