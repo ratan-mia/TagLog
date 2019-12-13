@@ -72,6 +72,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.country_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="city">{{ trans('cruds.user.fields.city') }}</label>
                 <input class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', $user->city) }}">

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Category;
 use App\City;
+use App\Country;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('frontend.*', function ($view) {
             $view->with('search_categories', Category::all());
+        });
+
+        view()->composer('frontend.*', function ($view) {
+            $view->with('countries', Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
 

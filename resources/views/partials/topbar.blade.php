@@ -55,6 +55,11 @@
                                     <a class="nav-link login-button" href="{{ route('register') }}">Register</a>
                                 </li>
                             @else
+
+                                <li class="nav-item">
+                                    <a class="nav-link login-button" href="{{ route('user.my-profile') }}">My Profile</a>
+                                </li>
+
                                 <li class="dropdown">
                                     <a href="/admin/companies" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -77,6 +82,7 @@
                                         </li>
                                     </ul>
                                 </li>
+
                             @endguest
 						</ul>
 					</div>

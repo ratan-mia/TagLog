@@ -26,7 +26,7 @@
 						<div class="widget user-dashboard-menu">
 							<ul>
 								<li>
-									<a href="dashboard-my-ads.html"><i class="fa fa-user"></i> My Ads</a></li>
+									<a href="{{route('user.basic-information')}}" id="basic-information"><i class="fa fa-user"></i> Basic Information</a></li>
 								<li>
 									<a href="dashboard-favourite-ads.html"><i class="fa fa-bookmark-o"></i> Favourite Ads <span>5</span></a>
 								</li>
@@ -53,14 +53,25 @@
 						<form action="#">
 							<!-- First Name -->
 							<div class="form-group">
-								<label for="first-name">First Name</label>
-								<input type="text" class="form-control" id="first-name">
+								<label for="name">Name</label>
+								<input type="text" class="form-control" id="name" value="{{$user->name}}">
 							</div>
 							<!-- Last Name -->
 							<div class="form-group">
-								<label for="last-name">Last Name</label>
-								<input type="text" class="form-control" id="last-name">
+								<label for="country_id">{{ trans('profile.basic-information.nationality') }}</label>
+								<select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
+									@foreach($countries as $id => $country)
+										<option value="{{ $id }}" {{ ($user->country ? $user->country->id : old('country_id')) == $id ? 'selected' : '' }}>{{ $country }}</option>
+									@endforeach
+								</select>
+								@if($errors->has('country_id'))
+									<div class="invalid-feedback">
+										{{ $errors->first('country_id') }}
+									</div>
+								@endif
+								<span class="help-block">{{ trans('cruds.user.fields.country_helper') }}</span>
 							</div>
+
 							<!-- File chooser -->
 							<div class="form-group choose-file">
 								<i class="fa fa-user text-center"></i>
@@ -128,6 +139,11 @@
 							<button class="btn btn-transparent">Change email</button>
 						</form>
 					</div>
+					@php
+					echo "<pre>";
+					var_dump($user);
+					echo "</pre>";
+					@endphp
 				</div>
 			</div>
 		</div>
