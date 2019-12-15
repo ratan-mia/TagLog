@@ -3,9 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="f7ed2371-538b-486c-ba68-3e638b21585e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000001_create_media_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000003_create_experiences_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000004_create_employers_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000008_create_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000009_create_roles_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000010_create_industry_user_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000011_create_role_user_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000012_create_agent_country_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000013_create_agent_industry_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000014_create_agent_user_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000015_create_permission_role_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000016_create_country_employer_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000017_create_agent_employer_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000018_create_employer_industry_pivot_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000019_add_relationship_fields_to_users_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000020_add_relationship_fields_to_experiences_table.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -171,12 +181,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\MAMP\htdocs\TagLog-Home\resources\lang\en" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database/migrations/new" />
       <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\partials" />
       <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\frontend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\MAMP\htdocs\TagLog-Home\resources\lang\en" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -209,7 +220,8 @@
       <updated>1576217515304</updated>
       <workItem from="1576217516748" duration="543000" />
       <workItem from="1576223955711" duration="3911000" />
-      <workItem from="1576302382090" duration="1891000" />
+      <workItem from="1576302382090" duration="2342000" />
+      <workItem from="1576390185562" duration="3166000" />
     </task>
     <servers />
   </component>
@@ -221,7 +233,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
