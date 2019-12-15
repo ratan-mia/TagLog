@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7ed2371-538b-486c-ba68-3e638b21585e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Nationality.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/taglog_2019-12-15.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000008_create_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000009_create_roles_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000010_create_industry_user_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000011_create_role_user_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000012_create_agent_country_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000013_create_agent_industry_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000014_create_agent_user_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000015_create_permission_role_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000016_create_country_employer_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000017_create_agent_employer_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000018_create_employer_industry_pivot_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000019_add_relationship_fields_to_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_07_000020_add_relationship_fields_to_experiences_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_08_000008_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/new/2019_12_08_000008_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_08_000019_add_relationship_fields_to_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/new/2019_12_08_000019_add_relationship_fields_to_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/profile.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -174,6 +167,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -181,13 +175,14 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/database/migrations/new" />
-      <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\partials" />
-      <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\frontend" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\MAMP\htdocs\TagLog-Home\resources\lang\en" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database/migrations/new" />
+      <recent name="$PROJECT_DIR$/database/migrations" />
+      <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\partials" />
+      <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\frontend" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -222,6 +217,7 @@
       <workItem from="1576223955711" duration="3911000" />
       <workItem from="1576302382090" duration="2342000" />
       <workItem from="1576390185562" duration="3166000" />
+      <workItem from="1576406168491" duration="2077000" />
     </task>
     <servers />
   </component>
@@ -240,5 +236,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
