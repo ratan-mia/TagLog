@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Category;
 use App\City;
 use App\Country;
+use App\Nationality;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -37,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('frontend.*', function ($view) {
             $view->with('countries', Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+        });
+
+        view()->composer('*', function ($view) {
+            $view->with('nationalities', Nationality::all()->pluck('country_enNationality', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
 

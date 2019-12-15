@@ -57,6 +57,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="country_id">{{ trans('cruds.user.fields.country') }}</label>
                 <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
@@ -71,6 +72,24 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.country_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label for="nationality_id">{{ trans('cruds.user.fields.nationality') }}</label>
+                <select class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}" name="nationality_id" id="nationality_id">
+                    @foreach($nationalities as $id => $nationality)
+                        <option value="{{ $id }}" {{ old('nationality_id') == $id ? 'selected' : '' }}>{{ $nationality }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('nationality_id'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('nationality_id') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.nationality_helper') }}</span>
+            </div>
+            
+
+
             <div class="form-group">
                 <label for="city">{{ trans('cruds.user.fields.city') }}</label>
                 <input class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', '') }}">

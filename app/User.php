@@ -67,6 +67,7 @@ class User extends Authenticatable implements HasMedia
         'visa_type',
         'agents_id',
         'country_id',
+        'nationality_id',
         'created_at',
         'updated_at',
         'deleted_at',
