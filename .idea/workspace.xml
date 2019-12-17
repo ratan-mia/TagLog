@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7ed2371-538b-486c-ba68-3e638b21585e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/replace-file.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" afterDir="false" />
+>>>>>>> 89ad116929fc409e50469f47d28d6cd019c45a7f
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +23,7 @@
       <executable />
     </execution>
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -106,6 +114,8 @@
       <find>country</find>
     </findStrings>
   </component>
+=======
+>>>>>>> 89ad116929fc409e50469f47d28d6cd019c45a7f
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -288,7 +298,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+=======
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+>>>>>>> 89ad116929fc409e50469f47d28d6cd019c45a7f
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -300,6 +314,8 @@
       <recent name="C:\MAMP\htdocs\TagLog-Home\resources\lang\en" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/database/migrations/new" />
+      <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\partials" />
       <recent name="C:\MAMP\htdocs\TagLog-Home\resources\views\frontend" />
     </key>
@@ -334,7 +350,9 @@
       <updated>1576217515304</updated>
       <workItem from="1576217516748" duration="543000" />
       <workItem from="1576223955711" duration="3911000" />
-      <workItem from="1576302382090" duration="1891000" />
+      <workItem from="1576302382090" duration="2342000" />
+      <workItem from="1576390185562" duration="3166000" />
+      <workItem from="1576406168491" duration="3404000" />
     </task>
     <servers />
   </component>
@@ -397,6 +415,7 @@
         <entry key="MAIN">
           <value>
             <State>
+<<<<<<< HEAD
               <option name="RECENTLY_FILTERED_USER_GROUPS">
                 <collection />
               </option>
@@ -418,9 +437,16 @@
         <entry key="User">
           <value>
             <list />
+=======
+              <option name="COLUMN_ORDER" />
+            </State>
+>>>>>>> 89ad116929fc409e50469f47d28d6cd019c45a7f
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

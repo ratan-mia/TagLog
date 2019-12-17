@@ -60,8 +60,8 @@
 							<div class="form-group">
 								<label for="country_id">{{ trans('profile.basic-information.nationality') }}</label>
 								<select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
-									@foreach($countries as $id => $country)
-										<option value="{{ $id }}" {{ ($user->country ? $user->country->id : old('country_id')) == $id ? 'selected' : '' }}>{{ $country }}</option>
+									@foreach($nationalities as $id => $nationality)
+										<option value="{{ $id }}" {{ ($user->nationality ? $user->nationality->id : old('nationality_id')) == $id ? 'selected' : '' }}>{{ $nationality }}</option>
 									@endforeach
 								</select>
 								@if($errors->has('country_id'))

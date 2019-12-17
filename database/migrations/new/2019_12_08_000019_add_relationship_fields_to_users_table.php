@@ -13,6 +13,9 @@ class AddRelationshipFieldsToUsersTable extends Migration
 
             $table->foreign('country_id', 'country_fk_698250')->references('id')->on('countries');
 
+            $table->unsignedInteger('nationality_id')->nullable();
+            $table->foreign('nationality_id','nationality_fk_806925')->references('id')->on('nationalities');
+
             $table->unsignedInteger('destination_country_id')->nullable();
 
             $table->foreign('destination_country_id', 'destination_country_fk_698258')->references('id')->on('countries');
