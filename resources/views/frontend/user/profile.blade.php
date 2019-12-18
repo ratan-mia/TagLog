@@ -100,6 +100,24 @@
                                 </div>
                             </div>
 
+                            <!-- Current City/Area -->
+
+                            <div class="form-group row">
+                                <label for="city" class="col-sm-6 col-form-label">{{ trans('profile.basic-information.city') }}</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="name" value="{{$user->city}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="city" class="col-sm-6 col-form-label">{{ trans('profile.basic-information.date_of_birth') }}</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="name" value="{{$user->date_of_birth}}">
+                                </div>
+                            </div>
+
+
+
 							<!-- File chooser -->
 							<div class="form-group choose-file">
 								<i class="fa fa-user text-center"></i>
