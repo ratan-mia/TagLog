@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7ed2371-538b-486c-ba68-3e638b21585e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/profile.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -211,7 +209,7 @@
       <workItem from="1576406168491" duration="3637000" />
       <workItem from="1576568079945" duration="567000" />
       <workItem from="1576652458457" duration="7126000" />
-      <workItem from="1576671212397" duration="954000" />
+      <workItem from="1576671212397" duration="1562000" />
     </task>
     <servers />
   </component>

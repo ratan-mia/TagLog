@@ -109,10 +109,12 @@
                                 </div>
                             </div>
 
+                            <!-- Date of Birth -->
+
                             <div class="form-group row">
                                 <label for="city" class="col-sm-6 col-form-label">{{ trans('profile.basic-information.date_of_birth') }}</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="name" value="{{$user->date_of_birth}}">
+                                    <input type="text" class="form-control date" id="name" value="{{$user->date_of_birth}}">
                                 </div>
                             </div>
 
