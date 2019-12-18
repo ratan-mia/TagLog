@@ -87,7 +87,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.nationality_helper') }}</span>
             </div>
-            
+
 
 
             <div class="form-group">
@@ -188,7 +188,7 @@
                 <label>{{ trans('cruds.user.fields.visa_type') }}</label>
                 <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
                     <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\User::VISA_TYPE_SELECT as $key => $label)
+                    @foreach($visas as $key => $label)
                         <option value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>

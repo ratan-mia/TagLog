@@ -65,6 +65,16 @@
                             {{ $user->country->name ?? '' }}
                         </td>
                     </tr>
+
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.nationality') }}
+                        </th>
+                        <td>
+                            {{ $user->nationality->name ?? '' }}
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>
                             {{ trans('cruds.user.fields.city') }}
@@ -134,7 +144,7 @@
                             {{ trans('cruds.user.fields.visa_type') }}
                         </th>
                         <td>
-                            {{ App\User::VISA_TYPE_SELECT[$user->visa_type] ?? '' }}
+                            {{ $user->visa->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

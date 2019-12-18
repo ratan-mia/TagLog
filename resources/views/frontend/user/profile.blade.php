@@ -50,27 +50,55 @@
 					<!-- Edit Personal Info -->
 					<div class="widget personal-info">
 						<h3 class="widget-header user">Edit Personal Information</h3>
+
 						<form action="#">
 							<!-- First Name -->
-							<div class="form-group">
-								<label for="name">Name</label>
+
+                            <div class="form-group row">
+								<label for="name" class="col-sm-6 col-form-label">Name</label>
+                                <div class="col-sm-6">
 								<input type="text" class="form-control" id="name" value="{{$user->name}}">
+                                </div>
 							</div>
-							<!-- Last Name -->
-							<div class="form-group">
-								<label for="country_id">{{ trans('profile.basic-information.nationality') }}</label>
-								<select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
+
+							<!-- Nationality -->
+							<div class="form-group row">
+								<label for="nationality_id" class="col-sm-6 col-form-label">{{ trans('profile.basic-information.nationality') }}</label>
+                                <div class="col-sm-6">
+								<select class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}" name="nationality_id" id="nationality_id">
 									@foreach($nationalities as $id => $nationality)
 										<option value="{{ $id }}" {{ ($user->nationality ? $user->nationality->id : old('nationality_id')) == $id ? 'selected' : '' }}>{{ $nationality }}</option>
 									@endforeach
 								</select>
+
 								@if($errors->has('country_id'))
 									<div class="invalid-feedback">
 										{{ $errors->first('country_id') }}
 									</div>
 								@endif
 								<span class="help-block">{{ trans('cruds.user.fields.country_helper') }}</span>
+                                </div>
 							</div>
+
+
+                            <!-- Country -->
+                            <div class="form-group row">
+                                <label for="country_id" class="col-sm-6 col-form-label">{{ trans('profile.basic-information.country') }}</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
+                                        @foreach($countries as $id => $country)
+                                            <option value="{{ $id }}" {{ ($user->country ? $user->country->id : old('country_id')) == $id ? 'selected' : '' }}>{{ $country }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @if($errors->has('country_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('country_id') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.user.fields.country_helper') }}</span>
+                                </div>
+                            </div>
 
 							<!-- File chooser -->
 							<div class="form-group choose-file">

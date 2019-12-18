@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('*', function ($view) {
-            $view->with('nationalities', Nationality::all()->pluck('country_enNationality', 'id')->prepend(trans('global.pleaseSelect'), ''));
+            $view->with('nationalities', Nationality::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
 

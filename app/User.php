@@ -21,7 +21,8 @@ class User extends Authenticatable implements HasMedia
     public $table = 'users';
 
     const VISA_TYPE_SELECT = [
-
+                '1' => 'Technical Intern Trainee',
+                '2' => 'Specified Skilled Worker',
     ];
 
     protected $appends = [
@@ -129,6 +130,11 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function nationality()
+    {
+        return $this->belongsTo(Nationality::class, 'nationality_id');
+    }
+
     public function getDateOfBirthAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -147,6 +153,11 @@ class User extends Authenticatable implements HasMedia
     public function expected_industries()
     {
         return $this->belongsToMany(Industry::class);
+    }
+
+    public function visa(){
+
+        return $this->belongsTo(Visa::class,'visa_type');
     }
 
     public function getDateOfLeavingAttribute($value)

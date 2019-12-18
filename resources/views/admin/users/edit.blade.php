@@ -74,6 +74,21 @@
             </div>
 
             <div class="form-group">
+                <label for="nationality_id">{{ trans('cruds.user.fields.nationality') }}</label>
+                <select class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}" name="nationality_id" id="nationality_id">
+                    @foreach($nationalities as $id => $nationality)
+                        <option value="{{ $id }}" {{ ($user->nationality ? $user->nationality->id : old('nationality_id')) == $id ? 'selected' : '' }}>{{ $nationality }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('nationality_id'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('nationality_id') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.nationality_helper') }}</span>
+            </div>
+
+            <div class="form-group">
                 <label for="city">{{ trans('cruds.user.fields.city') }}</label>
                 <input class="form-control {{ $errors->has('city') ? 'is-invalid' : '' }}" type="text" name="city" id="city" value="{{ old('city', $user->city) }}">
                 @if($errors->has('city'))
@@ -171,7 +186,7 @@
                 <label>{{ trans('cruds.user.fields.visa_type') }}</label>
                 <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
                     <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\User::VISA_TYPE_SELECT as $key => $label)
+                    @foreach($visas as $key => $label)
                         <option value="{{ $key }}" {{ old('visa_type', $user->visa_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
