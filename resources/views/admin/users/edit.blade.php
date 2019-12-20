@@ -123,6 +123,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.gender_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label>{{ trans('cruds.user.fields.education_level') }}</label>
                 <select class="form-control {{ $errors->has('education_level') ? 'is-invalid' : '' }}" name="education_level" id="education_level">
@@ -138,6 +139,24 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.education_level_helper') }}</span>
             </div>
+
+            <!-- Language Level -->
+
+            <div class="form-group">
+                <label for="language_level">{{ trans('cruds.user.fields.language_level') }}</label>
+                    <select class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}" name="language_level" id="language_level">
+                        <option value disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach(App\User::LANGUAGE_LEVEL_SELECT as $key => $label)
+                            <option value="{{ $key }}" {{ old('language_level', $user->language_level) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('language_level'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('language_level') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.user.fields.language_level_helper') }}</span>
+                </div>
             <div class="form-group">
                 <label for="phone">{{ trans('cruds.user.fields.phone') }}</label>
                 <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $user->phone) }}">
@@ -148,6 +167,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.phone_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="facebook">{{ trans('cruds.user.fields.facebook') }}</label>
                 <input class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" type="text" name="facebook" id="facebook" value="{{ old('facebook', $user->facebook) }}">

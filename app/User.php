@@ -37,7 +37,6 @@ class User extends Authenticatable implements HasMedia
     const GENDER_RADIO = [
         'male'   => 'Male',
         'female' => 'Female',
-        'none'   => 'None of These',
     ];
 
     protected $dates = [
@@ -54,6 +53,16 @@ class User extends Authenticatable implements HasMedia
         'higher_secondary' => 'Higher Secondary',
         'bachelor_degree'  => 'Bachelor’s degree',
         'masters_degress'  => 'Master\'s Degree',
+    ];
+
+
+    const LANGUAGE_LEVEL_SELECT = [
+        'N1' => 'The ability to understand Japanese used in a variety of circumstances.',
+        'N2' => 'The ability to understand Japanese used in everyday situations, and in a variety of circumstances to a certain degree.',
+        'N3' => 'The ability to understand Japanese used in everyday situations to a certain degree.',
+        'N4' => 'The ability to understand basic Japanese.',
+        'N5' => 'The ability to understand some basic Japanese.',
+
     ];
 
     protected $fillable = [
@@ -77,6 +86,7 @@ class User extends Authenticatable implements HasMedia
         'date_of_birth',
         'remember_token',
         'education_level',
+        'language_level',
         'expected_salary',
         'date_of_leaving',
         'email_verified_at',

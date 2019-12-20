@@ -3,8 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f7ed2371-538b-486c-ba68-3e638b21585e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/replace-file.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/replace-file.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/new/2019_12_08_000008_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/new/2019_12_08_000008_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/cruds.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/cruds.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/user/profile.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,6 +170,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -210,7 +218,8 @@
       <workItem from="1576406168491" duration="3637000" />
       <workItem from="1576568079945" duration="567000" />
       <workItem from="1576652458457" duration="7126000" />
-      <workItem from="1576671212397" duration="2058000" />
+      <workItem from="1576671212397" duration="2198000" />
+      <workItem from="1576731762343" duration="7949000" />
     </task>
     <servers />
   </component>

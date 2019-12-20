@@ -1,15 +1,15 @@
-
 <div class="form-group">
-    <label for="nationality_id">{{ trans('cruds.user.fields.nationality') }}</label>
-    <select class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}" name="nationality_id" id="nationality_id">
-        @foreach($countries as $id => $nationality)
-        <option value="{{ $id }}" {{ ($user->nationality ? $user->nationality->id : old('nationality_id')) == $id ? 'selected' : '' }}>{{ $nationality }}</option>
+    <label>{{ trans('cruds.user.fields.language_level') }}</label>
+    <select class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}" name="language_level" id="language_level">
+        <option value disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+        @foreach(App\User::LANGUAGE_LEVEL_SELECT as $key => $label)
+        <option value="{{ $key }}" {{ old('language_level', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
         @endforeach
     </select>
-    @if($errors->has('nationality_id'))
+    @if($errors->has('language_level'))
     <div class="invalid-feedback">
-        {{ $errors->first('nationality_id') }}
+        {{ $errors->first('language_level') }}
     </div>
     @endif
-    <span class="help-block">{{ trans('cruds.user.fields.nationality_helper') }}</span>
+    <span class="help-block">{{ trans('cruds.user.fields.language_level_helper') }}</span>
 </div>

@@ -75,6 +75,8 @@ return [
             'gender_helper'              => '',
             'education_level'            => 'Education Level',
             'education_level_helper'     => '',
+            'language_level'            => 'Current Language Level',
+            'language_level_helper'     => '',
             'phone'                      => 'Phone',
             'phone_helper'               => '',
             'facebook'                   => 'Facebook ID',
