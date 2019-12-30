@@ -90,6 +90,7 @@ return [
             'skype'                      => 'Skype',
             'skype_helper'               => '',
             'destination_country'        => 'Destination Country',
+            'destination_area'           => 'Expected Destination Area',
             'destination_country_helper' => '',
             'visa_type_sign_up'          => 'Visa Type You\'re Looking for',
             'visa_type'                  => 'Visa Type',
