@@ -141,6 +141,21 @@
                 <span class="help-block">{{ trans('cruds.user.fields.education_level_helper') }}</span>
             </div>
             <div class="form-group">
+                <label>{{ trans('cruds.user.fields.education_background') }}</label>
+                <select class="form-control {{ $errors->has('education_background') ? 'is-invalid' : '' }}" name="education_background" id="education_background">
+                    <option value disabled {{ old('education_background', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\User::EDUCATION_BACKGROUND_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('education_background', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('education_background'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('education_background') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.education_background_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label>{{ trans('cruds.user.fields.language_level') }}</label>
                 <select class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}" name="language_level" id="language_level">
                     <option value disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>

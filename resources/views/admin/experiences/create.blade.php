@@ -51,6 +51,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.experience.fields.destination_country_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label>{{ trans('cruds.experience.fields.visa_type') }}</label>
                 <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">

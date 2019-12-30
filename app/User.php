@@ -21,8 +21,16 @@ class User extends Authenticatable implements HasMedia
     public $table = 'users';
 
     const VISA_TYPE_SELECT = [
-                '1' => 'Technical Intern Trainee',
-                '2' => 'Specified Skilled Worker',
+        '1' => 'Technical Intern Trainee',
+        '2' => 'Specified Skilled Worker',
+    ];
+
+    const USER_STATUS_SELECT = [
+        '1' => 'Looking for Sending Organization',
+        '2' => 'Currently belong to Sending Organization',
+        '3' => 'Current Technical Intern Trainee',
+        '4' => 'Technical Intern Trainee Alumni',
+        '5' => 'Others',
     ];
 
     protected $appends = [
@@ -35,7 +43,7 @@ class User extends Authenticatable implements HasMedia
     ];
 
     const GENDER_RADIO = [
-        'male'   => 'Male',
+        'male' => 'Male',
         'female' => 'Female',
     ];
 
@@ -51,8 +59,14 @@ class User extends Authenticatable implements HasMedia
     const EDUCATION_LEVEL_SELECT = [
         'secondary_school' => 'Secondary School',
         'higher_secondary' => 'Higher Secondary',
-        'bachelor_degree'  => 'Bachelor’s degree',
-        'masters_degress'  => 'Master\'s Degree',
+        'bachelor_degree' => 'Bachelor’s degree',
+        'masters_degress' => 'Master\'s Degree',
+    ];
+
+    const EDUCATION_BACKGROUND_SELECT = [
+        'science' => 'Science',
+        'commerce' => 'Commerce',
+        'arts' => 'Arts',
     ];
 
 
@@ -86,6 +100,7 @@ class User extends Authenticatable implements HasMedia
         'date_of_birth',
         'remember_token',
         'education_level',
+        'education_background',
         'language_level',
         'expected_salary',
         'date_of_leaving',
@@ -165,9 +180,10 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsToMany(Industry::class);
     }
 
-    public function visa(){
+    public function visa()
+    {
 
-        return $this->belongsTo(Visa::class,'visa_type');
+        return $this->belongsTo(Visa::class, 'visa_type');
     }
 
     public function getDateOfLeavingAttribute($value)
@@ -200,7 +216,7 @@ class User extends Authenticatable implements HasMedia
         $file = $this->getMedia('profile_picture')->last();
 
         if ($file) {
-            $file->url       = $file->getUrl();
+            $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
