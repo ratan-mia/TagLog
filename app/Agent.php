@@ -15,11 +15,13 @@ class Agent extends Model implements HasMedia
     public $table = 'agents';
 
     const LANGUAGE_LEVEL_SELECT = [
-
+        'six_months' => 'Six Months',
+        'one_year'   => 'One Year',
     ];
 
     const LEAVING_PERIOD_SELECT = [
-
+        'six_months' => 'Six Months',
+        'one_year'   => 'One Year',
     ];
 
     protected $appends = [
@@ -55,6 +57,7 @@ class Agent extends Model implements HasMedia
         'language_level',
         'leaving_period',
         'interview_period',
+
     ];
 
     public function registerMediaConversions(Media $media = null)
@@ -74,7 +77,7 @@ class Agent extends Model implements HasMedia
 
     public function destinations()
     {
-        return $this->belongsToMany(Country::class);
+        return $this->belongsToMany(Destination::class);
     }
 
     public function industries()

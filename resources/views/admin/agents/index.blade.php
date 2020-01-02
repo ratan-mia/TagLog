@@ -80,7 +80,7 @@
                 </thead>
                 <tbody>
                     @foreach($agents as $key => $agent)
-                        <tr data-entry-id="{{ $agent->id }}">
+                        <tr data-entry-id="{{ $agent->id ?? ''}}">
                             <td>
 
                             </td>
@@ -100,13 +100,13 @@
                                 {{ $agent->map ?? '' }}
                             </td>
                             <td>
-                                {{ App\Agent::INTERVIEW_PERIOD_SELECT[$agent->interview_period] ?? '' }}
+                                {{ $agent->interview_period ?? '' }}
                             </td>
                             <td>
                                 {{ $agent->total_expense ?? '' }}
                             </td>
                             <td>
-                                {{ App\Agent::LANGUAGE_LEVEL_SELECT[$agent->language_level] ?? '' }}
+                                {{ $agent->language_level ?? '' }}
                             </td>
                             <td>
                                 @foreach($agent->destinations as $key => $item)
@@ -124,7 +124,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                {{ App\Agent::LEAVING_PERIOD_SELECT[$agent->leaving_period] ?? '' }}
+                                {{ $agent->leaving_period ?? '' }}
                             </td>
                             <td>
                                 {{ $agent->workers_sent ?? '' }}

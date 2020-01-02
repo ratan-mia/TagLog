@@ -13,7 +13,7 @@
                             {{--Visa Type--}}
                             <div class="form-group row">
                                 <label
-                                        class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.visa_type_sign_up') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.visa_type_sign_up') }}</label>
                                 <div class="col-md-6">
                                     <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"
                                             name="visa_type" id="visa_type">
@@ -21,7 +21,7 @@
                                                 disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach(App\Visa::all() as $key => $label)
                                             <option
-                                                    value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label->name }}</option>
+                                                value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -36,7 +36,7 @@
                             {{--                        user-staus--}}
                             <div class="form-group row">
                                 <label
-                                        class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.user_status') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.user_status') }}</label>
                                 <div class="col-md-6">
                                     <select class="form-control {{ $errors->has('user_status') ? 'is-invalid' : '' }}"
                                             name="user_status" id="user_status">
@@ -44,7 +44,7 @@
                                                 disabled {{ old('user_status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach(App\USER::USER_STATUS_SELECT as $key => $label)
                                             <option
-                                                    value="{{ $key }}" {{ old('user_status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                                value="{{ $key }}" {{ old('user_status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('user_status'))
@@ -80,11 +80,11 @@
                                        for="nationality_id">{{ trans('cruds.user.fields.nationality') }}</label>
                                 <div class="col-md-6">
                                     <select
-                                            class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}"
-                                            name="nationality_id" id="nationality_id">
+                                        class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}"
+                                        name="nationality_id" id="nationality_id">
                                         @foreach($nationalities as $id => $nationality)
                                             <option
-                                                    value="{{ $id }}" {{ old('nationality_id') == $id ? 'selected' : '' }}>{{ $nationality }}</option>
+                                                value="{{ $id }}" {{ old('nationality_id') == $id ? 'selected' : '' }}>{{ $nationality }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('nationality_id'))
@@ -101,11 +101,11 @@
                                        for="country_id">{{ trans('cruds.user.fields.country_register') }}</label>
                                 <div class="col-md-6">
                                     <select
-                                            class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
-                                            name="country_id" id="country_id">
+                                        class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                                        name="country_id" id="country_id">
                                         @foreach($countries as $id => $country)
                                             <option
-                                                    value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $country }}</option>
+                                                value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $country }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('country_id'))
@@ -140,16 +140,16 @@
                                        for="date_of_birth">{{ trans('cruds.user.fields.date_of_birth') }}</label>
                                 <div class="col-md-6">
                                     <input
-                                            class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
-                                            type="text" name="date_of_birth" id="date_of_birth"
-                                            value="{{ old('date_of_birth') }}">
+                                        class="form-control date {{ $errors->has('date_of_birth') ? 'is-invalid' : '' }}"
+                                        type="text" name="date_of_birth" id="date_of_birth"
+                                        value="{{ old('date_of_birth') }}">
                                     @if($errors->has('date_of_birth'))
                                         <div class="invalid-feedback">
                                             {{ $errors->first('date_of_birth') }}
                                         </div>
                                     @endif
                                     <span
-                                            class="help-block">{{ trans('cruds.user.fields.date_of_birth_helper') }}</span>
+                                        class="help-block">{{ trans('cruds.user.fields.date_of_birth_helper') }}</span>
                                 </div>
                             </div>
 
@@ -158,7 +158,7 @@
 
                             <div class="form-group row">
                                 <label
-                                        class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.gender') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.gender') }}</label>
                                 <div class="col-md-6">
                                     @foreach(App\User::GENDER_RADIO as $key => $label)
                                         <div class="form-check {{ $errors->has('gender') ? 'is-invalid' : '' }}">
@@ -179,16 +179,16 @@
                             <!--Education Background-->
                             <div class="form-group row">
                                 <label
-                                        class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.education_background') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ trans('cruds.user.fields.education_background') }}</label>
                                 <div class="col-md-6">
                                     <select
-                                            class="form-control {{ $errors->has('education_background') ? 'is-invalid' : '' }}"
-                                            name="education_background" id="education_background">
+                                        class="form-control {{ $errors->has('education_background') ? 'is-invalid' : '' }}"
+                                        name="education_background" id="education_background">
                                         <option value
                                                 disabled {{ old('education_background', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach(App\User::EDUCATION_BACKGROUND_SELECT as $key => $label)
                                             <option
-                                                    value="{{ $key }}" {{ old('education_background', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                                value="{{ $key }}" {{ old('education_background', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('education_background'))
@@ -197,7 +197,7 @@
                                         </div>
                                     @endif
                                     <span
-                                            class="help-block">{{ trans('cruds.user.fields.education_background_helper') }}</span>
+                                        class="help-block">{{ trans('cruds.user.fields.education_background_helper') }}</span>
                                 </div>
                             </div>
 
@@ -300,10 +300,12 @@
                                 <label class="col-md-4 col-form-label text-md-right"
                                        for="destination_country_id">{{ trans('cruds.user.fields.destination_area') }}</label>
                                 <div class="col-md-6">
-                                    <select class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
-                                            name="destination_country_id" id="destination_country_id">
+                                    <select
+                                        class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
+                                        name="destination_country_id" id="destination_country_id">
                                         @foreach($destination_countries as $id => $destination_country)
-                                            <option value="{{ $id }}" {{ old('destination_country_id') == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
+                                            <option
+                                                value="{{ $id }}" {{ old('destination_country_id') == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('destination_country_id'))
@@ -311,7 +313,98 @@
                                             {{ $errors->first('destination_country_id') }}
                                         </div>
                                     @endif
-                                    <span class="help-block">{{ trans('cruds.user.fields.destination_country_helper') }}</span>
+                                    <span
+                                        class="help-block">{{ trans('cruds.user.fields.destination_country_helper') }}</span>
+                                </div>
+                            </div>
+
+
+                            <!-- Expected Industries-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="expected_industries">{{ trans('cruds.user.fields.expected_industries') }}</label>
+                                <div class="col-md-6">
+                                    <div style="padding-bottom: 4px">
+                                        <span class="btn btn-info btn-xs select-all"
+                                              style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                                        <span class="btn btn-info btn-xs deselect-all"
+                                              style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                                    </div>
+                                    <select
+                                        class="form-control select2 {{ $errors->has('expected_industries') ? 'is-invalid' : '' }}"
+                                        name="expected_industries[]" id="expected_industries" multiple>
+                                        @foreach($expected_industries as $id => $expected_industries)
+                                            <option
+                                                value="{{ $id }}" {{ in_array($id, old('expected_industries', [])) ? 'selected' : '' }}>{{ $expected_industries }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('expected_industries'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('expected_industries') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.user.fields.expected_industries_helper') }}</span>
+                                </div>
+                            </div>
+                            <!-- Expected Salary-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="expected_salary">{{ trans('cruds.user.fields.expected_salary') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('expected_salary') ? 'is-invalid' : '' }}"
+                                        type="number" name="expected_salary" id="expected_salary"
+                                        value="{{ old('expected_salary') }}" step="0.01">
+                                    @if($errors->has('expected_salary'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('expected_salary') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.user.fields.expected_salary_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Date of Leaving-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="date_of_leaving">{{ trans('cruds.user.fields.date_of_leaving_register') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control date {{ $errors->has('date_of_leaving') ? 'is-invalid' : '' }}"
+                                        type="text" name="date_of_leaving" id="date_of_leaving"
+                                        value="{{ old('date_of_leaving') }}">
+                                    @if($errors->has('date_of_leaving'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('date_of_leaving') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.user.fields.date_of_leaving_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Name of Agent-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="agents_id">{{ trans('cruds.user.fields.agents_register') }}</label>
+                                <div class="col-md-6">
+                                    <select
+                                        class="form-control select2 {{ $errors->has('agents') ? 'is-invalid' : '' }}"
+                                        name="agents_id" id="agents_id">
+                                        @foreach($agents as $id => $agents)
+                                            <option
+                                                value="{{ $id }}" {{ old('agents_id') == $id ? 'selected' : '' }}>{{ $agents }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('agents_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('agents_id') }}
+                                        </div>
+                                    @endif
+                                    <span class="help-block">{{ trans('cruds.user.fields.agents_helper') }}</span>
                                 </div>
                             </div>
 
