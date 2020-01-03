@@ -7,6 +7,7 @@ use App\Category;
 use App\City;
 use App\Country;
 use App\Destination;
+use App\Employer;
 use App\Industry;
 use App\Nationality;
 use Illuminate\Support\ServiceProvider;
@@ -39,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('search_categories', Category::all());
         });
 
-        view()->composer('*', function ($view) {
+        view()->composer('frontend.*', function ($view) {
             $view->with('countries', Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
@@ -56,8 +57,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('expected_industries', Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
-        view()->composer('*', function ($view) {
+        view()->composer('auth.register', function ($view) {
             $view->with('agents', Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+        });
+
+        view()->composer('auth.register', function ($view) {
+            $view->with('employers', Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
 

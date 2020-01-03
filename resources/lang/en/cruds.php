@@ -552,7 +552,7 @@ return [
             'expenses_paid_helper'           => '',
             'language_level'                 => 'Language Level',
             'language_level_helper'          => '',
-            'agent_rating'                   => 'Agent Rating',
+            'agent_rating'                   => 'Recommendation Rating about Sending Agency',
             'agent_rating_helper'            => '',
             'employer'                       => 'Employer Name',
             'employer_helper'                => '',

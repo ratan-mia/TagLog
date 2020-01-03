@@ -464,6 +464,70 @@
                                 </div>
                             </div>
 
+                            <!--Agent Rating-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="agent_rating">{{ trans('cruds.experience.fields.agent_rating') }}</label>
+                                <div class="col-md-6">
+                                    <input class="form-control {{ $errors->has('agent_rating') ? 'is-invalid' : '' }}"
+                                           type="number" name="agent_rating" id="agent_rating"
+                                           value="{{ old('agent_rating') }}" step="1">
+                                    @if($errors->has('agent_rating'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('agent_rating') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.agent_rating_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Free Comment About Sending Agent-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="agent_feedback">{{ trans('cruds.experience.fields.agent_feedback') }}</label>
+                                <div class="col-md-6">
+                                    <textarea
+                                        class="form-control {{ $errors->has('agent_feedback') ? 'is-invalid' : '' }}"
+                                        name="agent_feedback" id="agent_feedback">{{ old('agent_feedback') }}</textarea>
+                                    @if($errors->has('agent_feedback'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('agent_feedback') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.agent_feedback_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Share Employer  Experience(Technical Intern Trainee)-->
+                            <!--Employer Name-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="employer_id">{{ trans('cruds.experience.fields.employer') }}</label>
+                                <div class="col-md-6">
+                                    <select
+                                        class="form-control select2 {{ $errors->has('employer_id') ? 'is-invalid' : '' }}"
+                                        name="employer_id" id="employer_id">
+                                        @foreach($employers ?? '' as $id => $employer)
+                                            <option
+                                                value="{{ $id }}" {{ old('employer_id') == $id ? 'selected' : '' }}>{{ $employer }}</option>
+                                        @endforeach
+                                    </select>
+
+
+                                    @if($errors->has('employer_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('employer_id') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.employer_helper') }}</span>
+                                </div>
+                            </div>
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
