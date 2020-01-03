@@ -385,7 +385,7 @@
                                         class="help-block">{{ trans('cruds.user.fields.date_of_leaving_helper') }}</span>
                                 </div>
                             </div>
-
+                            <!--Share Sending Organization Experience(Technical Intern Trainee)-->
                             <!--Name of Agent-->
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right"
@@ -405,6 +405,62 @@
                                         </div>
                                     @endif
                                     <span class="help-block">{{ trans('cruds.user.fields.agents_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Expense Paid-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="expenses_paid">{{ trans('cruds.experience.fields.expenses_paid') }}</label>
+                                <div class="col-md-6">
+                                    <input class="form-control {{ $errors->has('expenses_paid') ? 'is-invalid' : '' }}"
+                                           type="text" name="expenses_paid" id="expenses_paid"
+                                           value="{{ old('expenses_paid', '') }}">
+                                    @if($errors->has('expenses_paid'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('expenses_paid') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.expenses_paid_helper') }}</span>
+                                </div>
+                            </div>
+                            <!--Visa Application Rating-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="visa_application_rating">{{ trans('cruds.experience.fields.visa_application_rating') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('visa_application_rating') ? 'is-invalid' : '' }}"
+                                        type="number" name="visa_application_rating" id="visa_application_rating"
+                                        value="{{ old('visa_application_rating', '') }}" step="1">
+                                    @if($errors->has('visa_application_rating'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('visa_application_rating') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.visa_application_rating_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Language Training Rating-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="language_training_rating">{{ trans('cruds.experience.fields.language_training_rating') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('language_training_rating') ? 'is-invalid' : '' }}"
+                                        type="number" name="language_training_rating" id="language_training_rating"
+                                        value="{{ old('language_training_rating', '') }}" step="1">
+                                    @if($errors->has('language_training_rating'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('language_training_rating') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.language_training_rating_helper') }}</span>
                                 </div>
                             </div>
 

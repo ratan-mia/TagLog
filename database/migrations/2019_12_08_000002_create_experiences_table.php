@@ -20,6 +20,8 @@ class CreateExperiencesTable extends Migration
             $table->string('language_level')->nullable();
 
             $table->integer('agent_rating')->nullable();
+            $table->integer('visa_application_rating')->nullable();
+            $table->integer('language_training_rating')->nullable();
 
             $table->date('emloyment_date')->nullable();
 

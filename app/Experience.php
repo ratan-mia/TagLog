@@ -57,6 +57,8 @@ class Experience extends Model
         'employer_id',
         'industry_id',
         'agent_rating',
+        'visa_application_rating',
+        'language_training_rating',
         'expenses_paid',
         'language_level',
         'agent_feedback',

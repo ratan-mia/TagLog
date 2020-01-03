@@ -93,6 +93,27 @@
                 <span class="help-block">{{ trans('cruds.experience.fields.expenses_paid_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="visa_application_rating">{{ trans('cruds.experience.fields.visa_application_rating') }}</label>
+                <input class="form-control {{ $errors->has('visa_application_rating') ? 'is-invalid' : '' }}" type="number" name="visa_application_rating" id="visa_application_rating" value="{{ old('visa_application_rating', '') }}" step="1">
+                @if($errors->has('visa_application_rating'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('visa_application_rating') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.experience.fields.visa_application_rating_helper') }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="language_training_rating">{{ trans('cruds.experience.fields.language_training_rating') }}</label>
+                <input class="form-control {{ $errors->has('language_training_rating') ? 'is-invalid' : '' }}" type="number" name="language_training_rating" id="language_training_rating" value="{{ old('language_training_rating', '') }}" step="1">
+                @if($errors->has('language_training_rating'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('language_training_rating') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.experience.fields.language_training_rating_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label>{{ trans('cruds.experience.fields.language_level') }}</label>
                 <select class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}" name="language_level" id="language_level">
                     <option value disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
