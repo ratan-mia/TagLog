@@ -36,6 +36,7 @@ class CreateExperiencesTable extends Migration
             $table->string('weekly_working_hours')->nullable();
 
             $table->longText('agent_feedback')->nullable();
+            $table->longText('employer_location')->nullable();
 
             $table->integer('monthly_days_off')->nullable();
 

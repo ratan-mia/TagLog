@@ -21,7 +21,11 @@ class Experience extends Model
     ];
 
     const WEEKLY_WORKING_HOURS_SELECT = [
-
+        '1' => '48',
+        '2'  => '54',
+        '3'  => '60',
+        '4'  => '66',
+        '5'  => '72',
     ];
 
     const NEXT_YEAR_OPPORTUNITY_RADIO = [
@@ -55,6 +59,7 @@ class Experience extends Model
         'created_at',
         'deleted_at',
         'employer_id',
+        'employer_location',
         'industry_id',
         'agent_rating',
         'visa_application_rating',

@@ -39,6 +39,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.employer.fields.phone_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="address">{{ trans('cruds.employer.fields.address') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address">{!! old('address') !!}</textarea>

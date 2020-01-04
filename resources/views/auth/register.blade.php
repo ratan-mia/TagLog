@@ -528,6 +528,211 @@
                                 </div>
                             </div>
 
+                            <!--Employer Location-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="employer_location">{{ trans('cruds.experience.fields.employer_location') }}</label>
+                                <div class="col-md-6">
+                                    <textarea
+                                        class="form-control ckeditor {{ $errors->has('employer_location') ? 'is-invalid' : '' }}"
+                                        name="employer_location"
+                                        id="employer_location">{!! old('employer_location') !!}</textarea>
+                                    @if($errors->has('employer_location'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('employer_location') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.employer_location_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Industry/Job Type-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="industry_id">{{ trans('cruds.experience.fields.industry') }}</label>
+                                <div class="col-md-6">
+                                    <select
+                                        class="form-control select2 {{ $errors->has('industry') ? 'is-invalid' : '' }}"
+                                        name="industry_id" id="industry_id">
+                                        @foreach($industries as $id => $industry)
+                                            <option
+                                                value="{{ $id }}" {{ old('industry_id') == $id ? 'selected' : '' }}>{{ $industry }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('industry_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('industry_id') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.industry_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Employment Date-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="emloyment_date">{{ trans('cruds.experience.fields.emloyment_date') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control date {{ $errors->has('emloyment_date') ? 'is-invalid' : '' }}"
+                                        type="text" name="emloyment_date" id="emloyment_date"
+                                        value="{{ old('emloyment_date') }}">
+                                    @if($errors->has('emloyment_date'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('emloyment_date') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.emloyment_date_helper') }}</span>
+                                </div>
+                            </div>
+                            <!--Employment Period-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="employment_period">{{ trans('cruds.experience.fields.employment_period') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('employment_period') ? 'is-invalid' : '' }}"
+                                        type="number" name="employment_period" id="employment_period"
+                                        value="{{ old('employment_period') }}" step="1">
+                                    @if($errors->has('employment_period'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('employment_period') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.employment_period_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Monthly Salary-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="monthly_salary">{{ trans('cruds.experience.fields.monthly_salary') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('monthly_salary') ? 'is-invalid' : '' }}"
+                                        type="number" name="monthly_salary" id="monthly_salary"
+                                        value="{{ old('monthly_salary') }}" step="0.01">
+                                    @if($errors->has('monthly_salary'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('monthly_salary') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.monthly_salary_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Monthly Living Expenses-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="monthly_living_expenses">{{ trans('cruds.experience.fields.monthly_living_expenses') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('monthly_living_expenses') ? 'is-invalid' : '' }}"
+                                        type="number" name="monthly_living_expenses" id="monthly_living_expenses"
+                                        value="{{ old('monthly_living_expenses') }}" step="0.01">
+                                    @if($errors->has('monthly_living_expenses'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('monthly_living_expenses') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.monthly_living_expenses_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Weekly Working Hours-->
+
+                            <div class="form-group row">
+                                <label
+                                    class="col-md-4 col-form-label text-md-right">{{ trans('cruds.experience.fields.weekly_working_hours') }}</label>
+                                <div class="col-md-6">
+                                    <select
+                                        class="form-control {{ $errors->has('weekly_working_hours') ? 'is-invalid' : '' }}"
+                                        name="weekly_working_hours" id="weekly_working_hours">
+                                        <option value
+                                                disabled {{ old('weekly_working_hours', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        @foreach(App\Experience::WEEKLY_WORKING_HOURS_SELECT as $key => $label)
+                                            <option
+                                                value="{{ $key }}" {{ old('weekly_working_hours', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('weekly_working_hours'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('weekly_working_hours') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.weekly_working_hours_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Monthly Days off-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="monthly_days_off">{{ trans('cruds.experience.fields.monthly_days_off') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('monthly_days_off') ? 'is-invalid' : '' }}"
+                                        type="number" name="monthly_days_off" id="monthly_days_off"
+                                        value="{{ old('monthly_days_off') }}" step="1">
+                                    @if($errors->has('monthly_days_off'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('monthly_days_off') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.monthly_days_off_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Employer Rating-->
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="employer_rating">{{ trans('cruds.experience.fields.employer_rating') }}</label>
+                                <div class="col-md-6">
+                                    <input
+                                        class="form-control {{ $errors->has('employer_rating') ? 'is-invalid' : '' }}"
+                                        type="number" name="employer_rating" id="employer_rating"
+                                        value="{{ old('employer_rating') }}" step="1">
+                                    @if($errors->has('employer_rating'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('employer_rating') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.employer_rating_helper') }}</span>
+                                </div>
+                            </div>
+
+                            <!--Employer Feedback-->
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right"
+                                       for="employer_feedback">{{ trans('cruds.experience.fields.employer_feedback') }}</label>
+                                <div class="col-md-6">
+                                    <textarea
+                                        class="form-control ckeditor {{ $errors->has('employer_feedback') ? 'is-invalid' : '' }}"
+                                        name="employer_feedback"
+                                        id="employer_feedback">{!! old('employer_feedback') !!}</textarea>
+                                    @if($errors->has('employer_feedback'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('employer_feedback') }}
+                                        </div>
+                                    @endif
+                                    <span
+                                        class="help-block">{{ trans('cruds.experience.fields.employer_feedback_helper') }}</span>
+                                </div>
+                            </div>
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

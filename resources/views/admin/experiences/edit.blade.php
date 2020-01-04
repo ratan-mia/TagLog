@@ -162,6 +162,16 @@
                 <span class="help-block">{{ trans('cruds.experience.fields.employer_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="employer_location">{{ trans('cruds.experience.fields.employer_location') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('employer_location') ? 'is-invalid' : '' }}" name="employer_location" id="employer_location">{!! old('employer_location', $employer->employer_location) !!}</textarea>
+                @if($errors->has('employer_location'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('employer_location') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.experience.fields.employer_location_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="industry_id">{{ trans('cruds.experience.fields.industry') }}</label>
                 <select class="form-control select2 {{ $errors->has('industry') ? 'is-invalid' : '' }}" name="industry_id" id="industry_id">
                     @foreach($industries as $id => $industry)
