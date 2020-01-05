@@ -77,16 +77,21 @@
                             <div class="tab-pane active" id="basic_information">
 
                                 <h3 class="widget-header user">Basic Information</h3>
-                                <form method="POST" action="{{ route("admin.users.update", [$user->id]) }}"
+
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <form method="POST" action="{{ route("user.update-basic-information", [$user->id]) }}"
                                       enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
-                                <!-- First Name -->
-
+                                <!-- Name -->
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-6 col-form-label">Name</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" id="name" value="{{$user->name}}">
+                                            <input type="text" name="name" class="form-control" id="name" value="{{$user->name}}">
                                         </div>
                                     </div>
 
@@ -104,9 +109,9 @@
                                                 @endforeach
                                             </select>
 
-                                            @if($errors->has('country_id'))
+                                            @if($errors->has('nationality_id'))
                                                 <div class="invalid-feedback">
-                                                    {{ $errors->first('country_id') }}
+                                                    {{ $errors->first('nationality_id') }}
                                                 </div>
                                             @endif
                                             <span
@@ -121,7 +126,7 @@
                                                class="col-sm-6 col-form-label">{{ trans('profile.basic-information.country') }}</label>
                                         <div class="col-sm-6">
                                             <select
-                                                class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                                                class="form-control select2 {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
                                                 name="country_id" id="country_id">
                                                 @foreach($countries as $id => $country)
                                                     <option
@@ -145,17 +150,17 @@
                                         <label for="city"
                                                class="col-sm-6 col-form-label">{{ trans('profile.basic-information.city') }}</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" id="name" value="{{$user->city}}">
+                                            <input type="text" name="city" class="form-control" id="city" value="{{$user->city}}">
                                         </div>
                                     </div>
 
                                     <!-- Date of Birth -->
 
                                     <div class="form-group row">
-                                        <label for="city"
+                                        <label for="date_of_birth"
                                                class="col-sm-6 col-form-label">{{ trans('profile.basic-information.date_of_birth') }}</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control date" id="name"
+                                            <input type="text" name="date_of_birth" class="form-control date" id="date_of_birth"
                                                    value="{{$user->date_of_birth}}">
                                         </div>
                                     </div>
@@ -310,8 +315,8 @@
 
                                     <!-- Submit button -->
                                     <div class="form-group">
-                                        <button class="btn btn-transparent" type="submit">
-                                            {{ trans('global.save') }}
+                                        <button class="btn btn-lg btn-transparent" type="submit">
+                                            {{ trans('global.update') }}
                                         </button>
                                     </div>
                                 </form>

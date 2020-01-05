@@ -98,5 +98,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middleware'=>['auth']], function () {
 
     Route::get('profile','UserProfileController@showProfile')->name('my-profile');
-    Route::get('profile/basic-information','UserProfileController@showProfile')->name('basic-information');
+    Route::put('profile/basic-information','UserProfileController@updateBasicInformation')->name('update-basic-information');
 });
