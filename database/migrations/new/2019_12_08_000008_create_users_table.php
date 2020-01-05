@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('remember_token')->nullable();
 
             $table->string('city')->nullable();
+            $table->string('destination_area')->nullable();
 
             $table->date('date_of_birth')->nullable();
 

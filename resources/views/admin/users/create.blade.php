@@ -216,6 +216,17 @@
                 <span class="help-block">{{ trans('cruds.user.fields.destination_country_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="destination_area">{{ trans('cruds.user.fields.destination_area') }}</label>
+                <input class="form-control {{ $errors->has('destination_area') ? 'is-invalid' : '' }}" type="text" name="destination_area" id="destination_area" value="{{ old('destination_area', '') }}">
+                @if($errors->has('destination_area'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('destination_area') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.destination_area_helper') }}</span>
+            </div>
+
+            <div class="form-group">
                 <label>{{ trans('cruds.user.fields.visa_type') }}</label>
                 <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
                     <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>

@@ -106,6 +106,7 @@ class User extends Authenticatable implements HasMedia
         'date_of_leaving',
         'email_verified_at',
         'destination_country_id',
+        'destination_area',
     ];
 
     public function registerMediaConversions(Media $media = null)
