@@ -12,10 +12,10 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto mt-10">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="{{route('homepage')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="dashboard.html">Dashboard</a>
+                                <a class="nav-link" href="{{route('admin.home')}}">Dashboard</a>
                             </li>
                             <li class="nav-item dropdown dropdown-slide">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

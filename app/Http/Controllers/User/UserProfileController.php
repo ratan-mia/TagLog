@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Agent;
 use App\Country;
+use App\Employer;
 use App\Experience;
 use App\Http\Controllers\Controller;
 use App\Industry;
@@ -19,27 +21,36 @@ class UserProfileController extends Controller
         $user_id = Auth::id();
         $user = User::find($user_id);
         $experience = Experience::where('user_id', $user_id)->first();
-        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $expected_industries = Industry::all()->pluck('name', 'id');
-        $indurstries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $visas = Visa::all()->pluck('name', 'id');
         $profile_picture = $user->getMedia('profile_picture')->first() ? $user->getMedia('profile_picture')->first()->getUrl() : '';
         $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $nationalities = Nationality::all()->pluck('country_enNationality', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.user.profile', compact('user', 'experience', 'countries', 'destination_countries', 'indurstries', 'expected_industries', 'visas', 'nationalities', 'profile_picture'));
+        $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $experience->load('user', 'agent', 'destination_country', 'employer', 'industry');
+
+        return view('frontend.user.profile', compact('user', 'agents', 'users', 'experience', 'countries', 'destination_countries', 'industries', 'employers', 'expected_industries', 'visas', 'nationalities', 'profile_picture'));
     }
 
-    public function updateBasicInformation(Request $request) {
+    public function updateBasicInformation(Request $request)
+    {
         $user_id = Auth::id();
         $user = User::find($user_id);
         $user->name = $request->name;
-        $user->nationality_id= $request->nationality_id;
-        $user->country_id= $request->country_id;
-        $user->city= $request->city;
+        $user->nationality_id = $request->nationality_id;
+        $user->country_id = $request->country_id;
+        $user->city = $request->city;
         $user->save();
         return redirect()->back()->with('message', 'The information has been updated successfully!');;
-
 
     }
 }

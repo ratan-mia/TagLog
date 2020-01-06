@@ -74,7 +74,9 @@ class ExperienceController extends Controller
     {
         $experience->update($request->all());
 
-        return redirect()->route('admin.experiences.index');
+//        return redirect()->route('admin.experiences.index');
+
+        return redirect()->back();
     }
 
     public function show(Experience $experience)
