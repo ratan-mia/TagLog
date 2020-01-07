@@ -39,6 +39,7 @@ class CreateUsersTable extends Migration
             $table->string('skype')->nullable();
 
             $table->string('visa_type')->nullable();
+            $table->string('user_status')->nullable();
 
             $table->decimal('expected_salary', 15, 2)->nullable();
 

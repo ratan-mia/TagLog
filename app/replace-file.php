@@ -1,12 +1,18 @@
-
 <div class="form-group">
-    <label for="destination_area">{{ trans('cruds.user.fields.destination_area') }}</label>
-    <input class="form-control {{ $errors->has('destination_area') ? 'is-invalid' : '' }}" type="text" name="destination_area"
-           id="destination_area" value="{{ old('destination_area', $user->destination_area) }}">
-    @if($errors->has('destination_area'))
+    <label>{{ trans('cruds.user.fields.user_status') }}</label>
+    <select class="form-control {{ $errors->has('user_status') ? 'is-invalid' : '' }}" name="user_status"
+            id="user_status">
+        <option value
+                disabled {{ old('user_status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+        @foreach($visas as $key => $label)
+        <option
+                value="{{ $key }}" {{ old('user_status', $user->user_status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+        @endforeach
+    </select>
+    @if($errors->has('user_status'))
     <div class="invalid-feedback">
-        {{ $errors->first('destination_area') }}
+        {{ $errors->first('user_status') }}
     </div>
     @endif
-    <span class="help-block">{{ trans('cruds.user.fields.destination_area_helper') }}</span>
+    <span class="help-block">{{ trans('cruds.user.fields.user_status_helper') }}</span>
 </div>

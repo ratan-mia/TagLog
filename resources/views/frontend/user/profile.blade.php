@@ -40,8 +40,8 @@
                                     <a href="#work_preference" data-toggle="tab"><i class="fa fa-briefcase"></i> Work
                                         Preference</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Share
+                                <li>
+                                    <a  href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Share
                                         Experience</a>
                                 </li>
                                 <li>
