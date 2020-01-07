@@ -43,13 +43,28 @@ class UserProfileController extends Controller
 
     public function updateBasicInformation(Request $request)
     {
+
+//        $request->validate([
+//            'email' => 'email|required|unique:users',
+//
+//        ]);
+
         $user_id = Auth::id();
         $user = User::find($user_id);
         $user->name = $request->name;
         $user->nationality_id = $request->nationality_id;
         $user->country_id = $request->country_id;
         $user->city = $request->city;
+        $user->date_of_birth = $request->date_of_birth;
+        $user->gender = $request->gender;
+        $user->education_level = $request->education_level;
+        $user->language_level = $request->language_level;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->facebook = $request->facebook;
+        $user->skype = $request->skype;
         $user->save();
+
         return redirect()->back()->with('message', 'The information has been updated successfully!');;
 
     }

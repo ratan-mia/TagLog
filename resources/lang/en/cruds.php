@@ -579,7 +579,7 @@ return [
             'updated_at_helper'              => '',
             'deleted_at'                     => 'Deleted at',
             'deleted_at_helper'              => '',
-            'agent_feedback'                 => 'Free comment about Recruitment Agent',
+            'agent_feedback'                 => 'Free comment about Sending Organization',
             'agent_feedback_helper'          => '',
             'monthly_days_off'               => 'Monthly Days Off',
             'monthly_days_off_helper'        => '',

@@ -40,8 +40,8 @@
                                     <a href="#work_preference" data-toggle="tab"><i class="fa fa-briefcase"></i> Work
                                         Preference</a>
                                 </li>
-                                <li>
-                                    <a href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Share
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Share
                                         Experience</a>
                                 </li>
                                 <li>
@@ -586,88 +586,99 @@
                                             <span
                                                 class="help-block">{{ trans('cruds.experience.fields.agent_rating_helper') }}</span>
                                         </div>
+                                        <!--Agent Feedback-->
                                         <div class="form-group">
-                                            <label
-                                                for="destination_country_id">{{ trans('cruds.experience.fields.destination_country') }}</label>
-                                            <select
-                                                class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
-                                                name="destination_country_id" id="destination_country_id">
-                                                @foreach($destination_countries as $id => $destination_country)
-                                                    <option
-                                                        value="{{ $id }}" {{ ($experience->destination_country ? $experience->destination_country->id : old('destination_country_id')) == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('destination_country_id'))
+                                            <label for="agent_feedback">{{ trans('cruds.experience.fields.agent_feedback') }}</label>
+                                            <textarea class="form-control {{ $errors->has('agent_feedback') ? 'is-invalid' : '' }}" name="agent_feedback" id="agent_feedback">{{ old('agent_feedback', $experience->agent_feedback) }}</textarea>
+                                            @if($errors->has('agent_feedback'))
                                                 <div class="invalid-feedback">
-                                                    {{ $errors->first('destination_country_id') }}
+                                                    {{ $errors->first('agent_feedback') }}
                                                 </div>
                                             @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.experience.fields.destination_country_helper') }}</span>
+                                            <span class="help-block">{{ trans('cruds.experience.fields.agent_feedback_helper') }}</span>
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ trans('cruds.experience.fields.visa_type') }}</label>
-                                            <select
-                                                class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"
-                                                name="visa_type" id="visa_type">
-                                                <option value
-                                                        disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                                                @foreach(App\Experience::VISA_TYPE_SELECT as $key => $label)
-                                                    <option
-                                                        value="{{ $key }}" {{ old('visa_type', $experience->visa_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('visa_type'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('visa_type') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.experience.fields.visa_type_helper') }}</span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>{{ trans('cruds.experience.fields.application_period') }}</label>
-                                            <select
-                                                class="form-control {{ $errors->has('application_period') ? 'is-invalid' : '' }}"
-                                                name="application_period" id="application_period">
-                                                <option value
-                                                        disabled {{ old('application_period', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                                                @foreach(App\Experience::APPLICATION_PERIOD_SELECT as $key => $label)
-                                                    <option
-                                                        value="{{ $key }}" {{ old('application_period', $experience->application_period) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('application_period'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('application_period') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.experience.fields.application_period_helper') }}</span>
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label--}}
+{{--                                                for="destination_country_id">{{ trans('cruds.experience.fields.destination_country') }}</label>--}}
+{{--                                            <select--}}
+{{--                                                class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"--}}
+{{--                                                name="destination_country_id" id="destination_country_id">--}}
+{{--                                                @foreach($destination_countries as $id => $destination_country)--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $id }}" {{ ($experience->destination_country ? $experience->destination_country->id : old('destination_country_id')) == $id ? 'selected' : '' }}>{{ $destination_country }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                            @if($errors->has('destination_country_id'))--}}
+{{--                                                <div class="invalid-feedback">--}}
+{{--                                                    {{ $errors->first('destination_country_id') }}--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <span--}}
+{{--                                                class="help-block">{{ trans('cruds.experience.fields.destination_country_helper') }}</span>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>{{ trans('cruds.experience.fields.visa_type') }}</label>--}}
+{{--                                            <select--}}
+{{--                                                class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"--}}
+{{--                                                name="visa_type" id="visa_type">--}}
+{{--                                                <option value--}}
+{{--                                                        disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+{{--                                                @foreach(App\Experience::VISA_TYPE_SELECT as $key => $label)--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $key }}" {{ old('visa_type', $experience->visa_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                            @if($errors->has('visa_type'))--}}
+{{--                                                <div class="invalid-feedback">--}}
+{{--                                                    {{ $errors->first('visa_type') }}--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <span--}}
+{{--                                                class="help-block">{{ trans('cruds.experience.fields.visa_type_helper') }}</span>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>{{ trans('cruds.experience.fields.application_period') }}</label>--}}
+{{--                                            <select--}}
+{{--                                                class="form-control {{ $errors->has('application_period') ? 'is-invalid' : '' }}"--}}
+{{--                                                name="application_period" id="application_period">--}}
+{{--                                                <option value--}}
+{{--                                                        disabled {{ old('application_period', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+{{--                                                @foreach(App\Experience::APPLICATION_PERIOD_SELECT as $key => $label)--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $key }}" {{ old('application_period', $experience->application_period) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                            @if($errors->has('application_period'))--}}
+{{--                                                <div class="invalid-feedback">--}}
+{{--                                                    {{ $errors->first('application_period') }}--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <span--}}
+{{--                                                class="help-block">{{ trans('cruds.experience.fields.application_period_helper') }}</span>--}}
+{{--                                        </div>--}}
 
 
-                                        <div class="form-group">
-                                            <label>{{ trans('cruds.experience.fields.language_level') }}</label>
-                                            <select
-                                                class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}"
-                                                name="language_level" id="language_level">
-                                                <option value
-                                                        disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                                                @foreach(App\Experience::LANGUAGE_LEVEL_SELECT as $key => $label)
-                                                    <option
-                                                        value="{{ $key }}" {{ old('language_level', $experience->language_level) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('language_level'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('language_level') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.experience.fields.language_level_helper') }}</span>
-                                        </div>
-                                        
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>{{ trans('cruds.experience.fields.language_level') }}</label>--}}
+{{--                                            <select--}}
+{{--                                                class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}"--}}
+{{--                                                name="language_level" id="language_level">--}}
+{{--                                                <option value--}}
+{{--                                                        disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+{{--                                                @foreach(App\Experience::LANGUAGE_LEVEL_SELECT as $key => $label)--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $key }}" {{ old('language_level', $experience->language_level) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                            @if($errors->has('language_level'))--}}
+{{--                                                <div class="invalid-feedback">--}}
+{{--                                                    {{ $errors->first('language_level') }}--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <span--}}
+{{--                                                class="help-block">{{ trans('cruds.experience.fields.language_level_helper') }}</span>--}}
+{{--                                        </div>--}}
+
                                         <div class="form-group">
                                             <label
                                                 for="employer_id">{{ trans('cruds.experience.fields.employer') }}</label>
@@ -785,26 +796,26 @@
                                             <span
                                                 class="help-block">{{ trans('cruds.experience.fields.monthly_living_expenses_helper') }}</span>
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ trans('cruds.experience.fields.accommodation_type') }}</label>
-                                            <select
-                                                class="form-control {{ $errors->has('accommodation_type') ? 'is-invalid' : '' }}"
-                                                name="accommodation_type" id="accommodation_type">
-                                                <option value
-                                                        disabled {{ old('accommodation_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                                                @foreach(App\Experience::ACCOMMODATION_TYPE_SELECT as $key => $label)
-                                                    <option
-                                                        value="{{ $key }}" {{ old('accommodation_type', $experience->accommodation_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if($errors->has('accommodation_type'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('accommodation_type') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.experience.fields.accommodation_type_helper') }}</span>
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>{{ trans('cruds.experience.fields.accommodation_type') }}</label>--}}
+{{--                                            <select--}}
+{{--                                                class="form-control {{ $errors->has('accommodation_type') ? 'is-invalid' : '' }}"--}}
+{{--                                                name="accommodation_type" id="accommodation_type">--}}
+{{--                                                <option value--}}
+{{--                                                        disabled {{ old('accommodation_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+{{--                                                @foreach(App\Experience::ACCOMMODATION_TYPE_SELECT as $key => $label)--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $key }}" {{ old('accommodation_type', $experience->accommodation_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                            </select>--}}
+{{--                                            @if($errors->has('accommodation_type'))--}}
+{{--                                                <div class="invalid-feedback">--}}
+{{--                                                    {{ $errors->first('accommodation_type') }}--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <span--}}
+{{--                                                class="help-block">{{ trans('cruds.experience.fields.accommodation_type_helper') }}</span>--}}
+{{--                                        </div>--}}
                                         <div class="form-group">
                                             <label>{{ trans('cruds.experience.fields.weekly_working_hours') }}</label>
                                             <select
@@ -841,27 +852,27 @@
                                             <span
                                                 class="help-block">{{ trans('cruds.experience.fields.monthly_days_off_helper') }}</span>
                                         </div>
-                                        <div class="form-group">
-                                            <label>{{ trans('cruds.experience.fields.next_year_opportunity') }}</label>
-                                            @foreach(App\Experience::NEXT_YEAR_OPPORTUNITY_RADIO as $key => $label)
-                                                <div
-                                                    class="form-check {{ $errors->has('next_year_opportunity') ? 'is-invalid' : '' }}">
-                                                    <input class="form-check-input" type="radio"
-                                                           id="next_year_opportunity_{{ $key }}"
-                                                           name="next_year_opportunity"
-                                                           value="{{ $key }}" {{ old('next_year_opportunity', $experience->next_year_opportunity) === (string) $key ? 'checked' : '' }}>
-                                                    <label class="form-check-label"
-                                                           for="next_year_opportunity_{{ $key }}">{{ $label }}</label>
-                                                </div>
-                                            @endforeach
-                                            @if($errors->has('next_year_opportunity'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('next_year_opportunity') }}
-                                                </div>
-                                            @endif
-                                            <span
-                                                class="help-block">{{ trans('cruds.experience.fields.next_year_opportunity_helper') }}</span>
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label>{{ trans('cruds.experience.fields.next_year_opportunity') }}</label>--}}
+{{--                                            @foreach(App\Experience::NEXT_YEAR_OPPORTUNITY_RADIO as $key => $label)--}}
+{{--                                                <div--}}
+{{--                                                    class="form-check {{ $errors->has('next_year_opportunity') ? 'is-invalid' : '' }}">--}}
+{{--                                                    <input class="form-check-input" type="radio"--}}
+{{--                                                           id="next_year_opportunity_{{ $key }}"--}}
+{{--                                                           name="next_year_opportunity"--}}
+{{--                                                           value="{{ $key }}" {{ old('next_year_opportunity', $experience->next_year_opportunity) === (string) $key ? 'checked' : '' }}>--}}
+{{--                                                    <label class="form-check-label"--}}
+{{--                                                           for="next_year_opportunity_{{ $key }}">{{ $label }}</label>--}}
+{{--                                                </div>--}}
+{{--                                            @endforeach--}}
+{{--                                            @if($errors->has('next_year_opportunity'))--}}
+{{--                                                <div class="invalid-feedback">--}}
+{{--                                                    {{ $errors->first('next_year_opportunity') }}--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <span--}}
+{{--                                                class="help-block">{{ trans('cruds.experience.fields.next_year_opportunity_helper') }}</span>--}}
+{{--                                        </div>--}}
                                         <div class="form-group">
                                             <label
                                                 for="employer_rating">{{ trans('cruds.experience.fields.employer_rating') }}</label>
