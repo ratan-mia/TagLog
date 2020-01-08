@@ -157,6 +157,7 @@
             </div>
             <div class="form-group">
                 <label>{{ trans('cruds.user.fields.language_level') }}</label>
+
                 <select class="form-control {{ $errors->has('language_level') ? 'is-invalid' : '' }}" name="language_level" id="language_level">
                     <option value disabled {{ old('language_level', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\User::LANGUAGE_LEVEL_SELECT as $key => $label)
@@ -241,6 +242,23 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.user.fields.visa_type_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label>{{ trans('cruds.user.fields.user_status') }}</label>
+                <select class="form-control {{ $errors->has('user_status') ? 'is-invalid' : '' }}" name="user_status" id="user_status">
+                    <option value disabled {{ old('user_status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\User::USER_STATUS_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('user_status', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('user_status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('user_status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.user_status_helper') }}</span>
+            </div>
+
             <div class="form-group">
                 <label for="expected_industries">{{ trans('cruds.user.fields.expected_industries') }}</label>
                 <div style="padding-bottom: 4px">

@@ -30,7 +30,6 @@ class User extends Authenticatable implements HasMedia
         '2' => 'Currently belong to Sending Organization',
         '3' => 'Current Technical Intern Trainee',
         '4' => 'Technical Intern Trainee Alumni',
-        '5' => 'Others',
     ];
 
     protected $appends = [
@@ -89,6 +88,7 @@ class User extends Authenticatable implements HasMedia
         'facebook',
         'password',
         'visa_type',
+        'user_status',
         'agents_id',
         'country_id',
         'nationality_id',
