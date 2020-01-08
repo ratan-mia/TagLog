@@ -70,10 +70,11 @@
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
 					<h2>Results</h2>
-					<p>{{ $companies->count() }} Results</p>
+					<p>{{ $experiences->count() }} Results</p>
 				</div>
 			</div>
 		</div>
+        {{dd($experiences)}}
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">

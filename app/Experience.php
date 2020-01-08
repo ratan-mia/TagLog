@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class Experience extends Model
 {
@@ -13,7 +14,8 @@ class Experience extends Model
     public $table = 'experiences';
 
     const VISA_TYPE_SELECT = [
-
+        '1' => 'Technical Intern Trainee',
+        '2' => 'Specified Skilled Worker',
     ];
 
     const ACCOMMODATION_TYPE_SELECT = [
@@ -77,7 +79,7 @@ class Experience extends Model
         'accommodation_type',
         'weekly_working_hours',
         'next_year_opportunity',
-        'destination_country_id',
+        'destination_id',
         'monthly_living_expenses',
     ];
 
@@ -93,7 +95,7 @@ class Experience extends Model
 
     public function destination_country()
     {
-        return $this->belongsTo(Country::class, 'destination_country_id');
+        return $this->belongsTo(Country::class, 'destination_id');
     }
 
     public function employer()
@@ -115,4 +117,31 @@ class Experience extends Model
     {
         $this->attributes['emloyment_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
+
+    public function scopeFilterByRequest($query, Request $request)
+    {
+
+        if ($request->input('destination_id')) {
+            $query->where('destination_id', $request->input('destination_id'));
+        }
+
+        if ($request->input('visa_type')) {
+            $query->where('visa_type', $request->input('visa_type'));
+        }
+        if ($request->input('country_id')) {
+            $query->where('country_id', $request->input('country_id'));
+        }
+
+        if ($request->input('city_id')) {
+            $query->where('city_id', $request->input('city_id'));
+        }
+
+
+//        if ($request->input('search')) {
+//            $query->where('name', 'LIKE', '%'.$request->input('search').'%');
+//        }
+
+        return $query;
+    }
+
 }

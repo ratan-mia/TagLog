@@ -320,19 +320,19 @@
 
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label text-md-right"
-                                       for="destination_country_id">{{ trans('cruds.user.fields.destination_area') }}</label>
+                                       for="destination_id">{{ trans('cruds.user.fields.destination_area') }}</label>
                                 <div class="col-md-6">
                                     <select
                                             class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
-                                            name="destination_country_id" id="destination_country_id">
+                                            name="destination_id" id="destination_id">
                                         @foreach($destination_countries as $id => $destination_country)
                                             <option
-                                                    value="{{ $id }}" {{ old('destination_country_id') == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
+                                                    value="{{ $id }}" {{ old('destination_id') == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
                                         @endforeach
                                     </select>
-                                    @if($errors->has('destination_country_id'))
+                                    @if($errors->has('destination_id'))
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('destination_country_id') }}
+                                            {{ $errors->first('destination_id') }}
                                         </div>
                                     @endif
                                     <span
