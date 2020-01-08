@@ -329,11 +329,16 @@
                             <div class="tab-pane" id="work_preference">
 
                                 <h3 class="widget-header user">Work Preference</h3>
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
                                 @if (is_null($user))
                                     <p>No Data Found</p>
                                 @else
 
-                                    <form method="POST" action="{{ route("admin.users.update", [$user->id]) }}"
+                                    <form method="POST" action="{{ route("user.update-work-preference", [$user->id]) }}"
                                           enctype="multipart/form-data">
                                         @method('PUT')
                                         @csrf
@@ -477,6 +482,11 @@
                                 <!-- Change Password -->
                                 <div class="widget change-password">
                                     <h3 class="widget-header user">Share Experience</h3>
+                                    @if(session()->has('message'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('message') }}
+                                        </div>
+                                    @endif
                                     <form method="POST"
                                           action="{{ route("admin.experiences.update", [$experience->id]) }}"
                                           enctype="multipart/form-data">

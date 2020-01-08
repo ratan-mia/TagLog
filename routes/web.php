@@ -4,7 +4,7 @@
 // Route For Frontend
 
 Route::get('/', 'HomePageController@index')->name('homepage');
-Route::get('search', 'HomePageController@table')->name('search');
+Route::get('search', 'HomePageController@search')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
 
@@ -99,4 +99,5 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middle
 
     Route::get('profile','UserProfileController@showProfile')->name('my-profile');
     Route::put('profile/basic-information','UserProfileController@updateBasicInformation')->name('update-basic-information');
+    Route::put('profile/work-preference','UserProfileController@updateWorkPreference')->name('update-work-preference');
 });

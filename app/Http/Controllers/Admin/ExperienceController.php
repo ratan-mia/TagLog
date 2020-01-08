@@ -76,7 +76,7 @@ class ExperienceController extends Controller
 
 //        return redirect()->route('admin.experiences.index');
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'The information has been updated successfully!');
     }
 
     public function show(Experience $experience)

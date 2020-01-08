@@ -65,8 +65,21 @@ class UserProfileController extends Controller
         $user->skype = $request->skype;
         $user->save();
 
-        return redirect()->back()->with('message', 'The information has been updated successfully!');;
+        return redirect()->back()->with('message', 'The information has been updated successfully!');
 
+    }
+
+    public function updateWorkPreference(Request $request) {
+
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        $user->destination_area    = $request->destination_area;
+        $user->expected_industries()->sync($request->input('expected_industries', []));
+        $user->expected_salary     = $request->expected_salary;
+        $user->date_of_leaving     = $request->date_of_leaving;
+        $user->save();
+
+        return redirect()->back()->with('message', 'The information has been updated successfully!');
     }
 }
 

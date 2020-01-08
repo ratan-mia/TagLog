@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\Destination;
+use App\Visa;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Category;
@@ -11,12 +14,18 @@ class HomePageController extends Controller
 
     public function index()
     {
-        return view('frontend.index');
+
+        $visas        = Visa::all()->pluck('name', 'id')->prepend(trans('Visa Type'), '');
+        $countries    = Country::all()->pluck('name', 'id')->prepend(trans('Country Currently Living'), '');
+        $destinations = Destination::all()->pluck('name', 'id')->prepend(trans('Destination Country'), '');
+
+        return view('frontend.index',compact('visas','countries','destinations'));
     }
 
-    public function table(Request $request)
+    public function search(Request $request)
     {
         $companies = Company::filterByRequest($request)->paginate(9);
+
 
         return view('frontend.search', compact('companies'));
     }
