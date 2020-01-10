@@ -10,6 +10,7 @@ use App\Http\Requests\MassDestroyAgentRequest;
 use App\Http\Requests\StoreAgentRequest;
 use App\Http\Requests\UpdateAgentRequest;
 use App\Industry;
+use App\Location;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class AgentController extends Controller
 
         $employers = User::all()->pluck('name', 'id');
 
+
         return view('admin.agents.create', compact('destinations', 'industries', 'employers'));
     }
 
@@ -47,6 +49,14 @@ class AgentController extends Controller
         $agent->destinations()->sync($request->input('destinations', []));
         $agent->industries()->sync($request->input('industries', []));
         $agent->employers()->sync($request->input('employers', []));
+        $agent->countries()->sync($request->input('countries', []));
+
+        $agent->locations()->create([
+            'address' => $request->input('address'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+        ]);
+
 
         if ($request->input('logo', false)) {
             $agent->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
@@ -84,6 +94,7 @@ class AgentController extends Controller
         $agent->destinations()->sync($request->input('destinations', []));
         $agent->industries()->sync($request->input('industries', []));
         $agent->employers()->sync($request->input('employers', []));
+        $agent->countries()->sync($request->input('countries', []));
 
         if ($request->input('logo', false)) {
             if (!$agent->logo || $request->input('logo') !== $agent->logo->file_name) {

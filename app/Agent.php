@@ -44,6 +44,7 @@ class Agent extends Model implements HasMedia
     protected $fillable = [
         'map',
         'name',
+        'overview',
         'email',
         'phone',
         'address',
@@ -74,7 +75,14 @@ class Agent extends Model implements HasMedia
     {
         return $this->belongsToMany(Employer::class);
     }
-
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
+    public function countries()
+    {
+        return $this->belongsToMany(Country::class);
+    }
     public function destinations()
     {
         return $this->belongsToMany(Destination::class);
@@ -89,7 +97,9 @@ class Agent extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class);
     }
-
+    public function locations() {
+       return $this->morphMany(Location::class,'location');
+    }
     public function getLogoAttribute()
     {
         $file = $this->getMedia('logo')->last();

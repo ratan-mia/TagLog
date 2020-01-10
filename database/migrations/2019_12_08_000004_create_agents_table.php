@@ -14,6 +14,8 @@ class CreateAgentsTable extends Migration
             $table->string('name')->nullable();
 
             $table->longText('address')->nullable();
+            $table->integer('city_id');
+            $table->longText('overview')->nullable();
 
             $table->string('email')->unique();
 

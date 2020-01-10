@@ -1,14 +1,10 @@
 <div class="form-group">
-    <label for="destination_id">{{ trans('cruds.experience.fields.destination_country') }}</label>
-    <select class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}" name="destination_id" id="destination_id">
-        @foreach($destination_countries as $id => $destination_country)
-        <option value="{{ $id }}" {{ ($experience->destination_country ? $experience->destination_country->id : old('destination_id')) == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
-        @endforeach
-    </select>
-    @if($errors->has('destination_id'))
+    <label for="longitude">{{ trans('cruds.agent.fields.longitude') }}</label>
+    <input id="searchMapInput" class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}" type="text" name="longitude" id="longitude" value="{{ old('longitude') }}">
+    @if($errors->has('longitude'))
     <div class="invalid-feedback">
-        {{ $errors->first('destination_id') }}
+        {{ $errors->first('longitude') }}
     </div>
     @endif
-    <span class="help-block">{{ trans('cruds.experience.fields.destination_country_helper') }}</span>
+    <span class="help-block">{{ trans('cruds.agent.fields.longitude_helper') }}</span>
 </div>
