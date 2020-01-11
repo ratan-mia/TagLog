@@ -118,30 +118,5 @@ class Experience extends Model
         $this->attributes['emloyment_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function scopeFilterByRequest($query, Request $request)
-    {
-
-        if ($request->input('destination_id')) {
-            $query->where('destination_id', $request->input('destination_id'));
-        }
-
-        if ($request->input('visa_type')) {
-            $query->where('visa_type', $request->input('visa_type'));
-        }
-        if ($request->input('country_id')) {
-            $query->where('country_id', $request->input('country_id'));
-        }
-
-        if ($request->input('city_id')) {
-            $query->where('city_id', $request->input('city_id'));
-        }
-
-
-//        if ($request->input('search')) {
-//            $query->where('name', 'LIKE', '%'.$request->input('search').'%');
-//        }
-
-        return $query;
-    }
 
 }

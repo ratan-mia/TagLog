@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
 use App\City;
 use App\Country;
 use App\Destination;
@@ -28,10 +29,10 @@ class HomePageController extends Controller
 
     public function search(Request $request)
     {
-        $experiences = Experience::filterByRequest($request)->paginate(9);
+        $agents = Agent::filterByRequest($request)->paginate(9);
 
 
-        return view('frontend.search', compact('experiences'));
+        return view('frontend.search', compact('agents'));
     }
 
     public function category(Category $category)
