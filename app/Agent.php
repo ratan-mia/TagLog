@@ -82,11 +82,11 @@ class Agent extends Model implements HasMedia
     }
     public function countries()
     {
-        return $this->belongsToMany(Country::class);
+        return $this->belongsToMany(Country::class,'agent_country');
     }
     public function destinations()
     {
-        return $this->belongsToMany(Destination::class);
+        return $this->belongsToMany(Destination::class,'agent_destination');
     }
 
     public function industries()
@@ -106,14 +106,14 @@ class Agent extends Model implements HasMedia
     {
 
         if ($request->input('destination_id')) {
-            $query->destinations()->wherePivot('destination_id', $request->input('destination_id'));
+            $query->wherePivot('destination_id', $request->input('destination_id'));
         }
 
         if ($request->input('visa_type')) {
             $query->where('visa_type', $request->input('visa_type'));
         }
         if ($request->input('country_id')) {
-            $query->countries()->wherePivot('country_id', $request->input('country_id'));
+            $query->wherePivot('country_id', $request->input('country_id'));
         }
 
         if ($request->input('city_id')) {

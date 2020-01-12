@@ -22,8 +22,8 @@ class HomePageController extends Controller
         $countries    = Country::all()->pluck('name', 'id')->prepend(trans('Country Currently Living'), '');
         $destinations = Destination::all()->pluck('name', 'id')->prepend(trans('Destination Country'), '');
         $cities       = City::all()->pluck('name', 'id')->prepend(trans('City Currently Living'), '');
-
-        return view('frontend.index',compact('visas','countries','destinations','cities'));
+        $categories = Category::all();
+        return view('frontend.index',compact('visas','countries','destinations','cities','categories'));
     }
 
 

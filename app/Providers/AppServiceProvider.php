@@ -31,8 +31,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('*', function ($view) {
-            $view->with('cities', City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+        view()->composer('frontend.search', function ($view) {
+            $view->with('cities', City::all());
             $view->with('categories_all', Category::all());
         });
 
