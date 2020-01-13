@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    
+
 <section class="page-search">
 	<div class="container">
 		<div class="row">
