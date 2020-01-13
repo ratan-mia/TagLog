@@ -40,12 +40,18 @@ class AppServiceProvider extends ServiceProvider
             $view->with('search_categories', Category::all());
         });
 
-        view()->composer(['*'], function ($view) {
+        view()->composer(['frontend.*'], function ($view) {
             $view->with('countries', Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
         view()->composer('*', function ($view) {
             $view->with('nationalities', Nationality::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+        });
+
+
+
+        view()->composer('admin.*', function ($view) {
+            $view->with('cities', City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
 

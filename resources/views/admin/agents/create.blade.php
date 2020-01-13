@@ -201,6 +201,21 @@
                 <span class="help-block">{{ trans('cruds.agent.fields.industry_helper') }}</span>
             </div>
             <div class="form-group">
+                <label>{{ trans('cruds.user.fields.visa_type') }}</label>
+                <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
+                    <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach($visas as $key => $label)
+                        <option value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('visa_type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('visa_type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.visa_type_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="employers">{{ trans('cruds.agent.fields.employers') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>

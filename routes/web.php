@@ -7,6 +7,8 @@ Route::get('/', 'HomePageController@index')->name('homepage');
 Route::get('search', 'HomePageController@search')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
+Route::get('agents/{agent}', 'HomePageController@agent')->name('agent');
+Route::get('industries/{industry}', 'HomePageController@industry')->name('industry');
 
 
 

@@ -17,12 +17,12 @@ class Agent extends Model implements HasMedia
 
     const LANGUAGE_LEVEL_SELECT = [
         'six_months' => 'Six Months',
-        'one_year' => 'One Year',
+        'one_year'   => 'One Year',
     ];
 
     const LEAVING_PERIOD_SELECT = [
         'six_months' => 'Six Months',
-        'one_year' => 'One Year',
+        'one_year'   => 'One Year',
     ];
 
     protected $appends = [
@@ -39,7 +39,7 @@ class Agent extends Model implements HasMedia
 
     const INTERVIEW_PERIOD_SELECT = [
         'six_months' => 'Six Months',
-        'one_year' => 'One Year',
+        'one_year'   => 'One Year',
     ];
 
     protected $fillable = [
@@ -49,7 +49,9 @@ class Agent extends Model implements HasMedia
         'email',
         'phone',
         'address',
-        'city_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
         'banner_text',
         'workers_sent',
         'total_expense',
@@ -57,11 +59,6 @@ class Agent extends Model implements HasMedia
         'language_level',
         'leaving_period',
         'interview_period',
-        'visa_type',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-
 
     ];
 
@@ -71,26 +68,23 @@ class Agent extends Model implements HasMedia
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
 
-    public function experiences()
+    public function agentExperiences()
     {
         return $this->hasMany(Experience::class, 'agent_id', 'id');
     }
 
-    public function employers()
+    public function agentsEmployers()
     {
         return $this->belongsToMany(Employer::class);
     }
-
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id');
     }
-
     public function countries()
     {
         return $this->belongsToMany(Country::class);
     }
-
     public function destinations()
     {
         return $this->belongsToMany(Destination::class);
@@ -101,13 +95,15 @@ class Agent extends Model implements HasMedia
         return $this->belongsToMany(Industry::class);
     }
 
-
-    public function locations()
+    public function employers()
     {
-        return $this->morphMany(Location::class, 'location');
+        return $this->belongsToMany(User::class);
+    }
+    public function locations() {
+       return $this->morphMany(Location::class,'location');
     }
 
-    public $destination_id = '';
+    public $destination_id ='';
     public $country_id = '';
 
     public function scopeFilterByRequest($query, Request $request)
@@ -119,7 +115,7 @@ class Agent extends Model implements HasMedia
 
             $query->whereHas('destinations', function ($query) {
 
-                $query->where('destination_id', $this->destination_id);
+                $query->where('destination_id',$this->destination_id);
             });
         }
 
@@ -130,7 +126,7 @@ class Agent extends Model implements HasMedia
 
             $query->whereHas('countries', function ($query) {
 
-                $query->where('country_id', $this->country_id);
+                $query->where('country_id',$this->country_id);
             });
 
 
@@ -141,6 +137,10 @@ class Agent extends Model implements HasMedia
         }
 
 
+//        if ($request->input('search')) {
+//            $query->where('name', 'LIKE', '%'.$request->input('search').'%');
+//        }
+
         return $query;
     }
 
@@ -149,7 +149,7 @@ class Agent extends Model implements HasMedia
         $file = $this->getMedia('logo')->last();
 
         if ($file) {
-            $file->url = $file->getUrl();
+            $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
@@ -161,7 +161,7 @@ class Agent extends Model implements HasMedia
         $file = $this->getMedia('banner_image')->last();
 
         if ($file) {
-            $file->url = $file->getUrl();
+            $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
@@ -172,7 +172,7 @@ class Agent extends Model implements HasMedia
     {
         $files = $this->getMedia('sliders');
         $files->each(function ($item) {
-            $item->url = $item->getUrl();
+            $item->url       = $item->getUrl();
             $item->thumbnail = $item->getUrl('thumb');
         });
 

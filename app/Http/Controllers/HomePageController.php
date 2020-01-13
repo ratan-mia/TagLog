@@ -28,8 +28,9 @@ class HomePageController extends Controller
 
 
     public function search(Request $request)
+
     {
-        $agents = Agent::filterByRequest($request)->paginate(9);
+        $agents = Agent::filterByRequest($request)->with('countries')->paginate(9);
 
 
         return view('frontend.search', compact('agents'));
@@ -46,7 +47,16 @@ class HomePageController extends Controller
 
     public function company(Company $company)
     {
-        return view('frontend.company', compact ('company'));
+        $cities = City::all();
+        return view('frontend.company', compact ('company','cities'));
+    }
+
+    public function agent(Agent $agent)
+    {
+        $industries = $agent->load('industries')->get();
+        $experiences = $agent->load('experiences')->get();
+
+        return view('frontend.organization', compact ('agent','industries','experiences'));
     }
 
 }

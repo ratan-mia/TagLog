@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Agent;
 use App\Country;
+use App\Destination;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyAgentRequest;
@@ -12,6 +13,7 @@ use App\Http\Requests\UpdateAgentRequest;
 use App\Industry;
 use App\Location;
 use App\User;
+use App\Visa;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,14 +35,17 @@ class AgentController extends Controller
     {
         abort_if(Gate::denies('agent_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $destinations = Country::all()->pluck('name', 'id');
+        $countries = Country::all()->pluck('name', 'id');
+        $destinations = Destination::all()->pluck('name', 'id');
 
         $industries = Industry::all()->pluck('name', 'id');
+
+        $visas = Visa::all()->pluck('name', 'id');
 
         $employers = User::all()->pluck('name', 'id');
 
 
-        return view('admin.agents.create', compact('destinations', 'industries', 'employers'));
+        return view('admin.agents.create', compact('countries','destinations', 'industries', 'visas', 'employers'));
     }
 
     public function store(StoreAgentRequest $request)
@@ -77,15 +82,18 @@ class AgentController extends Controller
     {
         abort_if(Gate::denies('agent_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $destinations = Country::all()->pluck('name', 'id');
+        $countries = Country::all()->pluck('name', 'id');
+        $destinations = Destination::all()->pluck('name', 'id');
 
         $industries = Industry::all()->pluck('name', 'id');
 
         $employers = User::all()->pluck('name', 'id');
 
+        $visas = Visa::all()->pluck('name', 'id');
+
         $agent->load('destinations', 'industries', 'employers');
 
-        return view('admin.agents.edit', compact('destinations', 'industries', 'employers', 'agent'));
+        return view('admin.agents.edit', compact('countries','destinations', 'industries', 'visas', 'employers', 'agent'));
     }
 
     public function update(UpdateAgentRequest $request, Agent $agent)
