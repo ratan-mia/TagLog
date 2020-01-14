@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Agent;
 use App\Country;
 use App\Destination;
+use App\Employer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyAgentRequest;
@@ -42,7 +43,7 @@ class AgentController extends Controller
 
         $visas = Visa::all()->pluck('name', 'id');
 
-        $employers = User::all()->pluck('name', 'id');
+        $employers = Employer::all()->pluck('name', 'id');
 
 
         return view('admin.agents.create', compact('countries','destinations', 'industries', 'visas', 'employers'));
@@ -87,7 +88,7 @@ class AgentController extends Controller
 
         $industries = Industry::all()->pluck('name', 'id');
 
-        $employers = User::all()->pluck('name', 'id');
+        $employers = Employer::all()->pluck('name', 'id');
 
         $visas = Visa::all()->pluck('name', 'id');
 

@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('search_categories', Category::all());
         });
 
-        view()->composer(['frontend.*'], function ($view) {
+        view()->composer(['frontend.*','auth.register'], function ($view) {
             $view->with('countries', Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
