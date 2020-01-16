@@ -35,13 +35,13 @@ class ExperienceController extends Controller
 
         $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.experiences.create', compact('users', 'agents', 'destination_countries', 'employers', 'industries'));
+        return view('admin.experiences.create', compact('users', 'agents', 'destinations', 'employers', 'industries'));
     }
 
     public function store(StoreExperienceRequest $request)
@@ -59,7 +59,7 @@ class ExperienceController extends Controller
 
         $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -67,7 +67,7 @@ class ExperienceController extends Controller
 
         $experience->load('user', 'agent', 'destination_country', 'employer', 'industry');
 
-        return view('admin.experiences.edit', compact('users', 'agents', 'destination_countries', 'employers', 'industries', 'experience'));
+        return view('admin.experiences.edit', compact('users', 'agents', 'destinations', 'employers', 'industries', 'experience'));
     }
 
     public function update(UpdateExperienceRequest $request, Experience $experience)

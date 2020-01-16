@@ -25,10 +25,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-2 offset-md-1">
                                     {{-- <label>{{ trans('cruds.user.fields.destination_id') }}</label>--}}
-                                    <select class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
-                                            name="destination_id" id="destination_id">
-{{--                                        <option value--}}
-{{--                                                disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                    <select
+                                        class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
+                                        name="destination_id" id="destination_id">
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
                                         @foreach($destinations as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('destination_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -45,8 +46,8 @@
                                     {{--                                    <label>{{ trans('cruds.user.fields.visa_type') }}</label>--}}
                                     <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"
                                             name="visa_type" id="visa_type">
-{{--                                        <option value--}}
-{{--                                                disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
                                         @foreach($visas as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -64,8 +65,8 @@
                                     {{-- <label>{{ trans('cruds.user.fields.country_id') }}</label>--}}
                                     <select class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
                                             name="country_id" id="country_id">
-{{--                                        <option value--}}
-{{--                                                disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
                                         @foreach($countries as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('country_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -79,11 +80,11 @@
                                 </div>
 
                                 <div class="form-group col-md-2">
-{{--                                     <label>{{ trans('cruds.user.fields.city_id') }}</label>--}}
+                                    {{--                                     <label>{{ trans('cruds.user.fields.city_id') }}</label>--}}
                                     <select class="form-control {{ $errors->has('city_id') ? 'is-invalid' : '' }}"
                                             name="city_id" id="city_id">
-{{--                                        <option value--}}
-{{--                                                disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
                                         @foreach($cities as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('city_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -97,7 +98,6 @@
                                 </div>
 
 
-
                                 <div class="form-group col-md-2">
                                     <button type="submit"
                                             class="btn btn-main">
@@ -109,77 +109,6 @@
                         </form>
 
                     </div>
-
-                    {{--                <!-- Advance Search  2-->--}}
-                    {{--                <div class="advance-search">--}}
-                    {{--                    <p style="text-align: left;">Find Employers in Japan</p>--}}
-                    {{--                    <form action="{{ route('search') }}" method="GET">--}}
-
-                    {{--                        <div class="form-row">--}}
-
-                    {{--                            <div class="form-group col-md-3">--}}
-
-                    {{--                                <input type="text" name="destination" value="{{ old('destination') }}" class="form-control" placeholder="Destination" />--}}
-                    {{--                                <p class="help-block"></p>--}}
-                    {{--                                @if($errors->has('name'))--}}
-                    {{--                                    <p class="help-block">--}}
-                    {{--                                        {{ $errors->first('name') }}--}}
-                    {{--                                    </p>--}}
-                    {{--                                @endif--}}
-                    {{--                            </div>--}}
-
-                    {{--                            <div class="form-group col-md-3">--}}
-
-                    {{--                                <input type="text" name="visa" value="{{ old('visa') }}" class="form-control" placeholder="Visa Type" />--}}
-                    {{--                                <p class="help-block"></p>--}}
-                    {{--                                @if($errors->has('name'))--}}
-                    {{--                                    <p class="help-block">--}}
-                    {{--                                        {{ $errors->first('name') }}--}}
-                    {{--                                    </p>--}}
-                    {{--                                @endif--}}
-                    {{--                            </div>--}}
-
-
-                    {{--                            <div class="form-group col-md-">--}}
-                    {{--                                <select name="categories" class="form-control form-control-lg" placeholder="Category">--}}
-                    {{--                                    @foreach ($errors as $category)--}}
-                    {{--                                        <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
-                    {{--                                    @endforeach--}}
-                    {{--                                </select>--}}
-                    {{--                                <p class="help-block"></p>--}}
-                    {{--                                @if($errors->has('categories'))--}}
-                    {{--                                    <p class="help-block">--}}
-                    {{--                                        {{ $errors->first('categories') }}--}}
-                    {{--                                    </p>--}}
-                    {{--                                @endif--}}
-                    {{--                            </div>--}}
-
-                    {{--                            <div class="form-group col-md-2">--}}
-                    {{--                                <select name="city_id" class="form-control form-control-lg" placeholder="City">--}}
-                    {{--                                    @foreach ($search_cities ?? '' as $city)--}}
-                    {{--                                        <option value="{{ $city->id }}">{{ $city->name }}</option>--}}
-                    {{--                                    @endforeach--}}
-                    {{--                                </select>--}}
-                    {{--                                <p class="help-block"></p>--}}
-                    {{--                                @if($errors->has('city_id'))--}}
-                    {{--                                    <p class="help-block">--}}
-                    {{--                                        {{ $errors->first('city_id') }}--}}
-                    {{--                                    </p>--}}
-                    {{--                                @endif--}}
-                    {{--                            </div>--}}
-
-
-                    {{--                            <div class="form-group col-md-2">--}}
-                    {{--                                <button type="submit"--}}
-                    {{--                                        class="btn btn-main">--}}
-                    {{--                                    Search Now--}}
-                    {{--                                </button>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-
-                    {{--                    </form>--}}
-
-                    {{--                </div>--}}
 
                 </div>
             </div>

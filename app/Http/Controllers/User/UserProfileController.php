@@ -30,7 +30,7 @@ class UserProfileController extends Controller
 
         $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -38,7 +38,7 @@ class UserProfileController extends Controller
 
         $experience->load('user', 'agent', 'destination_country', 'employer', 'industry');
 
-        return view('frontend.user.profile', compact('user', 'agents', 'users', 'experience', 'countries', 'destination_countries', 'industries', 'employers', 'expected_industries', 'visas', 'nationalities', 'profile_picture'));
+        return view('frontend.user.profile', compact('user', 'agents', 'users', 'experience', 'countries', 'destinations', 'industries', 'employers', 'expected_industries', 'visas', 'nationalities', 'profile_picture'));
     }
 
     public function updateBasicInformation(Request $request)

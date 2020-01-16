@@ -68,12 +68,12 @@ class Agent extends Model implements HasMedia
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
 
-    public function agentExperiences()
+    public function experiences()
     {
         return $this->hasMany(Experience::class, 'agent_id', 'id');
     }
 
-    public function agentsEmployers()
+    public function employers()
     {
         return $this->belongsToMany(Employer::class);
     }

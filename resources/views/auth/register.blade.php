@@ -325,7 +325,7 @@
                                     <select
                                             class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
                                             name="destination_id" id="destination_id">
-                                        @foreach($destination_countries as $id => $destination_country)
+                                        @foreach($destinations as $id => $destination_country)
                                             <option
                                                     value="{{ $id }}" {{ old('destination_id') == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
                                         @endforeach

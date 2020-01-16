@@ -17,6 +17,7 @@ use App\User;
 use App\Visa;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AgentController extends Controller
@@ -46,14 +47,23 @@ class AgentController extends Controller
         $employers = Employer::all()->pluck('name', 'id');
 
 
-        return view('admin.agents.create', compact('countries','destinations', 'industries', 'visas', 'employers'));
+        return view('admin.agents.create', compact('countries', 'destinations', 'industries', 'visas', 'employers'));
     }
 
     public function store(StoreAgentRequest $request)
     {
+
+//        sync( array(
+//            related_id => array( 'pivot_field' => value ),
+//        ...
+//        ));
+
+        $user_id = Auth::id();
         $agent = Agent::create($request->all());
         $agent->destinations()->sync($request->input('destinations', []));
+
         $agent->industries()->sync($request->input('industries', []));
+        $agent->visas()->sync($request->input('visas', []));
         $agent->employers()->sync($request->input('employers', []));
         $agent->countries()->sync($request->input('countries', []));
 
@@ -94,7 +104,7 @@ class AgentController extends Controller
 
         $agent->load('destinations', 'industries', 'employers');
 
-        return view('admin.agents.edit', compact('countries','destinations', 'industries', 'visas', 'employers', 'agent'));
+        return view('admin.agents.edit', compact('countries', 'destinations', 'industries', 'visas', 'employers', 'agent'));
     }
 
     public function update(UpdateAgentRequest $request, Agent $agent)
@@ -102,6 +112,7 @@ class AgentController extends Controller
         $agent->update($request->all());
         $agent->destinations()->sync($request->input('destinations', []));
         $agent->industries()->sync($request->input('industries', []));
+        $agent->visas()->sync($request->input('visas', []));
         $agent->employers()->sync($request->input('employers', []));
         $agent->countries()->sync($request->input('countries', []));
 
@@ -144,7 +155,7 @@ class AgentController extends Controller
     {
         abort_if(Gate::denies('agent_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $agent->load('destinations', 'industries', 'employers', 'agentExperiences', 'agentsEmployers');
+        $agent->load('destinations', 'industries', 'employers', 'experiences', 'employers');
 
         return view('admin.agents.show', compact('agent'));
     }

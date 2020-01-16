@@ -613,7 +613,7 @@
                                         {{--                                            <select--}}
                                         {{--                                                class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"--}}
                                         {{--                                                name="destination_country_id" id="destination_country_id">--}}
-                                        {{--                                                @foreach($destination_countries as $id => $destination_country)--}}
+                                        {{--                                                @foreach($destinations as $id => $destination_country)--}}
                                         {{--                                                    <option--}}
                                         {{--                                                        value="{{ $id }}" {{ ($experience->destination_country ? $experience->destination_country->id : old('destination_country_id')) == $id ? 'selected' : '' }}>{{ $destination_country }}</option>--}}
                                         {{--                                                @endforeach--}}

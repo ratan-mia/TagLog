@@ -10,6 +10,7 @@ use App\Destination;
 use App\Employer;
 use App\Industry;
 use App\Nationality;
+use App\Visa;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -58,8 +59,9 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('*', function ($view) {
-            $view->with('destination_countries', Destination::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+            $view->with('destinations', Destination::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
+
 
         view()->composer('*', function ($view) {
             $view->with('expected_industries', Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
@@ -75,6 +77,16 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('auth.register', function ($view) {
             $view->with('industries', Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+        });
+
+        // Header Search
+
+
+        view()->composer('*', function ($view) {
+            $view->with('destinations', Destination::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+            $view->with('visas', Visa::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+            $view->with('cities', City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+
         });
 
 

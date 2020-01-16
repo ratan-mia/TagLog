@@ -57,7 +57,6 @@ class Agent extends Model implements HasMedia
         'language_level',
         'leaving_period',
         'interview_period',
-        'visa_type',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -101,6 +100,10 @@ class Agent extends Model implements HasMedia
         return $this->belongsToMany(Industry::class);
     }
 
+    public function visas()
+    {
+        return $this->belongsToMany(Visa::class);
+    }
 
     public function locations()
     {

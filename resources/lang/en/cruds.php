@@ -272,6 +272,8 @@ return [
             'destination_helper'      => '',
             'industry'                => 'Industry',
             'industry_helper'         => '',
+            'visa'                    => 'Visa Types',
+            'visa_helper'             => '',
             'leaving_period'          => 'Leaving Period',
             'leaving_period_helper'   => '',
             'workers_sent'            => 'Workers Sent',

@@ -214,10 +214,10 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="agent_experiences">
-            @includeIf('admin.agents.relationships.agentExperiences', ['experiences' => $agent->agentExperiences])
+            @includeIf('admin.agents.relationships.experiences', ['experiences' => $agent->experiences])
         </div>
         <div class="tab-pane" role="tabpanel" id="agents_employers">
-            @includeIf('admin.agents.relationships.agentsEmployers', ['employers' => $agent->agentsEmployers])
+            @includeIf('admin.agents.relationships.employers', ['employers' => $agent->employers])
         </div>
     </div>
 </div>

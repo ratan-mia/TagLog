@@ -201,20 +201,24 @@
                 <span class="help-block">{{ trans('cruds.agent.fields.industry_helper') }}</span>
             </div>
             <div class="form-group">
-                <label>{{ trans('cruds.user.fields.visa_type') }}</label>
-                <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
-                    <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach($visas as $key => $label)
-                        <option value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="visas">{{ trans('cruds.agent.fields.visa') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('visas') ? 'is-invalid' : '' }}" name="visas[]" id="visas" multiple>
+                    @foreach($visas as $id => $visa)
+                        <option value="{{ $id }}" {{ in_array($id, old('visas', [])) ? 'selected' : '' }}>{{ $visa }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('visa_type'))
+                @if($errors->has('visas'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('visa_type') }}
+                        {{ $errors->first('visas') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.user.fields.visa_type_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.agent.fields.visa_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="employers">{{ trans('cruds.agent.fields.employers') }}</label>
                 <div style="padding-bottom: 4px">

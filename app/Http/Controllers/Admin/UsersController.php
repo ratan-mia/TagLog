@@ -39,7 +39,7 @@ class UsersController extends Controller
 
         $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $expected_industries = Industry::all()->pluck('name', 'id');
 
@@ -51,7 +51,7 @@ class UsersController extends Controller
 
         $indurstries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.create', compact('roles', 'countries', 'destination_countries', 'expected_industries','visas', 'employers', 'agents', 'indurstries'));
+        return view('admin.users.create', compact('roles', 'countries', 'destinations', 'expected_industries','visas', 'employers', 'agents', 'indurstries'));
     }
 
     public function store(StoreUserRequest $request)
@@ -76,7 +76,7 @@ class UsersController extends Controller
         $countries     = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $nationalities = Nationality::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $destination_countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $expected_industries = Industry::all()->pluck('name', 'id');
 
@@ -90,7 +90,7 @@ class UsersController extends Controller
 
         $user->load('roles', 'country', 'nationality','destination_country', 'expected_industries','visa', 'employer', 'agents', 'indurstry');
 
-        return view('admin.users.edit', compact('roles', 'countries', 'nationalities','destination_countries', 'expected_industries','visas', 'employers', 'agents', 'indurstries', 'user'));
+        return view('admin.users.edit', compact('roles', 'countries', 'nationalities','destinations', 'expected_industries','visas', 'employers', 'agents', 'indurstries', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)

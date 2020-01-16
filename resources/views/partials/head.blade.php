@@ -17,6 +17,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+  <link href="{{ asset('css/taglog.css') }}" rel="stylesheet" />
   @yield('styles')
 
 {{--
