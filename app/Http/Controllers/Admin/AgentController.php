@@ -116,6 +116,12 @@ class AgentController extends Controller
         $agent->employers()->sync($request->input('employers', []));
         $agent->countries()->sync($request->input('countries', []));
 
+        $agent->locations()->update([
+            'address' => $request->input('address'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+        ]);
+
         if ($request->input('logo', false)) {
             if (!$agent->logo || $request->input('logo') !== $agent->logo->file_name) {
                 $agent->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');

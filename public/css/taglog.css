@@ -1,5 +1,57 @@
+.advance-search {
+    background: #00aced;
+    padding:25px 0px;
+}
+
+.search-title {
+    color: #ffffff;
+    padding: 10px;
+}
+.advance-search input {
+    background-color: #3CBC8D;
+    color:#ffffff;
+    border: 1px solid #ffffff;
+}
+
+.advance-search select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+.advance-search select:focus {
+    background-color: #f1f1f1;
+}
+
+.title {
+    font-size: 22px;
+    color: #888;
+}
+
+.sub-title {
+    font-size: 18px;
+    color: #888;
+}
+.paragraph {
+    color:#333;
+}
 .visa-type-item {
-    border: 1px solid indianred;
-    background: #113049;
-    color:#fff000;
+    background: #00aced;
+    padding: 5px;
+    margin: 5px;
+    color: #ffffff;
+    /*border-radius: 5px;*/
+    float: left;
+    font-size: 12px;
+}
+.industry-type-item {
+    background: #00aced;
+    padding: 5px;
+    margin: 5px;
+    color: #ffffff;
+    /*border-radius: 5px;*/
+    float: left;
+    font-size: 12px;
 }

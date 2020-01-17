@@ -112,11 +112,13 @@ class Agent extends Model implements HasMedia
 
     public $destination_id = '';
     public $country_id = '';
+    public $visa_type = '';
 
     public function scopeFilterByRequest($query, Request $request)
     {
         $this->destination_id = $request->input('destination_id');
         $this->country_id = $request->input('country_id');
+        $this->visa_type = $request->input('visa_type');
 
         if ($request->input('destination_id')) {
 
@@ -126,9 +128,18 @@ class Agent extends Model implements HasMedia
             });
         }
 
+
         if ($request->input('visa_type')) {
-            $query->where('visa_type', $request->input('visa_type'));
+
+            $query->whereHas('visas', function ($query) {
+
+                $query->where('visa_id', $this->visa_type);
+            });
         }
+
+//        if ($request->input('visa_type')) {
+//            $query->where('visa_type', $request->input('visa_type'));
+//        }
         if ($request->input('country_id')) {
 
             $query->whereHas('countries', function ($query) {

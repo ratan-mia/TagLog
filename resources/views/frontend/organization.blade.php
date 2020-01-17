@@ -1,19 +1,19 @@
 @extends('layouts.master')
-
 @section('content')
-    <section class="page-search">
+    <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="advance-search">
-                        <p style="text-align: left;">Find Sending Organizations in your area</p>
+                        <h4 class="search-title">Find Sending Organizations in your area</h4>
                         <form action="{{ route('search') }}" method="GET">
 
                             <div class="form-row">
                                 <div class="form-group col-md-2 offset-md-1">
                                     {{-- <label>{{ trans('cruds.user.fields.destination_id') }}</label>--}}
-                                    <select class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
-                                            name="destination_id" id="destination_id">
+                                    <select
+                                        class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
+                                        name="destination_id" id="destination_id">
                                         {{--                                        <option value--}}
                                         {{--                                                disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
                                         @foreach($destinations as $key => $label)
@@ -84,7 +84,6 @@
                                 </div>
 
 
-
                                 <div class="form-group col-md-2">
                                     <button type="submit"
                                             class="btn btn-main">
@@ -110,8 +109,8 @@
                         <!-- Container Start -->
                         <div class="container">
                             <div class="row">
-                                <!-- Left sidebar -->
-                                <div class="col-md-8">
+                                <!-- Banner Image -->
+                                <div class="col-md-7">
                                     <div class="organization-header">
                                         @if($agent->banner_image)
                                             <a href="{{ $agent->banner_image->getUrl() }}" target="_blank">
@@ -121,15 +120,18 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <!--Side Info-->
+                                <div class="col-md-5">
                                     <h3 class="title">{{ $agent->name }}</h3>
                                     <p>{{ $agent->address}}</p>
                                     <h3 class="sub-title">Overview</h3>
-                                    <p>{!! $agent->overview !!}</p>
+                                    <p class="paragraph">{!! $agent->overview !!}</p>
+                                    <hr class="horizontal-line">
                                     <div class="visa-type">
                                         <div class="row">
-                                            <div class="col-md-4">Visa Type</div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-3">
+                                                <p style="text-align: center;">Visa Type</p></div>
+                                            <div class="col-md-9">
                                                 <ul>
                                                     @foreach($agent->visas as $visa)
                                                         <li class="visa-type-item">{{$visa->name}}</li>
@@ -137,13 +139,54 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        <hr class="horizontal-line">
                                         <h4 class="sub-title">Employer's Industry from Taglog User</h4>
-                                        @foreach($agent->industries as $industry)
-                                            <li class="industry-type">{{$industry->name}}</li>
-                                        @endforeach
+                                        <ul>
+                                            @foreach($agent->employers as $employer)
+                                                {{--                                                <li class="industry-type-item">{{$employer->name}}</li>--}}
+                                                <ul>
+                                                    @foreach($employer->industries as $industry)
+                                                        <li class="industry-type-item">{{$industry->name}}</li>
+                                                    @endforeach
+                                                </ul>
+
+                                            @endforeach
+                                        </ul>
+
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <iframe
+                                        width="100%"
+                                        height="auto"
+                                        frameborder="0"
+                                        scrolling="no"
+                                        marginheight="0"
+                                        marginwidth="0"
+                                        src="https://www.google.com/maps/embed/v1/place?q=23.7711777,90.41158209999999&amp;key=AIzaSyC4seHvysGcv7ppFOPF0jNDRbVr97NuG0Y">
+
+                                    </iframe>
+                                    <br/>
+                                    <small>
+                                        <a
+                                            href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed"
+                                            style="color:#0000FF;text-align:left"
+                                            target="_blank"
+                                        >
+                                            See map bigger
+                                        </a>
+                                    </small>
+                                </div>
+                                @php
+                                echo '<pre>';
+                                var_dump($agent->destinations);
+                                 echo '</pre>';
+                                @endphp
+                                <div class="col-md-5">5</div>
+                                <div class="col-md-5">5</div>
                             </div>
                         </div>
                 </div>

@@ -32,16 +32,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('frontend.search', function ($view) {
-            $view->with('cities', City::all());
-            $view->with('categories_all', Category::all());
-        });
 
         view()->composer('frontend.*', function ($view) {
             $view->with('search_categories', Category::all());
         });
 
-        view()->composer(['frontend.*','auth.register'], function ($view) {
+        view()->composer(['frontend.*', 'auth.register'], function ($view) {
             $view->with('countries', Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
 
@@ -50,12 +46,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-
         view()->composer('admin.*', function ($view) {
             $view->with('cities', City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
-
-
 
 
         view()->composer('*', function ($view) {
@@ -88,7 +81,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('cities', City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
 
         });
-
+     //Search Result
+        view()->composer('frontend.search', function ($view) {
+            $view->with('search_cities', City::all());
+            $view->with('categories_all', Category::all());
+        });
 
 
     }
