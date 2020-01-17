@@ -235,20 +235,20 @@
                     <span class="help-block">{{ trans('cruds.user.fields.skype_helper') }}</span>
                 </div>
                 <div class="form-group">
-                    <label for="destination_country_id">{{ trans('cruds.user.fields.destination_country') }}</label>
-                    <select class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
-                            name="destination_country_id" id="destination_country_id">
-                        @foreach($destinations as $id => $destination_country)
+                    <label for="destination_id">{{ trans('cruds.user.fields.destination') }}</label>
+                    <select class="form-control select2 {{ $errors->has('destination') ? 'is-invalid' : '' }}"
+                            name="destination_id" id="destination_id">
+                        @foreach($destinations as $id => $destination)
                             <option
-                                value="{{ $id }}" {{ ($user->destination_country ? $user->destination_country->id : old('destination_country_id')) == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
+                                value="{{ $id }}" {{ ($user->destination ? $user->destination->id : old('destination_id')) == $id ? 'selected' : '' }}>{{ $destination }}</option>
                         @endforeach
                     </select>
-                    @if($errors->has('destination_country_id'))
+                    @if($errors->has('destination_id'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('destination_country_id') }}
+                            {{ $errors->first('destination_id') }}
                         </div>
                     @endif
-                    <span class="help-block">{{ trans('cruds.user.fields.destination_country_helper') }}</span>
+                    <span class="help-block">{{ trans('cruds.user.fields.destination_helper') }}</span>
                 </div>
 
                 <div class="form-group">

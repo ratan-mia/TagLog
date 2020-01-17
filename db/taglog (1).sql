@@ -550,7 +550,7 @@ CREATE TABLE `experiences` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   `user_id` int(10) UNSIGNED DEFAULT NULL,
   `agent_id` int(10) UNSIGNED DEFAULT NULL,
-  `destination_country_id` int(10) UNSIGNED DEFAULT NULL,
+  `destination_id` int(10) UNSIGNED DEFAULT NULL,
   `employer_id` int(10) UNSIGNED DEFAULT NULL,
   `industry_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1070,7 +1070,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `country_id` int(10) UNSIGNED DEFAULT NULL,
-  `destination_country_id` int(10) UNSIGNED DEFAULT NULL,
+  `destination_id` int(10) UNSIGNED DEFAULT NULL,
   `employer_id` int(10) UNSIGNED DEFAULT NULL,
   `agents_id` int(10) UNSIGNED DEFAULT NULL,
   `indurstry_id` int(10) UNSIGNED DEFAULT NULL
@@ -1080,7 +1080,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_country_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
 (1, 'Admin', 'admin@admin.com', NULL, '$2y$10$szmj2ZhiCJ4eM6TRRbnkhuh/rBW6aLQra8j.x1BLpzO1ExCH1NKDa', NULL, '', NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -1215,7 +1215,7 @@ ALTER TABLE `experiences`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_fk_698289` (`user_id`),
   ADD KEY `agent_fk_698290` (`agent_id`),
-  ADD KEY `destination_country_fk_698291` (`destination_country_id`),
+  ADD KEY `destination_fk_698291` (`destination_id`),
   ADD KEY `employer_fk_698298` (`employer_id`),
   ADD KEY `industry_fk_698299` (`industry_id`);
 
@@ -1330,7 +1330,7 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD KEY `country_fk_698250` (`country_id`),
-  ADD KEY `destination_country_fk_698258` (`destination_country_id`),
+  ADD KEY `destination_fk_698258` (`destination_id`),
   ADD KEY `employer_fk_698263` (`employer_id`),
   ADD KEY `agents_fk_698264` (`agents_id`),
   ADD KEY `indurstry_fk_698265` (`indurstry_id`);
@@ -1522,7 +1522,7 @@ ALTER TABLE `employer_industry`
 --
 ALTER TABLE `experiences`
   ADD CONSTRAINT `agent_fk_698290` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`id`),
-  ADD CONSTRAINT `destination_country_fk_698291` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
+  ADD CONSTRAINT `destination_fk_698291` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
   ADD CONSTRAINT `employer_fk_698298` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
   ADD CONSTRAINT `industry_fk_698299` FOREIGN KEY (`industry_id`) REFERENCES `industries` (`id`),
   ADD CONSTRAINT `user_fk_698289` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
@@ -1554,7 +1554,7 @@ ALTER TABLE `role_user`
 ALTER TABLE `users`
   ADD CONSTRAINT `agents_fk_698264` FOREIGN KEY (`agents_id`) REFERENCES `employers` (`id`),
   ADD CONSTRAINT `country_fk_698250` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
-  ADD CONSTRAINT `destination_country_fk_698258` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
+  ADD CONSTRAINT `destination_fk_698258` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
   ADD CONSTRAINT `employer_fk_698263` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
   ADD CONSTRAINT `indurstry_fk_698265` FOREIGN KEY (`indurstry_id`) REFERENCES `industries` (`id`);
 COMMIT;

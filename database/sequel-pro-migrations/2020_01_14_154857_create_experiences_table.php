@@ -48,7 +48,7 @@ class CreateExperiencesTable extends Migration
 ')->onUpdate('RESTRICT');
             $table->foreign('agent_id', 'agent_fk_698290')->references('id')->on('agents')->onDelete('RESTRICT
 ')->onUpdate('RESTRICT');
-            $table->foreign('destination_id', 'destination_country_fk_698291')->references('id')->on('countries')->onDelete('RESTRICT
+            $table->foreign('destination_id', 'destination_fk_698291')->references('id')->on('countries')->onDelete('RESTRICT
 ')->onUpdate('RESTRICT');
             $table->foreign('employer_id', 'employer_fk_698298')->references('id')->on('employers')->onDelete('RESTRICT
 ')->onUpdate('RESTRICT');

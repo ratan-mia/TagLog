@@ -82,12 +82,12 @@ class Country extends Model implements HasMedia
 
     public function destinationCountryUsers()
     {
-        return $this->hasMany(User::class, 'destination_country_id', 'id');
+        return $this->hasMany(User::class, 'destination_id', 'id');
     }
 
     public function destinationCountryExperiences()
     {
-        return $this->hasMany(Experience::class, 'destination_country_id', 'id');
+        return $this->hasMany(Experience::class, 'destination_id', 'id');
     }
 
     public function destinationAgents()

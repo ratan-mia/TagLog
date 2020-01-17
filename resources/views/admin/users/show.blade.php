@@ -133,10 +133,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.destination_country') }}
+                            {{ trans('cruds.user.fields.destination') }}
                         </th>
                         <td>
-                            {{ $user->destination_country->name ?? '' }}
+                            {{ $user->destination->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

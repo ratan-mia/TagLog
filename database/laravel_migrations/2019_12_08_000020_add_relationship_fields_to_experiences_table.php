@@ -17,9 +17,9 @@ class AddRelationshipFieldsToExperiencesTable extends Migration
 
             $table->foreign('agent_id', 'agent_fk_698290')->references('id')->on('agents');
 
-            $table->unsignedInteger('destination_country_id')->nullable();
+            $table->unsignedInteger('destination_id')->nullable();
 
-            $table->foreign('destination_country_id', 'destination_country_fk_698291')->references('id')->on('countries');
+            $table->foreign('destination_id', 'destination_fk_698291')->references('id')->on('countries');
 
             $table->unsignedInteger('employer_id')->nullable();
 

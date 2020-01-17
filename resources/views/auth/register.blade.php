@@ -323,11 +323,11 @@
                                        for="destination_id">{{ trans('cruds.user.fields.destination_area') }}</label>
                                 <div class="col-md-6">
                                     <select
-                                            class="form-control select2 {{ $errors->has('destination_country') ? 'is-invalid' : '' }}"
+                                            class="form-control select2 {{ $errors->has('destination') ? 'is-invalid' : '' }}"
                                             name="destination_id" id="destination_id">
-                                        @foreach($destinations as $id => $destination_country)
+                                        @foreach($destinations as $id => $destination)
                                             <option
-                                                    value="{{ $id }}" {{ old('destination_id') == $id ? 'selected' : '' }}>{{ $destination_country }}</option>
+                                                    value="{{ $id }}" {{ old('destination_id') == $id ? 'selected' : '' }}>{{ $destination }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('destination_id'))
@@ -336,7 +336,7 @@
                                         </div>
                                     @endif
                                     <span
-                                            class="help-block">{{ trans('cruds.user.fields.destination_country_helper') }}</span>
+                                            class="help-block">{{ trans('cruds.user.fields.destination_helper') }}</span>
                                 </div>
                             </div>
 

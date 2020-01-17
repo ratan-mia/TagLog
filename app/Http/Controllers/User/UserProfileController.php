@@ -36,7 +36,7 @@ class UserProfileController extends Controller
 
         $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $experience->load('user', 'agent', 'destination_country', 'employer', 'industry');
+        $experience->load('user', 'agent', 'destination', 'employer', 'industry');
 
         return view('frontend.user.profile', compact('user', 'agents', 'users', 'experience', 'countries', 'destinations', 'industries', 'employers', 'expected_industries', 'visas', 'nationalities', 'profile_picture'));
     }

@@ -770,11 +770,11 @@ CREATE TABLE `experiences` (
   PRIMARY KEY (`id`),
   KEY `user_fk_698289` (`user_id`),
   KEY `agent_fk_698290` (`agent_id`),
-  KEY `destination_country_fk_698291` (`destination_id`),
+  KEY `destination_fk_698291` (`destination_id`),
   KEY `employer_fk_698298` (`employer_id`),
   KEY `industry_fk_698299` (`industry_id`),
   CONSTRAINT `agent_fk_698290` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`id`),
-  CONSTRAINT `destination_country_fk_698291` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
+  CONSTRAINT `destination_fk_698291` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
   CONSTRAINT `employer_fk_698298` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
   CONSTRAINT `industry_fk_698299` FOREIGN KEY (`industry_id`) REFERENCES `industries` (`id`),
   CONSTRAINT `user_fk_698289` FOREIGN KEY (`user_id`) REFERENCES `users-old` (`id`)
@@ -1777,7 +1777,7 @@ CREATE TABLE `users` (
   `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country_id` int(10) unsigned DEFAULT NULL,
   `destination_area` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `destination_country_id` int(10) unsigned DEFAULT NULL,
+  `destination_id` int(10) unsigned DEFAULT NULL,
   `agents_id` int(10) unsigned DEFAULT NULL,
   `indurstry_id` int(10) unsigned DEFAULT NULL,
   `employer_id` int(10) unsigned DEFAULT NULL,
@@ -1793,7 +1793,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `user_status`, `visa_type`, `name`, `email`, `email_verified_at`, `phone`, `password`, `remember_token`, `gender`, `date_of_birth`, `facebook`, `skype`, `education_level`, `education_background`, `language_level`, `nationality_id`, `city`, `country_id`, `destination_area`, `destination_country_id`, `agents_id`, `indurstry_id`, `employer_id`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`)
+INSERT INTO `users` (`id`, `user_status`, `visa_type`, `name`, `email`, `email_verified_at`, `phone`, `password`, `remember_token`, `gender`, `date_of_birth`, `facebook`, `skype`, `education_level`, `education_background`, `language_level`, `nationality_id`, `city`, `country_id`, `destination_area`, `destination_id`, `agents_id`, `indurstry_id`, `employer_id`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`)
 VALUES
 	(1,'1','1','RATAN MIA','admin@admin.com','2019-12-15 07:00:00','01751010966','$2y$10$jQ9m56RPb9tP3ydSqU3GJOu8X6Bnp7mj6U92WrrMvbUM8Qsn7Kkf.','x7qLeX6h39fwmQw6F0Zc1j5DatuoNtsRhAulbaFA1sTpUtS61B5ycXihH00I','male','1991-11-12','shorifull.ratan','ratan.mia','bachelor_degree','commerce','N1',19,'Chittagong',63,'England',1,NULL,NULL,NULL,77777.00,'2020-02-05',NULL,'2020-01-11 09:58:03',NULL),
 	(2,NULL,'3','Shorifull Islam','shorifull@gmail.com',NULL,'01751010966','$2y$10$7YS2AD49puH15RAyfg5/W.wlYeFsc1axVpIYhk9EJvS1okV2XD/zK',NULL,'male','2019-12-11','shorifull.ratan','shorifull','secondary_school',NULL,NULL,24,'Dhaka',18,NULL,105,NULL,NULL,NULL,2000.00,'2019-12-28','2019-12-18 08:38:16','2020-01-11 09:57:45','2020-01-11 09:57:45');
@@ -1828,20 +1828,20 @@ CREATE TABLE `users-old` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `country_id` int(10) unsigned DEFAULT NULL,
-  `destination_country_id` int(10) unsigned DEFAULT NULL,
+  `destination_id` int(10) unsigned DEFAULT NULL,
   `employer_id` int(10) unsigned DEFAULT NULL,
   `agents_id` int(10) unsigned DEFAULT NULL,
   `indurstry_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `country_fk_698250` (`country_id`),
-  KEY `destination_country_fk_698258` (`destination_country_id`),
+  KEY `destination_fk_698258` (`destination_id`),
   KEY `employer_fk_698263` (`employer_id`),
   KEY `agents_fk_698264` (`agents_id`),
   KEY `indurstry_fk_698265` (`indurstry_id`),
   CONSTRAINT `agents_fk_698264` FOREIGN KEY (`agents_id`) REFERENCES `employers` (`id`),
   CONSTRAINT `country_fk_698250` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
-  CONSTRAINT `destination_country_fk_698258` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
+  CONSTRAINT `destination_fk_698258` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
   CONSTRAINT `employer_fk_698263` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
   CONSTRAINT `indurstry_fk_698265` FOREIGN KEY (`indurstry_id`) REFERENCES `industries` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1849,7 +1849,7 @@ CREATE TABLE `users-old` (
 LOCK TABLES `users-old` WRITE;
 /*!40000 ALTER TABLE `users-old` DISABLE KEYS */;
 
-INSERT INTO `users-old` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_country_id`, `employer_id`, `agents_id`, `indurstry_id`)
+INSERT INTO `users-old` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_id`, `employer_id`, `agents_id`, `indurstry_id`)
 VALUES
 	(1,'Admin','admin@admin.com',NULL,'$2y$10$E30VNBsKe22QWzi0kba04OQK.hdrg34BUDDGqmC2DidrXjbpTEMQu','2HcwjbJUQMacrfuJSpR1rUVvWo7CDKbzM5fcKlfrjNODstGSoQvreNDF7m4C',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-14 05:43:22',NULL,18,NULL,NULL,NULL,NULL),
 	(2,'Dewan Shajedur Rahman','ratan.mia@continental-motor.com',NULL,'$2y$10$aA.EEVecEwc2ieCNuUZaUeCU/B/awrSeXcmHMfBCnZJ.tG8nDJrPG',NULL,'Dhaka','2019-12-04','male','higher_secondary','01713031718',NULL,NULL,NULL,NULL,NULL,'2019-12-08 17:55:13','2019-12-08 17:55:13',NULL,18,4,NULL,NULL,NULL),

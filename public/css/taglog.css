@@ -55,3 +55,19 @@
     float: left;
     font-size: 12px;
 }
+
+.review-stars .checked {
+    color: #00aced;
+}
+
+.reviewer-attr {
+    color: #333;
+    font-size: 12px;
+    float: left;
+    margin: 5px;
+    line-height: 1.2;
+}
+
+.reviewer-attr span {
+    color: #00aced;
+}

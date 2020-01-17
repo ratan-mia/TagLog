@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->string('city', 255)->nullable();
             $table->unsignedInteger('country_id')->nullable();
             $table->string('destination_area', 255)->nullable();
-            $table->unsignedInteger('destination_country_id')->nullable();
+            $table->unsignedInteger('destination_id')->nullable();
             $table->unsignedInteger('agents_id')->nullable();
             $table->unsignedInteger('indurstry_id')->nullable();
             $table->unsignedInteger('employer_id')->nullable();

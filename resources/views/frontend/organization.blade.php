@@ -158,35 +158,79 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-2">
-                                    <iframe
-                                        width="100%"
-                                        height="auto"
-                                        frameborder="0"
-                                        scrolling="no"
-                                        marginheight="0"
-                                        marginwidth="0"
-                                        src="https://www.google.com/maps/embed/v1/place?q=23.7711777,90.41158209999999&amp;key=AIzaSyC4seHvysGcv7ppFOPF0jNDRbVr97NuG0Y">
+                                <div class="col-md-3">
+                                    @foreach($agent->locations as $location)
+                                        <iframe
+                                            width="100%"
+                                            height="auto"
+                                            frameborder="0"
+                                            scrolling="no"
+                                            marginheight="0"
+                                            marginwidth="0"
+                                            src="https://www.google.com/maps/embed/v1/place?q={{$location->latitude}},{{$location->longitude}}&amp;key=AIzaSyC4seHvysGcv7ppFOPF0jNDRbVr97NuG0Y">
 
-                                    </iframe>
-                                    <br/>
-                                    <small>
-                                        <a
-                                            href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed"
-                                            style="color:#0000FF;text-align:left"
-                                            target="_blank"
-                                        >
-                                            See map bigger
-                                        </a>
-                                    </small>
+                                        </iframe>
+                                        <br/>
+                                        {{--                                        <small>--}}
+                                        {{--                                            <a href='"https://www.google.com/maps/@".{{$location->latitude}}.",."{{$location->longitude}}.",15z"'--}}
+                                        {{--                                                style="color:#0000FF;text-align:left"--}}
+                                        {{--                                                target="_blank"--}}
+                                        {{--                                            >--}}
+                                        {{--                                                See map bigger--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </small>--}}
+
+                                    @endforeach
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <h3 class="sub-title">Individual Reviews<span
+                                            style="color:#00aced;font-style: italic;">( {{$agent->experiences->count()}} found )</span>
+                                    </h3>
+
+                                    @foreach($agent->experiences as $experience)
+                                        <div class="single-review">
+                                            <p class="paragraph font-italic">"{{$experience->agent_feedback}}"</p>
+                                            <div class="review-stars">
+                                                <p class="paragraph">Visa Application Process
+                                                    @php $remain_stars = 5 - $experience->visa_application_rating; @endphp
+                                                    @for ($i = 0; $i < $experience->visa_application_rating; $i++)
+                                                        <span class="fa fa-star checked"></span>
+                                                    @endfor
+                                                    @for ($i = 0; $i < $remain_stars; $i++)
+                                                        <span class="fa fa-star"></span>
+                                                    @endfor
+                                                    <span style="margin-left: 10px;">Language Training Course</span>
+                                                    @php $remain_stars2 = 5 - $experience->language_training_rating; @endphp
+                                                    @for ($i = 0; $i < $experience->language_training_rating; $i++)
+                                                        <span class="fa fa-star checked"></span>
+                                                    @endfor
+                                                    @for ($i = 0; $i < $remain_stars2; $i++)
+                                                        <span class="fa fa-star"></span>
+                                                    @endfor
+
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <p class="reviewer-attr">Reviewer ID: <span>{{$experience->user->id}}</span></p>
+                                    <p class="reviewer-attr">Date of birth: <span>{{$experience->user->date_of_birth}}</span></p>
+                                    <p class="reviewer-attr">Gender: <span>{{$experience->user->gender}}</span></p>
+                                    <p class="reviewer-attr">Education: <span>{{$experience->user->education_level}}</span></p>
+                                    <p class="reviewer-attr">Language: <span>{{$experience->user->language_level}}</span></p>
+                                    <p class="reviewer-attr">Industry: <span>{{$experience->industry->name}}</span></p>
                                 </div>
                                 @php
-                                echo '<pre>';
-                                var_dump($agent->destinations);
-                                 echo '</pre>';
+                                    echo '<pre>';
+                                    var_dump($experience->user);
+                                     echo '</pre>';
                                 @endphp
-                                <div class="col-md-5">5</div>
-                                <div class="col-md-5">5</div>
+
+
+                                @endforeach
                             </div>
                         </div>
                 </div>

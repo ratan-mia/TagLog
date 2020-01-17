@@ -619,7 +619,7 @@ CREATE TABLE `experiences` (
   `expenses_paid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `visa_application_rating` int(11) DEFAULT NULL,
   `language_training_rating` int(11) DEFAULT NULL,
-  `destination_country_id` int(10) UNSIGNED DEFAULT NULL,
+  `destination_id` int(10) UNSIGNED DEFAULT NULL,
   `emloyment_date` date DEFAULT NULL,
   `employment_period` int(11) DEFAULT NULL,
   `monthly_salary` decimal(15,2) DEFAULT NULL,
@@ -641,7 +641,7 @@ CREATE TABLE `experiences` (
 -- Dumping data for table `experiences`
 --
 
-INSERT INTO `experiences` (`id`, `user_id`, `visa_type`, `application_period`, `language_level`, `industry_id`, `agent_id`, `agent_rating`, `agent_feedback`, `expenses_paid`, `visa_application_rating`, `language_training_rating`, `destination_country_id`, `emloyment_date`, `employment_period`, `monthly_salary`, `monthly_living_expenses`, `accommodation_type`, `weekly_working_hours`, `monthly_days_off`, `next_year_opportunity`, `employer_id`, `employer_location`, `employer_rating`, `employer_feedback`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `experiences` (`id`, `user_id`, `visa_type`, `application_period`, `language_level`, `industry_id`, `agent_id`, `agent_rating`, `agent_feedback`, `expenses_paid`, `visa_application_rating`, `language_training_rating`, `destination_id`, `emloyment_date`, `employment_period`, `monthly_salary`, `monthly_living_expenses`, `accommodation_type`, `weekly_working_hours`, `monthly_days_off`, `next_year_opportunity`, `employer_id`, `employer_location`, `employer_rating`, `employer_feedback`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 2, NULL, 'two_years', 'one_year', NULL, 1, 34, 'feee', '66666', 18, 33, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '<p>&nbsp;</p>', NULL, '<p>&nbsp;</p>', '2020-01-04 11:27:44', '2020-01-06 02:28:52', NULL),
 (2, 1, NULL, 'one_year', 'one_year', 1, 1, 12, 'Test', '1222', 17, 31, 1, '2020-01-07', 2, '10.00', '12.00', NULL, '3', 22, 'yes', NULL, '<p>Bangladesh</p>', 1, '<p>Good</p>', '2020-01-05 23:15:33', '2020-01-06 02:32:24', NULL);
 
@@ -1462,7 +1462,7 @@ CREATE TABLE `users` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   `country_id` int(10) UNSIGNED DEFAULT NULL,
   `nationality_id` int(10) UNSIGNED DEFAULT NULL,
-  `destination_country_id` int(10) UNSIGNED DEFAULT NULL,
+  `destination_id` int(10) UNSIGNED DEFAULT NULL,
   `destination_area` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `employer_id` int(10) UNSIGNED DEFAULT NULL,
   `agents_id` int(10) UNSIGNED DEFAULT NULL,
@@ -1473,7 +1473,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `education_background`, `language_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `nationality_id`, `destination_country_id`, `destination_area`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `education_background`, `language_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `nationality_id`, `destination_id`, `destination_area`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
 (1, 'RATAN MIA', 'admin@admin.com', '2019-12-15 07:00:00', '$2y$10$7i9MGJG5kw8vCtpISINdNek1GT7AVH9wkOfyZJom00kqz3rLnm7Lq', 'QvQgmoHWx8nTkgZE6yD6jFGKM1oTLthoFrxRYhSCQAI9ZWucjeydVgrXEEbX', 'Chittagong', '2018-04-17', 'male', 'masters_degress', 'commerce', 'N1', '01751010966', 'shorifull.ratan', 'shorifull', '1', '77777.00', '2020-02-05', NULL, '2020-01-05 11:07:45', NULL, 44, 19, 1, 'singapore', NULL, NULL, NULL),
 (2, 'Shorifull Islam', 'shorifull@gmail.com', NULL, '$2y$10$7YS2AD49puH15RAyfg5/W.wlYeFsc1axVpIYhk9EJvS1okV2XD/zK', NULL, 'Dhaka', '2019-12-11', 'male', 'secondary_school', NULL, NULL, '01751010966', 'shorifull.ratan', 'shorifull', '3', '2000.00', '2019-12-28', '2019-12-18 02:38:16', '2019-12-18 04:09:53', NULL, 18, 24, 105, NULL, NULL, NULL, NULL);
 
@@ -1504,7 +1504,7 @@ CREATE TABLE `users-old` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `country_id` int(10) UNSIGNED DEFAULT NULL,
-  `destination_country_id` int(10) UNSIGNED DEFAULT NULL,
+  `destination_id` int(10) UNSIGNED DEFAULT NULL,
   `employer_id` int(10) UNSIGNED DEFAULT NULL,
   `agents_id` int(10) UNSIGNED DEFAULT NULL,
   `indurstry_id` int(10) UNSIGNED DEFAULT NULL
@@ -1514,7 +1514,7 @@ CREATE TABLE `users-old` (
 -- Dumping data for table `users-old`
 --
 
-INSERT INTO `users-old` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_country_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
+INSERT INTO `users-old` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
 (1, 'Admin', 'admin@admin.com', NULL, '$2y$10$E30VNBsKe22QWzi0kba04OQK.hdrg34BUDDGqmC2DidrXjbpTEMQu', '2HcwjbJUQMacrfuJSpR1rUVvWo7CDKbzM5fcKlfrjNODstGSoQvreNDF7m4C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-13 23:43:22', NULL, 18, NULL, NULL, NULL, NULL),
 (2, 'Dewan Shajedur Rahman', 'ratan.mia@continental-motor.com', NULL, '$2y$10$aA.EEVecEwc2ieCNuUZaUeCU/B/awrSeXcmHMfBCnZJ.tG8nDJrPG', NULL, 'Dhaka', '2019-12-04', 'male', 'higher_secondary', '01713031718', NULL, NULL, NULL, NULL, NULL, '2019-12-08 11:55:13', '2019-12-08 11:55:13', NULL, 18, 4, NULL, NULL, NULL),
 (3, 'Dewan Shajedur Rahman', 'sales@continental-motor.com', NULL, '$2y$10$thSeees1aH8JrjHHZcql7OfaiPQNlAMMIQpCAdjiyVWJFHY1Wh.R.', NULL, 'Dhaka', '2019-12-04', 'male', 'higher_secondary', '01713031718', NULL, NULL, NULL, NULL, NULL, '2019-12-08 12:00:12', '2019-12-08 12:00:12', NULL, 18, 4, NULL, NULL, NULL);
@@ -1674,7 +1674,7 @@ ALTER TABLE `experiences`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_fk_698289` (`user_id`),
   ADD KEY `agent_fk_698290` (`agent_id`),
-  ADD KEY `destination_country_fk_698291` (`destination_country_id`),
+  ADD KEY `destination_fk_698291` (`destination_id`),
   ADD KEY `employer_fk_698298` (`employer_id`),
   ADD KEY `industry_fk_698299` (`industry_id`);
 
@@ -1802,7 +1802,7 @@ ALTER TABLE `users-old`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD KEY `country_fk_698250` (`country_id`),
-  ADD KEY `destination_country_fk_698258` (`destination_country_id`),
+  ADD KEY `destination_fk_698258` (`destination_id`),
   ADD KEY `employer_fk_698263` (`employer_id`),
   ADD KEY `agents_fk_698264` (`agents_id`),
   ADD KEY `indurstry_fk_698265` (`indurstry_id`);
@@ -2013,7 +2013,7 @@ ALTER TABLE `employer_industry`
 --
 ALTER TABLE `experiences`
   ADD CONSTRAINT `agent_fk_698290` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`id`),
-  ADD CONSTRAINT `destination_country_fk_698291` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
+  ADD CONSTRAINT `destination_fk_698291` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
   ADD CONSTRAINT `employer_fk_698298` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
   ADD CONSTRAINT `industry_fk_698299` FOREIGN KEY (`industry_id`) REFERENCES `industries` (`id`),
   ADD CONSTRAINT `user_fk_698289` FOREIGN KEY (`user_id`) REFERENCES `users-old` (`id`);
@@ -2045,6 +2045,6 @@ ALTER TABLE `role_user`
 ALTER TABLE `users-old`
   ADD CONSTRAINT `agents_fk_698264` FOREIGN KEY (`agents_id`) REFERENCES `employers` (`id`),
   ADD CONSTRAINT `country_fk_698250` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
-  ADD CONSTRAINT `destination_country_fk_698258` FOREIGN KEY (`destination_country_id`) REFERENCES `countries` (`id`),
+  ADD CONSTRAINT `destination_fk_698258` FOREIGN KEY (`destination_id`) REFERENCES `countries` (`id`),
   ADD CONSTRAINT `employer_fk_698263` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`),
   ADD CONSTRAINT `indurstry_fk_698265` FOREIGN KEY (`indurstry_id`) REFERENCES `industries` (`id`);

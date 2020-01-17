@@ -62,7 +62,7 @@
                             {{ trans('cruds.user.fields.skype') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.destination_country') }}
+                            {{ trans('cruds.user.fields.destination') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.visa_type') }}
@@ -141,7 +141,7 @@
                                 {{ $user->skype ?? '' }}
                             </td>
                             <td>
-                                {{ $user->destination_country->name ?? '' }}
+                                {{ $user->destination->name ?? '' }}
                             </td>
                             <td>
                                 {{ App\User::VISA_TYPE_SELECT[$user->visa_type] ?? '' }}

@@ -93,7 +93,7 @@ class Experience extends Model
         return $this->belongsTo(Agent::class, 'agent_id');
     }
 
-    public function destination_country()
+    public function destination()
     {
         return $this->belongsTo(Country::class, 'destination_id');
     }

@@ -17,7 +17,7 @@ class ExperienceApiController extends Controller
     {
         abort_if(Gate::denies('experience_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ExperienceResource(Experience::with(['user', 'agent', 'destination_country', 'employer', 'industry'])->get());
+        return new ExperienceResource(Experience::with(['user', 'agent', 'destination', 'employer', 'industry'])->get());
     }
 
     public function store(StoreExperienceRequest $request)
@@ -33,7 +33,7 @@ class ExperienceApiController extends Controller
     {
         abort_if(Gate::denies('experience_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ExperienceResource($experience->load(['user', 'agent', 'destination_country', 'employer', 'industry']));
+        return new ExperienceResource($experience->load(['user', 'agent', 'destination', 'employer', 'industry']));
     }
 
     public function update(UpdateExperienceRequest $request, Experience $experience)

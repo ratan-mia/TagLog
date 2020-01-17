@@ -105,7 +105,7 @@ class User extends Authenticatable implements HasMedia
         'expected_salary',
         'date_of_leaving',
         'email_verified_at',
-        'destination_country_id',
+        'destination_id',
         'destination_area',
     ];
 
@@ -171,9 +171,9 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function destination_country()
+    public function destination()
     {
-        return $this->belongsTo(Country::class, 'destination_country_id');
+        return $this->belongsTo(Country::class, 'destination_id');
     }
 
     public function expected_industries()

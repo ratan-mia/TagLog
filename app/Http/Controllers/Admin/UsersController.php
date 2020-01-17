@@ -88,7 +88,7 @@ class UsersController extends Controller
 
         $indurstries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $user->load('roles', 'country', 'nationality','destination_country', 'expected_industries','visa', 'employer', 'agents', 'indurstry');
+        $user->load('roles', 'country', 'nationality','destination', 'expected_industries','visa', 'employer', 'agents', 'indurstry');
 
         return view('admin.users.edit', compact('roles', 'countries', 'nationalities','destinations', 'expected_industries','visas', 'employers', 'agents', 'indurstries', 'user'));
     }
@@ -114,7 +114,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles', 'country', 'nationality','destination_country', 'expected_industries', 'employer', 'agents', 'indurstry', 'userExperiences', 'employersAgents');
+        $user->load('roles', 'country', 'nationality','destination', 'expected_industries', 'employer', 'agents', 'indurstry', 'userExperiences', 'employersAgents');
 
         return view('admin.users.show', compact('user'));
     }

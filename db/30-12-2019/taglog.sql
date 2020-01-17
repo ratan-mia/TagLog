@@ -823,7 +823,7 @@ INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `education_background`, `language_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `nationality_id`, `destination_country_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `education_background`, `language_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `nationality_id`, `destination_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
 (1, 'Ratan Mia', 'admin@admin.com', '2019-12-15 07:00:00', '$2y$10$2ngkgALskNHicoDaOjMl6.Pl.vR9l61xAdBH/YY4rqpdIP6K3YwQm', 'DjbRJyODJGlMU3fEaWYw3rirC05vb9r0bqHPeupziwjgc3qqpFsyP8Y3BAXi', 'Dhaka', '2018-04-17', 'male', 'masters_degress', 'commerce', 'N1', '01751010966', 'shorifull.ratan', 'shorifull', NULL, NULL, NULL, NULL, '2019-12-28 12:32:07', NULL, 18, NULL, NULL, NULL, NULL, NULL),
 (2, 'Shorifull Islam', 'shorifull@gmail.com', NULL, '$2y$10$7YS2AD49puH15RAyfg5/W.wlYeFsc1axVpIYhk9EJvS1okV2XD/zK', NULL, 'Dhaka', '2019-12-11', 'male', 'secondary_school', NULL, NULL, '01751010966', 'shorifull.ratan', 'shorifull', '3', '2000.00', '2019-12-28', '2019-12-18 02:38:16', '2019-12-18 04:09:53', NULL, 18, 24, 105, NULL, NULL, NULL);
 
@@ -831,7 +831,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- Dumping data for table `users-old`
 --
 
-INSERT INTO `users-old` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_country_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
+INSERT INTO `users-old` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `city`, `date_of_birth`, `gender`, `education_level`, `phone`, `facebook`, `skype`, `visa_type`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`, `country_id`, `destination_id`, `employer_id`, `agents_id`, `indurstry_id`) VALUES
 (1, 'Admin', 'admin@admin.com', NULL, '$2y$10$E30VNBsKe22QWzi0kba04OQK.hdrg34BUDDGqmC2DidrXjbpTEMQu', '2HcwjbJUQMacrfuJSpR1rUVvWo7CDKbzM5fcKlfrjNODstGSoQvreNDF7m4C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-13 23:43:22', NULL, 18, NULL, NULL, NULL, NULL),
 (2, 'Dewan Shajedur Rahman', 'ratan.mia@continental-motor.com', NULL, '$2y$10$aA.EEVecEwc2ieCNuUZaUeCU/B/awrSeXcmHMfBCnZJ.tG8nDJrPG', NULL, 'Dhaka', '2019-12-04', 'male', 'higher_secondary', '01713031718', NULL, NULL, NULL, NULL, NULL, '2019-12-08 11:55:13', '2019-12-08 11:55:13', NULL, 18, 4, NULL, NULL, NULL),
 (3, 'Dewan Shajedur Rahman', 'sales@continental-motor.com', NULL, '$2y$10$thSeees1aH8JrjHHZcql7OfaiPQNlAMMIQpCAdjiyVWJFHY1Wh.R.', NULL, 'Dhaka', '2019-12-04', 'male', 'higher_secondary', '01713031718', NULL, NULL, NULL, NULL, NULL, '2019-12-08 12:00:12', '2019-12-08 12:00:12', NULL, 18, 4, NULL, NULL, NULL);

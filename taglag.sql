@@ -1803,12 +1803,12 @@ CREATE TABLE `users` (
   `sex` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `education_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `current_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expected_destination_country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expected_destination` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expected_industry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expected_monthly_salary` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expected_date_of_leaving` date DEFAULT NULL,
   `name_of_recruitment_agents` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `destination_country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `visa_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `period_of_apply` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expenses_applicant_paid` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1837,7 +1837,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `approved`, `verified`, `verified_at`, `verification_token`, `country`, `city`, `date_of_birth`, `sex`, `education_level`, `current_status`, `expected_destination_country`, `expected_industry`, `expected_monthly_salary`, `expected_date_of_leaving`, `name_of_recruitment_agents`, `destination_country`, `visa_type`, `period_of_apply`, `expenses_applicant_paid`, `rating_agnet`, `comment_recruiting_agent`, `employer`, `industry`, `employment_period`, `monthly_salary`, `leaving_expenses`, `accomodation_type`, `working_hours`, `days_off`, `next_career`, `employer_rating`, `comment_employers`, `phone`, `facebook`, `skype`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `approved`, `verified`, `verified_at`, `verification_token`, `country`, `city`, `date_of_birth`, `sex`, `education_level`, `current_status`, `expected_destination`, `expected_industry`, `expected_monthly_salary`, `expected_date_of_leaving`, `name_of_recruitment_agents`, `destination`, `visa_type`, `period_of_apply`, `expenses_applicant_paid`, `rating_agnet`, `comment_recruiting_agent`, `employer`, `industry`, `employment_period`, `monthly_salary`, `leaving_expenses`, `accomodation_type`, `working_hours`, `days_off`, `next_career`, `employer_rating`, `comment_employers`, `phone`, `facebook`, `skype`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Admin', 'admin@admin.com', NULL, '$2y$10$7AUlyYmJ2lJwRLEdR64dpOGSe2cAZ7EABcSKu2ZJUVYRyW1fDPyIW', NULL, 1, 1, '2019-12-01 05:39:01', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, '', NULL, '', NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '', '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------

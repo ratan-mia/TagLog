@@ -65,7 +65,7 @@ class ExperienceController extends Controller
 
         $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $experience->load('user', 'agent', 'destination_country', 'employer', 'industry');
+        $experience->load('user', 'agent', 'destination', 'employer', 'industry');
 
         return view('admin.experiences.edit', compact('users', 'agents', 'destinations', 'employers', 'industries', 'experience'));
     }
@@ -83,7 +83,7 @@ class ExperienceController extends Controller
     {
         abort_if(Gate::denies('experience_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $experience->load('user', 'agent', 'destination_country', 'employer', 'industry');
+        $experience->load('user', 'agent', 'destination', 'employer', 'industry');
 
         return view('admin.experiences.show', compact('experience'));
     }
