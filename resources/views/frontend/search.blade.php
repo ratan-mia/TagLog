@@ -2,128 +2,175 @@
 
 @section('content')
 
-<section class="page-search">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Advance Search -->
-				<div class="advance-search">
-                    <form action="{{ route('search') }}" method="GET">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advance Search -->
+                    <div class="advance-search">
+                        <h4 class="search-title">Find Sending Organizations in your area</h4>
+                        <form action="{{ route('search') }}" method="GET">
 
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <input type="text" name="search" value="{{ old('search') }}" class="form-control" placeholder="Search company" />
-                                <p class="help-block"></p>
-                                @if($errors->has('name'))
-                                    <p class="help-block">
-                                        {{ $errors->first('name') }}
-                                    </p>
-                                @endif
+                            <div class="form-row">
+                                <div class="form-group col-md-2 offset-md-1">
+                                    {{-- <label>{{ trans('cruds.user.fields.destination_id') }}</label>--}}
+                                    <select
+                                        class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
+                                        name="destination_id" id="destination_id">
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        @foreach($destinations as $key => $label)
+                                            <option
+                                                value="{{ $key }}" {{ old('destination_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('destination_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('destination_id') }}
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    {{--                                    <label>{{ trans('cruds.user.fields.visa_type') }}</label>--}}
+                                    <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"
+                                            name="visa_type" id="visa_type">
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        @foreach($visas as $key => $label)
+                                            <option
+                                                value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('visa_type'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('visa_type') }}
+                                        </div>
+                                    @endif
+                                </div>
+
+
+                                <div class="form-group col-md-2">
+                                    {{-- <label>{{ trans('cruds.user.fields.country_id') }}</label>--}}
+                                    <select class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
+                                            name="country_id" id="country_id">
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        @foreach($countries as $key => $label)
+                                            <option
+                                                value="{{ $key }}" {{ old('country_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('country_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('country_id') }}
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    {{--                                     <label>{{ trans('cruds.user.fields.city_id') }}</label>--}}
+                                    <select class="form-control {{ $errors->has('city_id') ? 'is-invalid' : '' }}"
+                                            name="city_id" id="city_id">
+                                        {{--                                        <option value--}}
+                                        {{--                                                disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
+                                        @foreach($cities as $key => $label)
+                                            <option
+                                                value="{{ $key }}" {{ old('city_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('city_id'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('city_id') }}
+                                        </div>
+                                    @endif
+                                </div>
+
+
+                                <div class="form-group col-md-2">
+                                    <button type="submit"
+                                            class="btn btn-main">
+                                        Search Now
+                                    </button>
+                                </div>
                             </div>
-                            <div class="form-group col-md-3">
-                                <select name="categories" class="form-control form-control-lg" placeholder="Category">
-                                    @foreach ($search_categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                <p class="help-block"></p>
-                                @if($errors->has('categories'))
-                                    <p class="help-block">
-                                        {{ $errors->first('categories') }}
-                                    </p>
-                                @endif
-                            </div>
-                            <div class="form-group col-md-3">
-                                <select name="city_id" class="form-control form-control-lg" placeholder="City">
-                                    @foreach ($search_cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                    @endforeach
-                                </select>
-                                <p class="help-block"></p>
-                                @if($errors->has('city_id'))
-                                    <p class="help-block">
-                                        {{ $errors->first('city_id') }}
-                                    </p>
-                                @endif
-                            </div>
 
-                            <div class="form-group col-md-2">
-                                <button type="submit"
-                                        class="btn btn-main">
-                                    Search Now
-                                </button>
-                            </div>
-                        </div>
+                        </form>
 
-                    </form>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="section-sm">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="search-result bg-gray">
-					<h2>Results</h2>
-					<p>{{ $agents->count() }} Results</p>
-				</div>
-			</div>
-		</div>
-        {{dd($agents)}}
-		<div class="row">
-			<div class="col-md-3">
-				<div class="category-sidebar">
-					<div class="widget category-list">
-                        <h4 class="widget-header">All Category</h4>
-                        <ul class="category-list">
-                            @foreach ( $categories_all as $category_all)
-                                <li><a href="{{ route('category', [$category_all->id]) }} ">{{ $category_all->name}} <span>{{$category_all->companies->count()}}</span></a></li>
-                            @endforeach
-                        </ul>
                     </div>
-				</div>
-			</div>
-            <div class="col-md-9">
-				<div class="product-grid-list">
-					<div class="row mt-30">
-                        @if (count($companies) > 0)
-                            @foreach ($companies as $company)
-                                <div class="col-sm-12 col-lg-4 col-md-6">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                    <!-- product card -->
-
-                                    <div class="product-item bg-light">
-                                        <div class="card">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="search-result bg-gray">
+                        <h2>Results</h2>
+                        <p>{{ $agents->count() }} Results</p>
+                        @if (count($agents) > 0)
+                            @foreach ($agents as $agent)
+                                <div class="agent-container">
+                                    <div class="row">
+                                        <div class="col-md-2">
                                             <div class="thumb-content">
-                                                @if($company->logo)<a href="{{ route('company', [$company->id]) }}"><img class="card-img-top img-fluid" src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $company->logo) }}"/></a>@endif
-                                            </div>
-                                            <div class="card-body">
-                                                <h4 class="card-title"><a href="{{ route('company', [$company->id]) }}">{{$company->name}}</a></h4>
-                                                @foreach ($company->categories as $singleCategories)
-                                                    <ul class="list-inline product-meta">
-                                                        <li class="list-inline-item">
-                                                            <a href="{{ route('category', [$singleCategories->id]) }}"><i class="fa fa-folder-open-o"></i>{{ $singleCategories->name }}</a>
-                                                        </li>
-                                                    </ul>
-                                                @endforeach
-                                                <p class="card-text">{{ substr($company->description, 0, 100) }}...</p>
+                                                @if($agent->logo)<a href="{{ route('agent', [$agent->id]) }}"><img
+                                                        class="card-img-top img-fluid"
+                                                        src="{{ $agent->logo->getUrl() }}"></a>@endif
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <h6 class="title-attr">Company Name: <span><a href="{{ route('agent', [$agent->id]) }}">{{$agent->name}}</a></span></h6>
+                                            <p class="title-attr">Address:<span>{{$agent->address}}</span></p>
+                                            <br>
+                                            <h3 class="sub-title-attr">Overview</h3>
+                                            {!! substr($agent->overview, 0, 100) !!}...
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="visa-type">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h4 class="title-attr">Visa Type</h4></div>
+                                                    <div class="col-md-9">
+                                                        <ul>
+                                                            @foreach($agent->visas as $visa)
+                                                                <li class="visa-type-item">{{$visa->name}}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <hr class="horizontal-line">
+                                                <h4 class="title-attr">Employer's Industry from Taglog User</h4>
+                                                <ul>
+                                                    @foreach($agent->employers as $employer)
+                                                        {{--                                                <li class="industry-type-item">{{$employer->name}}</li>--}}
+                                                        <ul class="list-inline">
+                                                            @foreach($employer->industries as $industry)
+                                                                <li class="list-inline-item industry-type-item"><a
+                                                                        href="{{ route('industry', [$industry->id]) }}">{{ $industry->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+
+                                                    @endforeach
+                                                </ul>
+                                                <p class="text-right"><a class="link-cta"
+                                                                         href="{{ route('agent', [$agent->id]) }}">&gt;See
+                                                        Individual Review</a></p>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
                                     </div>
+                                    @endforeach
+                                    @endif
+
                                 </div>
-                            @endforeach
-                        @endif
                     </div>
-				</div>
-            {{ $companies->appends(request()->all())->links() }}
-			</div>
-		</div>
-	</div>
-</section>
+                </div>
+            </div>
+        {{ $agents->appends(request()->all())->links() }}
 
-
+    </section>
 @stop

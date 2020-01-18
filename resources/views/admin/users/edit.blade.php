@@ -163,8 +163,7 @@
                     <label>{{ trans('cruds.user.fields.education_background') }}</label>
                     <select class="form-control {{ $errors->has('education_background') ? 'is-invalid' : '' }}"
                             name="education_background" id="education_background">
-                        <option value
-                                disabled {{ old('education_background', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        <option value disabled {{ old('education_background', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                         @foreach(App\User::EDUCATION_BACKGROUND_SELECT as $key => $label)
                             <option
                                 value="{{ $key }}" {{ old('education_background', $user->education_background) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
