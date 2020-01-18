@@ -3,8 +3,16 @@
     src: url('/fonts/Product Sans.ttf');
 }
 
+@font-face {
+    font-family: 'Myriad Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Myriad Pro Regular'), url('/fonts/MYRIADPRO-REGULAR.woff') format('woff');
+}
+
+
 .advance-search {
-    background: #00aced;
+    background: #08B3E6;
     padding:25px 0px;
 }
 
@@ -19,12 +27,15 @@
 }
 
 .advance-search select {
-    font-family:Product Sans;
+    font-family: 'Myriad Pro Regular';
     width: 100%;
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #f1f1f1;
+    color:#B2B3B3;
+    font-size:12px;
+    background-color: #EAF6FD;
+    border-radius: 0px !important;
 }
 
 .advance-search select:focus {
