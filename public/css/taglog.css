@@ -27,13 +27,13 @@
 }
 
 .advance-search select {
-    font-family: 'Myriad Pro Regular';
+    font-family:Product Sans;
     width: 100%;
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
     color:#B2B3B3;
-    font-size:12px;
+    font-size:13px;
     background-color: #EAF6FD;
     border-radius: 0px !important;
 }
@@ -59,6 +59,7 @@
 .title-attr span {
     font-family:Product Sans;
     color:#505050;
+    font-weight: normal;
 }
 .title-attr span a {
     font-family:Product Sans;

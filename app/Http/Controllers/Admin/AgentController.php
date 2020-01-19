@@ -102,7 +102,7 @@ class AgentController extends Controller
 
         $visas = Visa::all()->pluck('name', 'id');
 
-        $agent->load('destinations', 'industries', 'employers');
+        $agent->load('destinations', 'industries', 'employers','locations');
 
         return view('admin.agents.edit', compact('countries', 'destinations', 'industries', 'visas', 'employers', 'agent'));
     }

@@ -16,9 +16,10 @@
                         <p>Join the millions who buy and sell from each other <br> everyday in local communities around
                             the world</p>
                     </div>
+
                     <!-- Advance Search -->
                     <div class="advance-search">
-                        <p style="text-align: left;">Find Sending Organizations in your area</p>
+                        <h4 class="search-title">Find Sending Organizations in your area</h4>
                         <form action="{{ route('search') }}" method="GET">
 
                             <div class="form-row">
@@ -27,9 +28,8 @@
                                     <select
                                         class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
                                         name="destination_id" id="destination_id">
-                                        {{--                                        <option value--}}
-                                        {{--                                                disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
-                                        @foreach($destinations as $key => $label)
+                                        <option value disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        @foreach($search_destinations as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('destination_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                         @endforeach
@@ -45,9 +45,8 @@
                                     {{--                                    <label>{{ trans('cruds.user.fields.visa_type') }}</label>--}}
                                     <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"
                                             name="visa_type" id="visa_type">
-                                        {{--                                        <option value--}}
-                                        {{--                                                disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
-                                        @foreach($visas as $key => $label)
+                                        <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        @foreach($search_visas as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                         @endforeach
@@ -64,9 +63,8 @@
                                     {{-- <label>{{ trans('cruds.user.fields.country_id') }}</label>--}}
                                     <select class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
                                             name="country_id" id="country_id">
-                                        {{--                                        <option value--}}
-                                        {{--                                                disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
-                                        @foreach($countries as $key => $label)
+                                        <option value disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        @foreach($search_countries as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('country_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                         @endforeach
@@ -82,9 +80,8 @@
                                     {{--                                     <label>{{ trans('cruds.user.fields.city_id') }}</label>--}}
                                     <select class="form-control {{ $errors->has('city_id') ? 'is-invalid' : '' }}"
                                             name="city_id" id="city_id">
-                                        {{--                                        <option value--}}
-                                        {{--                                                disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>--}}
-                                        @foreach($cities as $key => $label)
+                                        <option value disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        @foreach($search_cities as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('city_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                                         @endforeach
@@ -108,6 +105,11 @@
                         </form>
 
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advance Search -->
 
                 </div>
             </div>

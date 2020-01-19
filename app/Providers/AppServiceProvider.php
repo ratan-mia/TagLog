@@ -76,15 +76,17 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('*', function ($view) {
-            $view->with('destinations', Destination::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
-            $view->with('visas', Visa::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
-            $view->with('cities', City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+            $view->with('search_destinations', Destination::all()->pluck('name', 'id'));
+            $view->with('search_countries', Country::all()->pluck('name', 'id'));
+            $view->with('search_visas', Visa::all()->pluck('name', 'id'));
+            $view->with('search_cities', City::all()->pluck('name', 'id'));
 
         });
      //Search Result
         view()->composer('frontend.search', function ($view) {
             $view->with('search_cities', City::all());
             $view->with('categories_all', Category::all());
+
         });
 
 

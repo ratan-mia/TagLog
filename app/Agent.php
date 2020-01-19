@@ -107,7 +107,7 @@ class Agent extends Model implements HasMedia
 
     public function locations()
     {
-        return $this->morphMany(Location::class, 'location');
+        return $this->morphTo(Location::class, 'location');
     }
 
     public $destination_id = '';

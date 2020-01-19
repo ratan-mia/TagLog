@@ -23,6 +23,7 @@ class HomePageController extends Controller
         $destinations = Destination::all()->pluck('name', 'id')->prepend(trans('Destination Country'), '');
         $cities       = City::all()->pluck('name', 'id')->prepend(trans('City Currently Living'), '');
         $categories = Category::all();
+
         return view('frontend.index',compact('visas','countries','destinations','cities','categories'));
     }
 
@@ -30,6 +31,8 @@ class HomePageController extends Controller
     public function search(Request $request)
 
     {
+
+        $request->flash();
         $agents = Agent::filterByRequest($request)->with('countries')->paginate(9);
 
 
