@@ -105,10 +105,11 @@ class Agent extends Model implements HasMedia
         return $this->belongsToMany(Visa::class);
     }
 
-    public function locations()
+    public function location()
     {
-        return $this->morphTo(Location::class, 'location');
+        return $this->morphOne(Location::class, 'location');
     }
+
 
     public $destination_id = '';
     public $country_id = '';

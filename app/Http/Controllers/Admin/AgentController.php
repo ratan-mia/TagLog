@@ -67,7 +67,7 @@ class AgentController extends Controller
         $agent->employers()->sync($request->input('employers', []));
         $agent->countries()->sync($request->input('countries', []));
 
-        $agent->locations()->create([
+        $agent->location()->create([
             'address' => $request->input('address'),
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
@@ -102,7 +102,7 @@ class AgentController extends Controller
 
         $visas = Visa::all()->pluck('name', 'id');
 
-        $agent->load('destinations', 'industries', 'employers','locations');
+        $agent->load('destinations', 'industries', 'employers','location');
 
         return view('admin.agents.edit', compact('countries', 'destinations', 'industries', 'visas', 'employers', 'agent'));
     }
@@ -116,7 +116,7 @@ class AgentController extends Controller
         $agent->employers()->sync($request->input('employers', []));
         $agent->countries()->sync($request->input('countries', []));
 
-        $agent->locations()->update([
+        $agent->location()->update([
             'address' => $request->input('address'),
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),

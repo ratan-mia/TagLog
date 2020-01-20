@@ -9,7 +9,7 @@ class Location extends Model
     protected $fillable = ['address', 'latitude','longitude'];
 
 
-    public function locations(){
+    public function location(){
         return $this->morphTo();
     }
 }

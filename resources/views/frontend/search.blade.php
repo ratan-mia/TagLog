@@ -18,7 +18,8 @@
                                     <select
                                         class="form-control {{ $errors->has('destination_id') ? 'is-invalid' : '' }}"
                                         name="destination_id" id="destination_id">
-                                        <option value disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        <option value
+                                                disabled {{ old('destination_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach($search_destinations as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('destination_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -35,7 +36,8 @@
                                     {{--                                    <label>{{ trans('cruds.user.fields.visa_type') }}</label>--}}
                                     <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}"
                                             name="visa_type" id="visa_type">
-                                        <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        <option value
+                                                disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach($search_visas as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('visa_type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -53,7 +55,8 @@
                                     {{-- <label>{{ trans('cruds.user.fields.country_id') }}</label>--}}
                                     <select class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
                                             name="country_id" id="country_id">
-                                        <option value disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        <option value
+                                                disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach($search_countries as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('country_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -70,7 +73,8 @@
                                     {{--                                     <label>{{ trans('cruds.user.fields.city_id') }}</label>--}}
                                     <select class="form-control {{ $errors->has('city_id') ? 'is-invalid' : '' }}"
                                             name="city_id" id="city_id">
-                                        <option value disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                        <option value
+                                                disabled {{ old('city_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                                         @foreach($search_cities as $key => $label)
                                             <option
                                                 value="{{ $key }}" {{ old('city_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -109,7 +113,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="search-result bg-gray">
+                    <div class="search-result">
                         <h2>Results</h2>
                         <p>{{ $agents->count() }} Results</p>
                         @if (count($agents) > 0)
@@ -124,21 +128,24 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <h6 class="title-attr">Company Name: <span><a href="{{ route('agent', [$agent->id]) }}">{{$agent->name}}</a></span></h6>
+                                            <h6 class="title-attr">Company Name: <span><a
+                                                        href="{{ route('agent', [$agent->id]) }}">{{$agent->name}}</a></span>
+                                            </h6>
                                             <p class="title-attr">Address:<span>{{$agent->address}}</span></p>
                                             <br>
                                             <h3 class="sub-title-attr">Overview</h3>
                                             {!! substr($agent->overview, 0, 100) !!}...
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-5">
                                             <div class="visa-type">
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <h4 class="title-attr">Visa Type</h4></div>
+                                                        <h4 class="title-attr">Visa Type</h4>
+                                                    </div>
                                                     <div class="col-md-9">
-                                                        <ul>
+                                                        <ul class="list-inline">
                                                             @foreach($agent->visas as $visa)
-                                                                <li class="visa-type-item">{{$visa->name}}</li>
+                                                                <li class="list-inline-item visa-type-item">{{$visa->name}}</li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
@@ -162,16 +169,32 @@
                                                                          href="{{ route('agent', [$agent->id]) }}">&gt;See
                                                         Individual Review</a></p>
                                             </div>
-                                            <div class="col-md-2"></div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="d-flex align-items-center">
+
+                                                <p class="text-center mt-20">
+                                                    <a class="link-cta" href="{{ route('agent', [$agent->id]) }}">
+                                                        See More info<br><i class="fa fa-long-arrow-right"
+                                                                            aria-hidden="true"></i>
+                                                    </a>
+                                                </p>
+
+
+                                            </div>
+
+
                                         </div>
                                     </div>
-                                    @endforeach
-                                    @endif
-
                                 </div>
                     </div>
+                    @endforeach
+                    @endif
+
+
                 </div>
             </div>
+        </div>
         {{ $agents->appends(request()->all())->links() }}
 
     </section>

@@ -58,9 +58,9 @@ class HomePageController extends Controller
     {
         $industries = $agent->load('industries')->get();
         $employers = $agent->load('employers');
-        $agent->load('locations','experiences');
+        $agent->load('location','experiences');
 
-        return view('frontend.organization', compact ('agent','industries','employers'));
+        return view('frontend.agent', compact ('agent','industries','employers'));
     }
 
 }

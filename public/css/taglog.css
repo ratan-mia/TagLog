@@ -11,12 +11,37 @@
 }
 
 
+body {
+    font-family:Product Sans;
+}
+ .bg-1 {
+     background:#ffffff;
+ }
+
+ #taglog .title {
+     font-family: "Product Sans";
+     color:#fff;
+     font-size:35px;
+     font-weight:800;
+     line-height:45px;
+ }
+
+#taglog .sub-title {
+    font-family: "Product Sans";
+    color:#fff;
+    font-size:28px;
+    font-weight:400;
+    line-height:38px;
+}
+
 .advance-search {
     background: #08B3E6;
     padding:25px 0px;
 }
 
 .search-title {
+    font-size:15px;
+    font-weight: 400;
     color: #ffffff;
     padding: 10px;
 }
@@ -44,7 +69,8 @@
 }
 .agent-container{
     background: #EAF6FD;
-    padding:10px 0px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
 }
 .title-attr {
     font-family:Product Sans;
@@ -87,7 +113,6 @@
     margin: 5px;
     color: #ffffff;
     /*border-radius: 5px;*/
-    float: left;
     font-size: 12px;
 }
 
@@ -96,6 +121,20 @@
     font-size:12px;
     color:#969696;
 }
+.link-cta i{
+    color:#00aced;
+    font-weight: bold;
+}
+.industry-type-item {
+    font-family:Product Sans;
+    background: #00aced;
+    padding: 5px;
+    margin: 5px;
+    color: #ffffff;
+    /*border-radius: 5px;*/
+    font-size: 12px;
+}
+
 .industry-type-item a {
     font-family:Product Sans;
     background: #00aced;

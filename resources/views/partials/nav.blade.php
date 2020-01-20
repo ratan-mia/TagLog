@@ -18,7 +18,7 @@
                                 <a class="nav-link" href="{{route('admin.home')}}">Dashboard</a>
                             </li>
                             <li class="nav-item dropdown dropdown-slide">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Pages <span><i class="fa fa-angle-down"></i></span>
                                 </a>
                                 <!-- Dropdown list -->
@@ -34,7 +34,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown dropdown-slide">
-                                <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Listing <span><i class="fa fa-angle-down"></i></span>
                                 </a>
                                 <!-- Dropdown list -->

@@ -1,6 +1,8 @@
 <?php
 
 return [
-    'failed'   => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'destinations' => 'Destinations (Japan Only)',
+    'visa-type' => 'Visa Type',
+    'country' => 'Country Currently Living',
+    'city' => 'city Currently Living',
 ];

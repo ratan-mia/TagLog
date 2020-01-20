@@ -56,7 +56,7 @@
     </header>
 
     <div class="app-body">
-        @include('partials.dashboard-menu')
+        @include('partials.sidebar')
         <main class="main">
 
 
