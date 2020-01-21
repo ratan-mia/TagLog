@@ -104,6 +104,7 @@
                 <span class="help-block">{{ trans('cruds.employer.fields.countries_helper') }}</span>
             </div>
 
+
             <div class="form-group">
                 <label for="overview">{{ trans('cruds.agent.fields.overview') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('overview') ? 'is-invalid' : '' }}" name="overview" id="overview">{!! old('overview', $agent->overview) !!}</textarea>

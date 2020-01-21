@@ -33,6 +33,7 @@ class Employer extends Model implements HasMedia
         'email',
         'phone',
         'address',
+        'city_id',
         'days_off',
         'created_at',
         'updated_at',
@@ -70,6 +71,11 @@ class Employer extends Model implements HasMedia
         return $this->belongsToMany(Country::class);
     }
 
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
     public function agents()
     {
         return $this->belongsToMany(Agent::class);
@@ -79,6 +85,11 @@ class Employer extends Model implements HasMedia
     {
         return $this->belongsToMany(Industry::class);
     }
+    public function visas()
+    {
+        return $this->belongsToMany(Visa::class);
+    }
+
 
 
     public $destination_id = '';

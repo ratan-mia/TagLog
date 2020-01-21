@@ -1,5 +1,5 @@
 <form action="{{ route('search') }}" method="GET">
-
+    <input type="hidden" name="type" value="employer">
     <div class="form-row">
         <div class="form-group col-md-2 offset-md-1">
             {{-- <label>{{ trans('cruds.user.fields.destination_id') }}</label>--}}

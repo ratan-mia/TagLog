@@ -125,6 +125,16 @@ body {
     color:#00aced;
     font-weight: bold;
 }
+
+.link-map {
+    font-family: Product Sans;
+    font-size: 12px;
+    color: #969696;
+    border: 1px solid #00aced;
+    padding: 6px;
+    border-radius: 50px;
+
+}
 .industry-type-item {
     font-family:Product Sans;
     background: #00aced;

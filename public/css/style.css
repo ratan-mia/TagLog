@@ -1335,9 +1335,9 @@ ul.pagination .active a {
     margin-bottom: 20px;
 }
 
-.search-result p {
-    margin: 0;
-}
+/*.search-result p {*/
+/*    margin: 0;*/
+/*}*/
 
 .category-search-filter {
     background: #f7f7f7;

@@ -75,7 +75,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('search_destinations', Destination::all()->pluck('name', 'id'));
             $view->with('search_countries', Country::all()->pluck('name', 'id'));
             $view->with('search_visas', Visa::all()->pluck('name', 'id'));
-            $view->with('search_cities', City::all()->pluck('name', 'id'));
+            $view->with('search_cities', City::where('country_id','!=',105)->orderBy('name')->pluck('name', 'id'));
             $view->with('search_industries',Industry::all()->pluck('name', 'id'));
             $view->with('search_areas',City::where('country_id',105)->orderBy('name')->pluck('name', 'id'));
 

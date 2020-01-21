@@ -6,6 +6,7 @@ use App\Agent;
 use App\City;
 use App\Country;
 use App\Destination;
+use App\Employer;
 use App\Experience;
 use App\Visa;
 use Illuminate\Http\Request;
@@ -33,7 +34,14 @@ class HomePageController extends Controller
     {
 
         $request->flash();
-        $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
+
+        if ($request->input('type')=='employer') {
+
+            $results = Employer::filterByRequest($request)->with('countries')->paginate(9);
+        }
+        else {
+            $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
+        }
 
 
         return view('frontend.search', compact('results'));
