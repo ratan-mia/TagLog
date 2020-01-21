@@ -22,6 +22,23 @@
                     {{ trans('cruds.city.fields.name_helper') }}
                 </p>
             </div>
+
+            <div class="form-group">
+                <label for="country_id">{{ trans('cruds.city.fields.country') }}</label>
+
+
+                <select class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
+                    @foreach($countries as $id => $country)
+                        <option value="{{ $id }}" {{ (isset($city) && $city->country ? $city->country->id : old('country_id')) == $id ? 'selected' : '' }}>{{ $country }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('country_id'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('country_id') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employer.fields.countries_helper') }}</span>
+            </div>
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>

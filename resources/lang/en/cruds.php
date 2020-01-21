@@ -171,6 +171,7 @@ return [
             'id'                => 'ID',
             'id_helper'         => '',
             'name'              => 'Name',
+            'country'           => 'Country',
             'name_helper'       => '',
             'created_at'        => 'Created at',
             'created_at_helper' => '',

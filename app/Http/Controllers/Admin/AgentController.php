@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Agent;
+use App\City;
 use App\Country;
 use App\Destination;
 use App\Employer;
@@ -37,6 +38,7 @@ class AgentController extends Controller
     {
         abort_if(Gate::denies('agent_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $countries = Country::all()->pluck('name', 'id');
         $destinations = Destination::all()->pluck('name', 'id');
 
@@ -47,7 +49,9 @@ class AgentController extends Controller
         $employers = Employer::all()->pluck('name', 'id');
 
 
-        return view('admin.agents.create', compact('countries', 'destinations', 'industries', 'visas', 'employers'));
+
+
+        return view('admin.agents.create', compact('cities','countries', 'destinations', 'industries', 'visas', 'employers'));
     }
 
     public function store(StoreAgentRequest $request)
@@ -92,7 +96,7 @@ class AgentController extends Controller
     public function edit(Agent $agent)
     {
         abort_if(Gate::denies('agent_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $countries = Country::all()->pluck('name', 'id');
         $destinations = Destination::all()->pluck('name', 'id');
 
@@ -104,7 +108,7 @@ class AgentController extends Controller
 
         $agent->load('destinations', 'industries', 'employers','location');
 
-        return view('admin.agents.edit', compact('countries', 'destinations', 'industries', 'visas', 'employers', 'agent'));
+        return view('admin.agents.edit', compact('cities','countries', 'destinations', 'industries', 'visas', 'employers', 'agent'));
     }
 
     public function update(UpdateAgentRequest $request, Agent $agent)

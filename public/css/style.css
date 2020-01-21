@@ -668,7 +668,11 @@ ul.pagination .active a {
 }
 
 .login-button:hover {
-    background: #5672f9;
+    background: -webkit-linear-gradient(top, #03d7f9, #08b3e6);
+    background: -o-linear-gradient(top, #03d7f9, #08b3e6);
+    background: -moz-linear-gradient(top, #03d7f9, #08b3e6);
+    background: -webkit-linear-gradient(top, #03d7f9, #08b3e6);
+    background: linear-gradient(top, #03d7f9, #08b3e6);
     color: #f9f9f9;
 }
 

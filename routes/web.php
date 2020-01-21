@@ -10,6 +10,10 @@ Route::get('companies/{company}', 'HomePageController@company')->name('company')
 Route::get('agents/{agent}', 'HomePageController@agent')->name('agent');
 Route::get('industries/{industry}', 'HomePageController@industry')->name('industry');
 
+Route::get('login2',function(){
+    return view('auth.login2');
+});
+
 
 
 //Route::redirect('/', '/login');

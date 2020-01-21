@@ -115,26 +115,26 @@
                 <div class="col-md-12">
                     <div class="search-result">
                         <h2>Results</h2>
-                        <p>{{ $agents->count() }} Results</p>
-                        @if (count($agents) > 0)
-                            @foreach ($agents as $agent)
+                        <p>{{ $results->count() }} Results</p>
+                        @if (count($results) > 0)
+                            @foreach ($results as $result)
                                 <div class="agent-container">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="thumb-content">
-                                                @if($agent->logo)<a href="{{ route('agent', [$agent->id]) }}"><img
+                                                @if($result->logo)<a href="{{ route('agent', [$result->id]) }}"><img
                                                         class="card-img-top img-fluid"
-                                                        src="{{ $agent->logo->getUrl() }}"></a>@endif
+                                                        src="{{ $result->logo->getUrl() }}"></a>@endif
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <h6 class="title-attr">Company Name: <span><a
-                                                        href="{{ route('agent', [$agent->id]) }}">{{$agent->name}}</a></span>
+                                                        href="{{ route('agent', [$result->id]) }}">{{$result->name}}</a></span>
                                             </h6>
-                                            <p class="title-attr">Address:<span>{{$agent->address}}</span></p>
+                                            <p class="title-attr">Address:<span>{{$result->address}}</span></p>
                                             <br>
                                             <h3 class="sub-title-attr">Overview</h3>
-                                            {!! substr($agent->overview, 0, 100) !!}...
+                                            {!! substr($result->overview, 0, 100) !!}...
                                         </div>
                                         <div class="col-md-5">
                                             <div class="visa-type">
@@ -144,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-9">
                                                         <ul class="list-inline">
-                                                            @foreach($agent->visas as $visa)
+                                                            @foreach($result->visas as $visa)
                                                                 <li class="list-inline-item visa-type-item">{{$visa->name}}</li>
                                                             @endforeach
                                                         </ul>
@@ -153,7 +153,7 @@
                                                 <hr class="horizontal-line">
                                                 <h4 class="title-attr">Employer's Industry from Taglog User</h4>
                                                 <ul>
-                                                    @foreach($agent->employers as $employer)
+                                                    @foreach($result->employers as $employer)
                                                         {{--                                                <li class="industry-type-item">{{$employer->name}}</li>--}}
                                                         <ul class="list-inline">
                                                             @foreach($employer->industries as $industry)
@@ -166,7 +166,7 @@
                                                     @endforeach
                                                 </ul>
                                                 <p class="text-right"><a class="link-cta"
-                                                                         href="{{ route('agent', [$agent->id]) }}">&gt;See
+                                                                         href="{{ route('agent', [$result->id]) }}">&gt;See
                                                         Individual Review</a></p>
                                             </div>
                                         </div>
@@ -174,7 +174,7 @@
                                             <div class="d-flex align-items-center">
 
                                                 <p class="text-center mt-20">
-                                                    <a class="link-cta" href="{{ route('agent', [$agent->id]) }}">
+                                                    <a class="link-cta" href="{{ route('agent', [$result->id]) }}">
                                                         See More info<br><i class="fa fa-long-arrow-right"
                                                                             aria-hidden="true"></i>
                                                     </a>
@@ -195,7 +195,7 @@
                 </div>
             </div>
         </div>
-        {{ $agents->appends(request()->all())->links() }}
+        {{ $results->appends(request()->all())->links() }}
 
     </section>
 @stop

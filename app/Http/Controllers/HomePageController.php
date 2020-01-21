@@ -33,10 +33,10 @@ class HomePageController extends Controller
     {
 
         $request->flash();
-        $agents = Agent::filterByRequest($request)->with('countries')->paginate(9);
+        $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
 
 
-        return view('frontend.search', compact('agents'));
+        return view('frontend.search', compact('results'));
     }
 
     public function category(Category $category)

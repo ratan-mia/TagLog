@@ -16,6 +16,19 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+
+{{--  login page css--}}
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.ico')}}"/>
+  <link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
+  <!--===============================================================================================-->
+
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/taglog.css') }}" rel="stylesheet" />
   @yield('styles')

@@ -12,7 +12,7 @@
                 <div class="col-md-12">
                     <!-- Header Contetnt -->
                     <div id="taglog" class="content-block">
-                        <h1 class="title">TAGLOG</h1>
+{{--                        <h1 class="title">TAGLOG</h1>--}}
                         <h2 class="sub-title">
                             The community for foreigners who wish to work, or have experience <br>working in Japan (Technical Intern  Trainee, Specified Skilled Worker) </h2>
                     </div>
