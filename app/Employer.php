@@ -90,7 +90,16 @@ class Employer extends Model implements HasMedia
         return $this->belongsToMany(Visa::class);
     }
 
+    public function location()
+    {
+        return $this->morphOne(Location::class, 'location');
+    }
 
+
+    public function experiences()
+    {
+        return $this->hasMany(Experience::class, 'agent_id', 'id');
+    }
 
     public $destination_id = '';
     public $industry_id = '';

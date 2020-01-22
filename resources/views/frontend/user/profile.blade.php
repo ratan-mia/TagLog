@@ -320,7 +320,7 @@
 
                                     <!-- Submit button -->
                                     <div class="form-group">
-                                        <button class="btn btn-lg btn-transparent" type="submit">
+                                        <button class="btn btn-lg taglog-button" type="submit">
                                             {{ trans('global.update') }}
                                         </button>
                                     </div>
@@ -419,7 +419,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <button class="btn btn-transparent" type="submit">
+                                            <button class="btn taglog-button" type="submit">
                                                 {{ trans('global.save') }}
                                             </button>
                                         </div>
@@ -445,7 +445,7 @@
                                             <input type="email" class="form-control" id="new-email">
                                         </div>
                                         <!-- Submit Button -->
-                                        <button class="btn btn-transparent">Change email</button>
+                                        <button class="btn taglog-button">Change email</button>
                                     </form>
                                 </div>
                             </div>
@@ -472,7 +472,7 @@
                                             <input type="password" class="form-control" id="confirm-password">
                                         </div>
                                         <!-- Submit Button -->
-                                        <button class="btn btn-transparent">Change Password</button>
+                                        <button class="btn taglog-button">Change Password</button>
                                     </form>
                                 </div>
                             </div>
@@ -915,7 +915,7 @@
                                                 class="help-block">{{ trans('cruds.experience.fields.employer_feedback_helper') }}</span>
                                         </div>
                                         <div class="form-group">
-                                            <button class="btn btn-danger" type="submit">
+                                            <button class="btn taglog-button" type="submit">
                                                 {{ trans('global.save') }}
                                             </button>
                                         </div>

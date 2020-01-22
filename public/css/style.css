@@ -660,14 +660,14 @@ ul.pagination .active a {
     padding: 20px 0;
 }
 
-.login-button {
+.taglog-button {
     margin-right: 8px;
     padding: 6px 20px !important;
     background: #08b3e6;
     color: #fff;
 }
 
-.login-button:hover {
+.taglog-button:hover {
     background: -webkit-linear-gradient(top, #03d7f9, #08b3e6);
     background: -o-linear-gradient(top, #03d7f9, #08b3e6);
     background: -moz-linear-gradient(top, #03d7f9, #08b3e6);

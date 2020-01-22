@@ -49,18 +49,18 @@
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" href="{{ route('login') }}">Login</a>
+                                    <a class="nav-link taglog-button" href="{{ route('login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" href="{{ route('register') }}">Register</a>
+                                    <a class="nav-link taglog-button" href="{{ route('register') }}">Register</a>
                                 </li>
                             @else
 
                                 <li class="nav-item">
-                                    <a class="nav-link login-button" href="{{ route('user.my-profile') }}">My Profile</a>
+                                    <a class="nav-link taglog-button" href="{{ route('user.my-profile') }}">My Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class=" nav-link login-button" href="#"
+                                    <a class=" nav-link taglog-button" href="#"
                                        onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         Logout
