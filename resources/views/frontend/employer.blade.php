@@ -7,7 +7,7 @@
                     <!-- Advance Search -->
                     <div class="advance-search">
                         <h4 class="search-title">Find Host Employers in Japan</h4>
-                    @include('frontend.employer-form')
+                        @include('frontend.employer-form')
 
                     </div>
                 </div>
@@ -22,25 +22,42 @@
                     <section class="section bg-gray">
                         <!-- Container Start -->
                         <div class="container">
-                            <div class="row">
-                                <!-- Banner Image -->
-                                <div class="col-md-7">
-                                    <div class="organization-header">
-                                        @if($employer->logo)
-                                            <a href="{{ $employer->logo->getUrl() }}" target="_blank">
-                                                <img src="{{ $employer->logo->getUrl() }}" width="100%"
-                                                     height="auto">
-                                            </a>
-                                        @endif
+                            {{--                            <div class="thumb-content m-t-15">--}}
+                            {{--                                @if($employer->logo)--}}
+                            {{--                                    <a href="{{ $employer->logo->getUrl() }}" target="_blank">--}}
+                            {{--                                        <img src="{{ $employer->logo->getUrl() }}" width="100%"--}}
+                            {{--                                             height="auto">--}}
+                            {{--                                    </a>--}}
+                            {{--                                @endif--}}
+                            {{--                            </div>--}}
+                            <h3 class="title">Company Name:<span>{{$employer->name }}</span></h3>
+                            <hr class="horizontal-line">
+                            <p class="paragraph">{!! $employer->description !!}</p>
+                            <hr class="horizontal-line">
+                            <p>Address: {!! $employer->address !!}</p>
+                            <div class="row m-t-20">
+                                <div class="col-md-2">
+                                    <h4 class="sub-title">Location:<span>{{$employer->city->name}}
+                                    </h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <h5 class="title-attr">Industry:</h5>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <ul class="list-inline">
+                                                @foreach($employer->industries as $industry)
+                                                    <li class="list-inline-item industry-type-item">
+                                                        <a
+                                                            href="{{ route('industry', [$industry->id]) }}">{{ $industry->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <!--Side Info-->
-                                <div class="col-md-5">
-                                    <h3 class="title">{{$employer->name }}</h3>
-                                    <p>{{ $employer->address}}</p>
-                                    <h3 class="sub-title">Overview</h3>
-                                    <p class="paragraph">{!! $employer->overview !!}</p>
-                                    <hr class="horizontal-line">
+                                <div class="col-md-6">
                                     <div class="visa-type">
                                         <div class="row">
                                             <div class="col-md-3">
@@ -53,32 +70,21 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <hr class="horizontal-line">
-                                        <h4 class="sub-title">Employer's Industry from Taglog User</h4>
-
-                                                {{--                                                <li class="industry-type-item">{{$employer->name}}</li>--}}
-                                                <ul class="list-inline">
-                                                    @foreach($employer->industries as $industry)
-                                                        <li class="list-inline-item industry-type-item">{{$industry->name}}</li>
-                                                    @endforeach
-                                                </ul>
-
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="row">
+                            <div class="row m-t-20">
                                 <div class="col-md-3">
-{{--                                    <iframe--}}
-{{--                                        width="100%"--}}
-{{--                                        height="120px"--}}
-{{--                                        frameborder="0"--}}
-{{--                                        scrolling="no"--}}
-{{--                                        marginheight="0"--}}
-{{--                                        marginwidth="0"--}}
-{{--                                        src="https://www.google.com/maps/embed/v1/place?q={{$employer->location->latitude}},{{$employer->location->longitude}}&amp;key=AIzaSyC4seHvysGcv7ppFOPF0jNDRbVr97NuG0Y">--}}
+                                    <iframe
+                                        width="100%"
+                                        height="120px"
+                                        frameborder="0"
+                                        scrolling="no"
+                                        marginheight="0"
+                                        marginwidth="0"
+                                        src="https://www.google.com/maps/embed/v1/place?q={{$employer->location->latitude}},{{$employer->location->longitude}}&amp;key=AIzaSyC4seHvysGcv7ppFOPF0jNDRbVr97NuG0Y">
 
-{{--                                    </iframe>--}}
+                                    </iframe>
                                     <br/>
                                 </div>
 

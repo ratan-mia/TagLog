@@ -40,7 +40,7 @@ class EmployerController extends Controller
         $industries = Industry::all()->pluck('name', 'id');
         $cities = City::all()->pluck('name', 'id');
 
-        return view('admin.employers.create', compact('cities', 'countries', 'agents', 'industries','visas'));
+        return view('admin.employers.create', compact('cities', 'countries', 'agents', 'industries', 'visas'));
     }
 
     public function store(StoreEmployerRequest $request)
@@ -50,6 +50,12 @@ class EmployerController extends Controller
         $employer->agents()->sync($request->input('agents', []));
         $employer->industries()->sync($request->input('industries', []));
         $employer->visas()->sync($request->input('visas', []));
+
+        $employer->location()->create([
+            'address' => $request->input('address'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+        ]);
 
         if ($request->input('logo', false)) {
             $employer->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
@@ -81,9 +87,9 @@ class EmployerController extends Controller
 
         $industries = Industry::all()->pluck('name', 'id');
         $visas = Visa::all()->pluck('name', 'id');
-        $employer->load('countries', 'agents', 'industries');
+        $employer->load('countries', 'agents', 'industries', 'location');
 
-        return view('admin.employers.edit', compact('cities','countries', 'agents', 'industries','visas', 'employer'));
+        return view('admin.employers.edit', compact('cities', 'countries', 'agents', 'industries', 'visas', 'employer'));
     }
 
     public function update(UpdateEmployerRequest $request, Employer $employer)
@@ -93,6 +99,12 @@ class EmployerController extends Controller
         $employer->agents()->sync($request->input('agents', []));
         $employer->industries()->sync($request->input('industries', []));
         $employer->visas()->sync($request->input('visas', []));
+
+        $employer->location()->update([
+            'address' => $request->input('address'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+        ]);
 
         if ($request->input('logo', false)) {
             if (!$employer->logo || $request->input('logo') !== $employer->logo->file_name) {
@@ -149,7 +161,7 @@ class EmployerController extends Controller
     {
         abort_if(Gate::denies('employer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $employer->load('countries', 'agents', 'industries', 'employerUsers', 'agentsUsers', 'employerExperiences');
+        $employer->load('countries', 'agents', 'industries', 'employers', 'users', 'experiences');
 
         return view('admin.employers.show', compact('employer'));
     }

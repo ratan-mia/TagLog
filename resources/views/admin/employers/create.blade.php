@@ -41,15 +41,37 @@
             </div>
 
             <div class="form-group">
-                <label for="address">{{ trans('cruds.employer.fields.address') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address">{!! old('address') !!}</textarea>
+                <label for="address">{{ trans('cruds.agent.fields.address') }}</label>
+                <input id="searchMapInput" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address') }}">
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.employer.fields.address_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.agent.fields.address_helper') }}</span>
             </div>
+            <div class="form-group">
+                <label for="latitude">{{ trans('cruds.agent.fields.latitude') }}</label>
+                <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="text" name="latitude" id="latitude" value="{{ old('latitude') }}">
+                @if($errors->has('latitude'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('latitude') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.agent.fields.latitude_helper') }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="longitude">{{ trans('cruds.agent.fields.longitude') }}</label>
+                <input class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}" type="text" name="longitude" id="longitude" value="{{ old('longitude') }}">
+                @if($errors->has('longitude'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('longitude') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.agent.fields.longitude_helper') }}</span>
+            </div>
+
             <div class="form-group {{ $errors->has('city_id') ? 'has-error' : '' }}">
                 <label for="city">{{ trans('cruds.agent.fields.city') }}</label>
                 <select name="city_id" id="city" class="form-control select2">
@@ -494,4 +516,20 @@ Dropzone.options.slidersDropzone = {
      }
 }
 </script>
+// Google Map Suggestion
+<script>
+    function initMap() {
+        var input = document.getElementById('searchMapInput');
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            // document.getElementById('address').value = place.formatted_address;
+            document.getElementById('latitude').value = place.geometry.location.lat();
+            document.getElementById('longitude').value = place.geometry.location.lng();
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD33mG6FBa2qlnMV7VnASFAdgBg2EQeDZ8&libraries=places&callback=initMap" async defer></script>
 @endsection

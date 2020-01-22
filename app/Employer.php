@@ -51,17 +51,8 @@ class Employer extends Model implements HasMedia
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
 
-    public function employerUsers()
-    {
-        return $this->hasMany(User::class, 'employer_id', 'id');
-    }
 
-    public function agentsUsers()
-    {
-        return $this->hasMany(User::class, 'agents_id', 'id');
-    }
-
-    public function employerExperiences()
+    public function experiences()
     {
         return $this->hasMany(Experience::class, 'employer_id', 'id');
     }
@@ -76,6 +67,7 @@ class Employer extends Model implements HasMedia
     {
         return $this->belongsTo(City::class, 'city_id');
     }
+
     public function agents()
     {
         return $this->belongsToMany(Agent::class);
@@ -85,6 +77,7 @@ class Employer extends Model implements HasMedia
     {
         return $this->belongsToMany(Industry::class);
     }
+
     public function visas()
     {
         return $this->belongsToMany(Visa::class);
@@ -95,11 +88,6 @@ class Employer extends Model implements HasMedia
         return $this->morphOne(Location::class, 'location');
     }
 
-
-    public function experiences()
-    {
-        return $this->hasMany(Experience::class, 'agent_id', 'id');
-    }
 
     public $destination_id = '';
     public $industry_id = '';
@@ -149,13 +137,12 @@ class Employer extends Model implements HasMedia
     }
 
 
-
     public function getLogoAttribute()
     {
         $file = $this->getMedia('logo')->last();
 
         if ($file) {
-            $file->url       = $file->getUrl();
+            $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
@@ -167,7 +154,7 @@ class Employer extends Model implements HasMedia
         $file = $this->getMedia('banner_image')->last();
 
         if ($file) {
-            $file->url       = $file->getUrl();
+            $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
@@ -178,7 +165,7 @@ class Employer extends Model implements HasMedia
     {
         $files = $this->getMedia('gallery');
         $files->each(function ($item) {
-            $item->url       = $item->getUrl();
+            $item->url = $item->getUrl();
             $item->thumbnail = $item->getUrl('thumb');
         });
 
@@ -189,7 +176,7 @@ class Employer extends Model implements HasMedia
     {
         $files = $this->getMedia('sliders');
         $files->each(function ($item) {
-            $item->url       = $item->getUrl();
+            $item->url = $item->getUrl();
             $item->thumbnail = $item->getUrl('thumb');
         });
 

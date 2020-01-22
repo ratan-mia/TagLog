@@ -149,7 +149,7 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <h5 class="title-attr m-t-10">EIndustry:</h5>
+                                                    <h5 class="title-attr m-t-10">Industry:</h5>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <ul class="list-inline">

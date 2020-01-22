@@ -103,6 +103,13 @@ body {
     color: #888;
 }
 
+.sub-title span {
+    font-family:Product Sans;
+    font-size: 16px;
+    color: #888;
+    font-weight: 400;
+}
+
 .sub-title {
     font-family:Product Sans;
     font-size: 18px;
