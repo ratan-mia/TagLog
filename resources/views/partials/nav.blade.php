@@ -36,22 +36,37 @@
 {{--                                    {{ route('user.attendance', ['id' => 1]) }}--}}
 {{--                                    {{ url('attendance/1') }}--}}
                                     @foreach($nav_countries as $country)
-                                        <a class="dropdown-item" href="{{ route('navigation',['type'=>'organization','country'=>$country->name]) }}">
-                                            {{$country->name}}
-                                        </a>
+                                        <form action="{{ route('search') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="type" value="organization">
+                                            <input type="hidden" name="country_id" value="{{$country->id}}">
+                                            <button type="submit"
+                                                    class="dropdown-item">
+                                                {{$country->name}}
+                                            </button>
+                                        </form>
                                     @endforeach
                                 </div>
                             </li>
                             <li class="nav-item dropdown dropdown-slide">
                                 <a class="nav-link" href="" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
-                                    Listing <span><i class="fa fa-angle-down"></i></span>
+                                    Employers <span><i class="fa fa-angle-down"></i></span>
                                 </a>
                                 <!-- Dropdown list -->
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    @foreach($nav_destinations as $destination)
+                                        <form action="{{ route('search') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="type" value="employer">
+                                            <input type="hidden" name="destination_id" value="{{$destination->id}}">
+                                            <button type="submit"
+                                                    class="dropdown-item">
+                                                {{$destination->name}}
+                                            </button>
+                                        </form>
+                                    @endforeach
+
                                 </div>
                             </li>
                         </ul>

@@ -79,6 +79,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('search_areas', City::where('country_id', 105)->orderBy('name')->pluck('name', 'id'));
             $view->with('nav_agents', Agent::with('countries')->get());
             $view->with('nav_countries', Country::all());
+            $view->with('nav_destinations', Country::all());
 
 
         });

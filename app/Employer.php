@@ -88,6 +88,10 @@ class Employer extends Model implements HasMedia
         return $this->morphOne(Location::class, 'location');
     }
 
+    public function destinations()
+    {
+        return $this->belongsToMany(Destination::class);
+    }
 
     public $destination_id = '';
     public $industry_id = '';
