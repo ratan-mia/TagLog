@@ -4,7 +4,12 @@
 // Route For Frontend
 
 Route::get('/', 'HomePageController@index')->name('homepage');
-Route::get('search', 'HomePageController@search')->name('search');
+
+Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
+    //
+});
+Route::get('results/{type?}/{country?}', 'HomePageController@navigation')->name('navigation');
+Route::post('results/{type?}/{country?}', 'HomePageController@search')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
 Route::get('agents/{agent}', 'HomePageController@agent')->name('agent');
@@ -107,4 +112,11 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middle
     Route::get('profile','UserProfileController@showProfile')->name('my-profile');
     Route::put('profile/basic-information','UserProfileController@updateBasicInformation')->name('update-basic-information');
     Route::put('profile/work-preference','UserProfileController@updateWorkPreference')->name('update-work-preference');
+});
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
 });

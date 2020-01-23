@@ -1,4 +1,5 @@
-<form action="{{ route('search') }}" method="GET">
+<form action="{{ route('search') }}" method="POST">
+    @csrf
     <input type="hidden" name="type" value="employer">
     <div class="form-row">
         <div class="form-group col-md-2 offset-md-1">

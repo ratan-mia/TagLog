@@ -46,7 +46,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-
         view()->composer('*', function ($view) {
             $view->with('destinations', Destination::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
@@ -75,12 +74,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('search_destinations', Destination::all()->pluck('name', 'id'));
             $view->with('search_countries', Country::all()->pluck('name', 'id'));
             $view->with('search_visas', Visa::all()->pluck('name', 'id'));
-            $view->with('search_cities', City::where('country_id','!=',105)->orderBy('name')->pluck('name', 'id'));
-            $view->with('search_industries',Industry::all()->pluck('name', 'id'));
-            $view->with('search_areas',City::where('country_id',105)->orderBy('name')->pluck('name', 'id'));
+            $view->with('search_cities', City::where('country_id', '!=', 105)->orderBy('name')->pluck('name', 'id'));
+            $view->with('search_industries', Industry::all()->pluck('name', 'id'));
+            $view->with('search_areas', City::where('country_id', 105)->orderBy('name')->pluck('name', 'id'));
+            $view->with('nav_agents', Agent::with('countries')->get());
+            $view->with('nav_countries', Country::all());
+
 
         });
-     //Search Result
+        //Search Result
         view()->composer('frontend.search', function ($view) {
             $view->with('search_cities', City::all());
             $view->with('categories_all', Category::all());
