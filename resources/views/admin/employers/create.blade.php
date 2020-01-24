@@ -96,22 +96,22 @@
                 <span class="help-block">{{ trans('cruds.employer.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="countries">{{ trans('cruds.employer.fields.countries') }}</label>
+                <label for="destinations">{{ trans('cruds.employer.fields.destinations') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('countries') ? 'is-invalid' : '' }}" name="countries[]" id="countries" multiple>
-                    @foreach($countries as $id => $countries)
-                        <option value="{{ $id }}" {{ in_array($id, old('countries', [])) ? 'selected' : '' }}>{{ $countries }}</option>
+                <select class="form-control select2 {{ $errors->has('destinations') ? 'is-invalid' : '' }}" name="destinations[]" id="destinations" multiple>
+                    @foreach($destinations as $id => $destinations)
+                        <option value="{{ $id }}" {{ in_array($id, old('destinations', [])) ? 'selected' : '' }}>{{ $destinations }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('countries'))
+                @if($errors->has('destinations'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('countries') }}
+                        {{ $errors->first('destinations') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.employer.fields.countries_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.employer.fields.destinations_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="recruiting_workers">{{ trans('cruds.employer.fields.recruiting_workers') }}</label>

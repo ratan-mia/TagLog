@@ -12,62 +12,78 @@
 
 
 body {
-    font-family:Product Sans;
+    font-family: Product Sans;
 }
- .bg-1 {
-     background:#ffffff;
- }
 
- #taglog .title {
-     font-family: "Product Sans";
-     color:#fff;
-     font-size:35px;
-     font-weight:800;
-     line-height:45px;
- }
+.bg-1 {
+    background: #ffffff;
+}
+
+#taglog .title {
+    font-family: "Product Sans";
+    color: #fff;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: 45px;
+}
 
 #taglog .sub-title {
     font-family: "Product Sans";
-    color:#fff;
-    font-size:28px;
-    font-weight:400;
-    line-height:38px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 38px;
 }
 
 .advance-search {
     background: #08B3E6;
-    padding:25px 0px;
+    padding: 25px 0px;
 }
 
 .search-title {
-    font-size:15px;
+    font-size: 15px;
     font-weight: 400;
     color: #ffffff;
     padding: 10px;
 }
+
 .advance-search input {
     background-color: #3CBC8D;
-    color:#ffffff;
+    color: #ffffff;
     border: 1px solid #ffffff;
 }
 
 .advance-search select {
-    font-family:Product Sans;
+    font-family: Product Sans;
     width: 100%;
     padding: 16px 20px;
     border: none;
     border-radius: 4px;
-    color:#B2B3B3;
-    font-size:13px;
+    color: #B2B3B3;
+    font-size: 13px;
     background-color: #EAF6FD;
     border-radius: 0px !important;
 }
 
 .advance-search select:focus {
-    font-family:Product Sans;
+    font-family: Product Sans;
     background-color: #f1f1f1;
 }
-.agent-container{
+
+.search-result .sub-title {
+    font-family: Product Sans;
+    color: #888;
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+.search-result .sub-title span {
+    color: #08B3E6;
+    font-size: 20px;
+    margin: 5px 0px;
+}
+
+.agent-container {
     background: #EAF6FD;
     padding: 20px 30px;
     margin-bottom: 20px;
@@ -75,52 +91,59 @@ body {
 
 .employer-container {
     padding: 10px 10px;
-    border-top:1px solid #bbb;
-    border-bottom:1px solid #bbb;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
 }
+
 .title-attr {
-    font-family:Product Sans;
-    font-size:13px;
-    color:#969696;
+    font-family: Product Sans;
+    font-size: 13px;
+    color: #969696;
 }
-.sub-title-attr{
-    font-family:Product Sans;
-    font-size:12px;
-    color:#969696;
+
+.sub-title-attr {
+    font-family: Product Sans;
+    font-size: 12px;
+    color: #969696;
 }
+
 .title-attr span {
-    font-family:Product Sans;
-    color:#505050;
+    font-family: Product Sans;
+    color: #505050;
     font-weight: normal;
 }
+
 .title-attr span a {
-    font-family:Product Sans;
-    color:#505050;
+    font-family: Product Sans;
+    color: #505050;
 }
+
 .title {
-    font-family:Product Sans;
+    font-family: Product Sans;
     font-size: 22px;
     color: #888;
 }
 
 .sub-title span {
-    font-family:Product Sans;
+    font-family: Product Sans;
     font-size: 16px;
     color: #888;
     font-weight: 400;
 }
 
 .sub-title {
-    font-family:Product Sans;
+    font-family: Product Sans;
     font-size: 18px;
     color: #888;
 }
+
 .paragraph {
-    font-family:Product Sans;
-    color:#333;
+    font-family: Product Sans;
+    color: #333;
 }
+
 .visa-type-item {
-    font-family:Product Sans;
+    font-family: Product Sans;
     background: #00aced;
     padding: 5px;
     margin: 5px;
@@ -130,12 +153,13 @@ body {
 }
 
 .link-cta {
-    font-family:Product Sans;
-    font-size:12px;
-    color:#969696;
+    font-family: Product Sans;
+    font-size: 12px;
+    color: #969696;
 }
-.link-cta i{
-    color:#00aced;
+
+.link-cta i {
+    color: #00aced;
     font-weight: bold;
 }
 
@@ -148,8 +172,9 @@ body {
     border-radius: 0px;
 
 }
+
 .industry-type-item {
-    font-family:Product Sans;
+    font-family: Product Sans;
     background: #00aced;
     padding: 5px;
     margin: 5px;
@@ -159,7 +184,7 @@ body {
 }
 
 .industry-type-item a {
-    font-family:Product Sans;
+    font-family: Product Sans;
     background: #00aced;
     padding: 5px;
     margin: 5px;
@@ -170,12 +195,14 @@ body {
 
 .review-container {
     background: #EAF6FD;
-    padding:10px 0px;
+    padding: 10px 0px;
 }
+
 .single-review {
-    padding-right:10px;
-    border-right:1px solid #bbb;
+    padding-right: 10px;
+    border-right: 1px solid #bbb;
 }
+
 .review-stars .checked {
     color: #00aced;
 }
@@ -189,7 +216,7 @@ body {
 }
 
 .reviewer-attr span {
-    font-family:Product Sans;
+    font-family: Product Sans;
     color: #00aced;
 }
 

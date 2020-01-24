@@ -38,7 +38,7 @@
                             {{ trans('cruds.employer.fields.recruiting_workers') }}
                         </th>
                         <th>
-                            {{ trans('cruds.employer.fields.countries') }}
+                            {{ trans('cruds.employer.fields.destinations') }}
                         </th>
                         <th>
                             {{ trans('cruds.employer.fields.agents') }}
@@ -97,7 +97,7 @@
                                 {{ $employer->recruiting_workers ?? '' }}
                             </td>
                             <td>
-                                @foreach($employer->countries as $key => $item)
+                                @foreach($employer->destinations as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>

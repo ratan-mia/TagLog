@@ -3,18 +3,18 @@
 
 body {
     line-height: 1.5;
-    font-family: "Muli", sans-serif;
+    font-family: "Product Sans", sans-serif;
 }
 
 p, li, input, select, button {
-    font-family: "Muli", sans-serif;
+    font-family: "Product Sans", sans-serif;
     color: #666;
     font-size: 14px;
     font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Muli", sans-serif;
+    font-family: "Product Sans", sans-serif;
     font-weight: 600;
     color: #333;
 }
@@ -253,7 +253,7 @@ a:focus, a:hover {
     color: #666;
     box-shadow: none;
     border: 1px solid #5672f9;
-    background-color: transparent;
+    background-color: #dee2e6;
 }
 
 textarea.form-control {
@@ -985,6 +985,9 @@ ul.pagination .active a {
     font-size: 40px;
 }
 
+.user-dashboard-menu .nav {
+    display:block;
+}
 .user-dashboard-menu li {
     margin-bottom: 5px;
 }
@@ -999,11 +1002,12 @@ ul.pagination .active a {
 }
 
 .user-dashboard-menu li a {
-    padding: 10px;
-    font-size: 15px;
+    font-family: "Product Sans";
+    padding: 5px;
+    font-size: 16px;
     display: block;
-    font-weight: 600;
-    color: #555;
+    font-weight: 500;
+    color: #7F7F7F;
 }
 
 .user-dashboard-menu li a:hover {
@@ -1020,7 +1024,6 @@ ul.pagination .active a {
 }
 
 .user-dashboard-menu li a span {
-    float: right;
     background: #F4F7F9;
     float: right;
     font-size: 10px;
@@ -1801,7 +1804,7 @@ ul.pagination .active a {
 }
 
 .widget.personal-info .form-group, .widget.change-password .form-group, .widget.change-email .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .widget.personal-info .form-group i, .widget.change-password .form-group i, .widget.change-email .form-group i {

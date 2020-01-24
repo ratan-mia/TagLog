@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Agent;
 use App\City;
 use App\Country;
+use App\Destination;
 use App\Employer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -35,18 +36,20 @@ class EmployerController extends Controller
         abort_if(Gate::denies('employer_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $countries = Country::all()->pluck('name', 'id');
+        $destinations = Destination::all()->pluck('name', 'id');
         $visas = Visa::all()->pluck('name', 'id');
         $agents = Agent::all()->pluck('name', 'id');
         $industries = Industry::all()->pluck('name', 'id');
-        $cities = City::all()->pluck('name', 'id');
+        $cities = City::where('country_id', 105)->orderBy('name')->pluck('name', 'id');
 
-        return view('admin.employers.create', compact('cities', 'countries', 'agents', 'industries', 'visas'));
+        return view('admin.employers.create', compact('cities', 'countries', 'destinations','agents', 'industries', 'visas'));
     }
 
     public function store(StoreEmployerRequest $request)
     {
         $employer = Employer::create($request->all());
         $employer->countries()->sync($request->input('countries', []));
+        $employer->destinations()->sync($request->input('destinations', []));
         $employer->agents()->sync($request->input('agents', []));
         $employer->industries()->sync($request->input('industries', []));
         $employer->visas()->sync($request->input('visas', []));
@@ -81,7 +84,8 @@ class EmployerController extends Controller
         abort_if(Gate::denies('employer_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $countries = Country::all()->pluck('name', 'id');
-        $cities = City::all()->pluck('name', 'id');
+        $destinations = Destination::all()->pluck('name', 'id');
+        $cities = City::where('country_id', 105)->orderBy('name')->pluck('name', 'id');
 
         $agents = Agent::all()->pluck('name', 'id');
 
@@ -89,13 +93,14 @@ class EmployerController extends Controller
         $visas = Visa::all()->pluck('name', 'id');
         $employer->load('countries', 'agents', 'industries', 'location');
 
-        return view('admin.employers.edit', compact('cities', 'countries', 'agents', 'industries', 'visas', 'employer'));
+        return view('admin.employers.edit', compact('cities', 'countries', 'destinations','agents', 'industries', 'visas', 'employer'));
     }
 
     public function update(UpdateEmployerRequest $request, Employer $employer)
     {
         $employer->update($request->all());
         $employer->countries()->sync($request->input('countries', []));
+        $employer->destinations()->sync($request->input('destinations', []));
         $employer->agents()->sync($request->input('agents', []));
         $employer->industries()->sync($request->input('industries', []));
         $employer->visas()->sync($request->input('visas', []));

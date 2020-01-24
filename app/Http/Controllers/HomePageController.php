@@ -37,8 +37,9 @@ class HomePageController extends Controller
 
 
         if ($request->input('type') == 'employer') {
+            $results = Employer::filterByRequest($request)->with('countries','destinations','visas')->paginate(9);
 
-            $results = Employer::filterByRequest($request)->with('countries')->paginate(9);
+
         } elseif ($request->input('type') == 'organization') {
             $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
         }

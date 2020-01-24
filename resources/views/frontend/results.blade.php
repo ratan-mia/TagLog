@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <section>
         <div class="container">
             <div class="row">
@@ -39,9 +40,36 @@
                         {{--                        Organization Result--}}
 
                         @if(old('type')=='organization')
+                            <h3 class="sub-title">
+                                @if(old('city_id', null) != null)
+                                    {{$search_cities[old('city_id')]}},
+                                @endif
 
-                            <h2>Results</h2>
-                            <p>{{ $results->count() }} Results</p>
+                                @if(old('country_id', null) != null)
+                                    {{$search_countries[old('country_id')]}}
+                                @endif
+
+                                @if(old('destination_id', null) != null)
+                                    for {{$search_destinations[old('destination_id')]}}/
+                                @endif
+
+                                @if(old('visa_type', null) != null)
+                                    {{$search_visas[old('visa_type')]}}
+                                @endif
+
+                                <span>:
+                                    @if($results->count() == 0 )
+                                        No Sending Organization Found
+                                    @elseif($results->count() > 0 && $results->count() < 2)
+                                        {{ $results->count() }} Sending Organization Found
+                                    @else
+                                        {{ $results->count() }} Sending Organizations Found
+                                    @endif
+
+
+                                 </span>
+                            </h3>
+                            <br>
                             @if (count($results) > 0)
                                 @foreach ($results as $result)
                                     <div class="agent-container">
@@ -122,9 +150,32 @@
                             {{--                    End Organization Result--}}
 
                         @elseif(old('type')=='employer')
+                            <h3 class="sub-title">
+                                @if(old('industry_id', null) != null)
+                                    {{$search_industries[old('industry_id')]}} in
+                                @endif
+                                @if(old('city_id', null) != null)
+                                    {{$search_areas[old('city_id')]}},
+                                @endif
+                                @if(old('destination_id', null) != null)
+                                    {{$search_destinations[old('destination_id')]}}/
+                                @endif
 
-                            <h2>Results</h2>
-                            <p>{{ $results->count() }} Results</p>
+                                @if(old('visa_type', null) != null)
+                                    {{$search_visas[old('visa_type')]}}
+                                @endif
+
+                                <span>:
+                                    @if($results->count() == 0 )
+                                        No Employer Found
+                                    @elseif($results->count() > 0 && $results->count() < 2)
+                                        {{ $results->count() }} Employer Found
+                                    @else
+                                        {{ $results->count() }} Employers Found
+                                    @endif
+                                </span>
+                            </h3>
+                            <br>
                             @if (count($results) > 0)
                                 @foreach ($results as $result)
                                     <div class="employer-container">
@@ -200,17 +251,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
+                            @endif
+
+                            {{--                    Employer Result--}}
+                        @endif
+
+
                     </div>
-                    @endforeach
-                    @endif
-
-                    {{--                    Employer Result--}}
-                    @endif
-
-
                 </div>
             </div>
-        </div>
         {{ $results->appends(request()->all())->links() }}
 
     </section>

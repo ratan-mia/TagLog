@@ -103,7 +103,7 @@ class Employer extends Model implements HasMedia
         $this->industry_id = $request->input('industry_id');
         $this->visa_type = $request->input('visa_type');
 
-        if ($request->input('destination_id')) {
+        if ($request->input('country_id')) {
 
             $query->whereHas('destinations', function ($query) {
 
@@ -120,9 +120,6 @@ class Employer extends Model implements HasMedia
             });
         }
 
-//        if ($request->input('visa_type')) {
-//            $query->where('visa_type', $request->input('visa_type'));
-//        }
         if ($request->input('industry_id')) {
 
             $query->whereHas('industries', function ($query) {

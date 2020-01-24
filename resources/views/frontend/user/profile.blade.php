@@ -31,7 +31,7 @@
                         </div>
                         <!-- Dashboard Links -->
                         <div class="widget user-dashboard-menu">
-                            <ul class="nav nav-tabs tabs-left">
+                            <ul class="nav nav-tabs tabs-right">
                                 <li>
                                     <a href="#basic_information" data-toggle="tab"><i class="fa fa-user"></i> Basic
                                         Information</a>
@@ -57,7 +57,7 @@
                                     <a href="#"
                                        onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-cog"></i> Sign Out/ Logout
+                                        <i class="fa fa-cog"></i>Logout
                                     </a>
                                 </li>
                             </ul>
