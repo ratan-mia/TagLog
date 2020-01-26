@@ -4,6 +4,9 @@
 // Route For Frontend
 
 Route::get('/', 'HomePageController@index')->name('homepage');
+Route::get('/what-we-do',function(){
+    return view('frontend.what-we-do');
+})->name('what-we-do');
 
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
     //
@@ -103,6 +106,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Visas
     Route::delete('visas/destroy', 'VisaController@massDestroy')->name('visas.massDestroy');
     Route::resource('visas', 'VisaController');
+
+    // Partners
+    Route::delete('partners/destroy', 'PartnerController@massDestroy')->name('partners.massDestroy');
+    Route::post('partners/media', 'PartnerController@storeMedia')->name('partners.storeMedia');
+    Route::post('partners/ckmedia', 'PartnerController@storeCKEditorImages')->name('partners.storeCKEditorImages');
+    Route::resource('partners', 'PartnerController');
+
+    // Members
+    Route::delete('members/destroy', 'MemberController@massDestroy')->name('members.massDestroy');
+    Route::post('members/media', 'MemberController@storeMedia')->name('members.storeMedia');
+    Route::post('members/ckmedia', 'MemberController@storeCKEditorImages')->name('members.storeCKEditorImages');
+    Route::resource('members', 'MemberController');
 });
 
 //User Profile routes
@@ -112,11 +127,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middle
     Route::get('profile','UserProfileController@showProfile')->name('my-profile');
     Route::put('profile/basic-information','UserProfileController@updateBasicInformation')->name('update-basic-information');
     Route::put('profile/work-preference','UserProfileController@updateWorkPreference')->name('update-work-preference');
-});
+    Route::get('your-experience','UserProfileController@userExperienceForm')->name('experience-form');
+    Route::post('share-experience','UserProfileController@shareExperience')->name('share-experience');
+    Route::get('work-preference','UserProfileController@workPreferenceForm')->name('work-preference-form');
+    Route::post('work-preference','UserProfileController@workPreference')->name('work-preference');
 
-Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('config:clear');
-    $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('config:cache');
-    return 'DONE'; //Return anything
 });

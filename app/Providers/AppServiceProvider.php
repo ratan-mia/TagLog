@@ -51,9 +51,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
+
         view()->composer('*', function ($view) {
-            $view->with('expected_industries', Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
+            $view->with('industries', Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));
         });
+
 
         view()->composer('auth.register', function ($view) {
             $view->with('agents', Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), ''));

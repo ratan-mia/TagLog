@@ -41,8 +41,8 @@
             </div>
 
             <div class="form-group">
-                <label for="address">{{ trans('cruds.agent.fields.address') }}</label>
-                <input id="searchMapInput" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address') }}">
+                <label class='required' for="address">{{ trans('cruds.agent.fields.address') }}</label>
+                <input id="searchMapInput" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address') }}" required>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}
@@ -51,8 +51,8 @@
                 <span class="help-block">{{ trans('cruds.agent.fields.address_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="latitude">{{ trans('cruds.agent.fields.latitude') }}</label>
-                <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="text" name="latitude" id="latitude" value="{{ old('latitude') }}">
+                <label class='required' for="latitude">{{ trans('cruds.agent.fields.latitude') }}</label>
+                <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="text" name="latitude" id="latitude" value="{{ old('latitude') }}" required>
                 @if($errors->has('latitude'))
                     <div class="invalid-feedback">
                         {{ $errors->first('latitude') }}
@@ -62,8 +62,8 @@
             </div>
 
             <div class="form-group">
-                <label for="longitude">{{ trans('cruds.agent.fields.longitude') }}</label>
-                <input class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}" type="text" name="longitude" id="longitude" value="{{ old('longitude') }}">
+                <label class="required" for="longitude">{{ trans('cruds.agent.fields.longitude') }}</label>
+                <input class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}" type="text" name="longitude" id="longitude" value="{{ old('longitude') }}" required>
                 @if($errors->has('longitude'))
                     <div class="invalid-feedback">
                         {{ $errors->first('longitude') }}

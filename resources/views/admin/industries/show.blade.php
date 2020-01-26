@@ -200,7 +200,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#expected_industries_users" role="tab" data-toggle="tab">
+            <a class="nav-link" href="#industries_users" role="tab" data-toggle="tab">
                 {{ trans('cruds.user.title') }}
             </a>
         </li>
@@ -218,7 +218,7 @@
         <div class="tab-pane" role="tabpanel" id="industries_employers">
             @includeIf('admin.industries.relationships.industriesEmployers', ['employers' => $industry->industriesEmployers])
         </div>
-        <div class="tab-pane" role="tabpanel" id="expected_industries_users">
+        <div class="tab-pane" role="tabpanel" id="industries_users">
             @includeIf('admin.industries.relationships.expectedIndustriesUsers', ['users' => $industry->expectedIndustriesUsers])
         </div>
     </div>

@@ -17,6 +17,14 @@
                     {{ trans('global.homepage') }}
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="{{ route("user.experience-form") }}" class="nav-link" target="_blank">
+                    <i class="nav-icon fas fa-eye">
+                    </i>
+                    {{ trans('global.share-experience') }}
+                </a>
+            </li>
             @can('site_setting_access')
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link  nav-dropdown-toggle" href="#">
@@ -80,6 +88,7 @@
                     </a>
                 </li>
             @endcan
+
             @can('visa_access')
                 <li class="nav-item">
                     <a href="{{ route("admin.visas.index") }}" class="nav-link {{ request()->is('admin/visas') || request()->is('admin/visas/*') ? 'active' : '' }}">
@@ -147,6 +156,26 @@
 
                         </i>
                         {{ trans('cruds.comment.title') }}
+                    </a>
+                </li>
+            @endcan
+            @can('partner_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.partners.index") }}" class="nav-link {{ request()->is('admin/partners') || request()->is('admin/partners/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-hands-helping nav-icon">
+
+                        </i>
+                        {{ trans('cruds.partner.title') }}
+                    </a>
+                </li>
+            @endcan
+            @can('member_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.members.index") }}" class="nav-link {{ request()->is('admin/members') || request()->is('admin/members/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-cogs nav-icon">
+
+                        </i>
+                        {{ trans('cruds.member.title') }}
                     </a>
                 </li>
             @endcan

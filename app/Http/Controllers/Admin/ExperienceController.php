@@ -46,9 +46,12 @@ class ExperienceController extends Controller
 
     public function store(StoreExperienceRequest $request)
     {
+
+
         $experience = Experience::create($request->all());
 
-        return redirect()->route('admin.experiences.index');
+
+        return redirect()->back()->with('message', 'The information has been updated successfully!');
     }
 
     public function edit(Experience $experience)

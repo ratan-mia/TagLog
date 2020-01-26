@@ -41,7 +41,7 @@ class UsersController extends Controller
 
         $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $expected_industries = Industry::all()->pluck('name', 'id');
+        $industries = Industry::all()->pluck('name', 'id');
 
         $visas                = Visa::all()->pluck('name', 'id');
 
@@ -49,16 +49,16 @@ class UsersController extends Controller
 
         $agents = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $indurstries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.users.create', compact('roles', 'countries', 'destinations', 'expected_industries','visas', 'employers', 'agents', 'indurstries'));
+        return view('admin.users.create', compact('roles', 'countries', 'destinations', 'industries','visas', 'employers', 'agents', 'industries'));
     }
 
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
-        $user->expected_industries()->sync($request->input('expected_industries', []));
+        $user->industries()->sync($request->input('industries', []));
 
         if ($request->input('profile_picture', false)) {
             $user->addMedia(storage_path('tmp/uploads/' . $request->input('profile_picture')))->toMediaCollection('profile_picture');
@@ -78,7 +78,7 @@ class UsersController extends Controller
 
         $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $expected_industries = Industry::all()->pluck('name', 'id');
+        $industries = Industry::all()->pluck('name', 'id');
 
         $visas                = Visa::all()->pluck('name', 'id');
 
@@ -86,18 +86,18 @@ class UsersController extends Controller
 
         $agents = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $indurstries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $user->load('roles', 'country', 'nationality','destination', 'expected_industries','visa', 'employer', 'agents', 'indurstry');
+        $user->load('roles', 'country', 'nationality','destination', 'industries','visa', 'employer', 'agents', 'indurstry');
 
-        return view('admin.users.edit', compact('roles', 'countries', 'nationalities','destinations', 'expected_industries','visas', 'employers', 'agents', 'indurstries', 'user'));
+        return view('admin.users.edit', compact('roles', 'countries', 'nationalities','destinations', 'industries','visas', 'employers', 'agents', 'industries', 'user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
-        $user->expected_industries()->sync($request->input('expected_industries', []));
+        $user->industries()->sync($request->input('industries', []));
 
         if ($request->input('profile_picture', false)) {
             if (!$user->profile_picture || $request->input('profile_picture') !== $user->profile_picture->file_name) {
@@ -114,7 +114,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user->load('roles', 'country', 'nationality','destination', 'expected_industries', 'employer', 'agents', 'indurstry', 'userExperiences', 'employersAgents');
+        $user->load('roles', 'country', 'nationality','destination', 'industries', 'employer', 'agents', 'indurstry', 'userExperiences', 'employersAgents');
 
         return view('admin.users.show', compact('user'));
     }

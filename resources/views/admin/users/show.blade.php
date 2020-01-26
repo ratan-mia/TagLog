@@ -149,11 +149,11 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.expected_industries') }}
+                            {{ trans('cruds.user.fields.industries') }}
                         </th>
                         <td>
-                            @foreach($user->expected_industries as $key => $expected_industries)
-                                <span class="label label-info">{{ $expected_industries->name }}</span>
+                            @foreach($user->industries as $key => $industries)
+                                <span class="label label-info">{{ $industries->name }}</span>
                             @endforeach
                         </td>
                     </tr>

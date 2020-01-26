@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 @section('content')
 @can('industry_create')
@@ -70,8 +71,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($industries as $key => $industry)
-                        <tr data-entry-id="{{ $industry->id }}">
+                    @foreach($all_industries as $key => $industry)
+                        <tr data-entry-id="{{ $industry->id}}">
                             <td>
 
                             </td>

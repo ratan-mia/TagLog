@@ -67,7 +67,7 @@
                             {{ trans('cruds.user.fields.visa_type') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.expected_industries') }}
+                            {{ trans('cruds.user.fields.industries') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.expected_salary') }}
@@ -146,7 +146,7 @@
                                 {{ App\User::VISA_TYPE_SELECT[$user->visa_type] ?? '' }}
                             </td>
                             <td>
-                                @foreach($user->expected_industries as $key => $item)
+                                @foreach($user->industries as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>

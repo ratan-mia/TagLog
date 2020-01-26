@@ -1,16 +1,21 @@
-<div class="form-group col-md-2">
-    {{-- <label>{{ trans('cruds.user.fields.industry_id') }}</label>--}}
-    <select class="form-control {{ $errors->has('industry_id') ? 'is-invalid' : '' }}"
+<!--industry-->
+<div class="form-group row">
+    <label class="col-md-4 col-form-label text-md-right"
+           for="industry_id">{{ trans('cruds.user.fields.industry') }}</label>
+    <div class="col-md-6">
+        <select
+            class="form-control select2 {{ $errors->has('industry') ? 'is-invalid' : '' }}"
             name="industry_id" id="industry_id">
-        <option value disabled {{ old('industry_id', null) === null ? 'selected' : '' }}>{{ trans('forms.industry') }}</option>
-        @foreach($search_industries as $key => $label)
-        <option
-            value="{{ $key }}" {{ old('industry_id', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-        @endforeach
-    </select>
-    @if($errors->has('industry_id'))
-    <div class="invalid-feedback">
-        {{ $errors->first('industry_id') }}
+            @foreach($industries as $id => $industry)
+            <option
+                value="{{ $id }}" {{ old('industry_id') == $id ? 'selected' : '' }}>{{ $industry }}</option>
+            @endforeach
+        </select>
+        @if($errors->has('industry_id'))
+        <div class="invalid-feedback">
+            {{ $errors->first('industry_id') }}
+        </div>
+        @endif
+        <span class="help-block">{{ trans('cruds.user.fields.industry_helper') }}</span>
     </div>
-    @endif
 </div>

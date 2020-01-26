@@ -220,3 +220,27 @@ body {
     color: #00aced;
 }
 
+/*--------------What we do----------
+------------------------------------*/
+
+.bg-what-we-do {
+    background: url("../images/what-we-do/banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding:150px 0px !important;
+}
+
+.what-we-do .sub-title {
+    font-family: "Product Sans";
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 15%;
+    margin-bottom: 15px;
+    color: #08B3E6;
+}
+.what-we-do .paragraph {
+    font-family: "Product Sans";
+    font-size: 16px;
+    line-height:1.2;
+     color:#505050;
+}

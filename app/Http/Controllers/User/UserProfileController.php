@@ -7,6 +7,7 @@ use App\Country;
 use App\Employer;
 use App\Experience;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreExperienceRequest;
 use App\Industry;
 use App\Nationality;
 use App\User;
@@ -20,25 +21,30 @@ class UserProfileController extends Controller
     {
         $user_id = Auth::id();
         $user = User::find($user_id);
-        $experience = Experience::where('user_id', $user_id)->first();
-        $expected_industries = Industry::all()->pluck('name', 'id');
+        $experience = Experience::where('user_id', $user_id)->first() ? Experience::where('user_id', $user_id)->first() : '';
         $visas = Visa::all()->pluck('name', 'id');
         $profile_picture = $user->getMedia('profile_picture')->first() ? $user->getMedia('profile_picture')->first()->getUrl() : '';
         $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $nationalities = Nationality::all()->pluck('country_enNationality', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $expected_industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $experience->load('user', 'agent', 'destination', 'employer', 'industry');
+        if ($experience != null) {
 
-        return view('frontend.user.profile', compact('user', 'agents', 'users', 'experience', 'countries', 'destinations', 'industries', 'employers', 'expected_industries', 'visas', 'nationalities', 'profile_picture'));
+            $experience->load('user', 'agent', 'destination', 'employer', 'industry');
+
+        } else {
+
+            $$experience ='Check';
+        }
+
+
+        return view('frontend.user.profile', compact('user', 'agents', 'experience', 'countries', 'destinations', 'expected_industries', 'employers', 'visas', 'nationalities', 'profile_picture'));
     }
 
     public function updateBasicInformation(Request $request)
@@ -69,17 +75,88 @@ class UserProfileController extends Controller
 
     }
 
-    public function updateWorkPreference(Request $request) {
+    public function updateWorkPreference(Request $request)
+    {
 
         $user_id = Auth::id();
         $user = User::find($user_id);
-        $user->destination_area    = $request->destination_area;
-        $user->expected_industries()->sync($request->input('expected_industries', []));
-        $user->expected_salary     = $request->expected_salary;
-        $user->date_of_leaving     = $request->date_of_leaving;
+        $user->destination_area = $request->destination_area;
+        $user->industries()->sync($request->input('expected_industries', []));
+        $user->expected_salary = $request->expected_salary;
+        $user->date_of_leaving = $request->date_of_leaving;
         $user->save();
 
         return redirect()->back()->with('message', 'The information has been updated successfully!');
+    }
+
+    public function workPreferenceForm()
+    {
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $expected_industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('frontend.user.work-preference', compact('user', 'destinations', 'expected_industries'));
+
+    }
+
+
+    public function workPreference(Request $request)
+    {
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        $user->destination_id = $request->destination_id;
+        $user->industries()->sync($request->input('expected_industries', []));
+        $user->expected_salary = $request->expected_salary;
+        $user->date_of_leaving = $request->date_of_leaving;
+        $user->save();
+
+        return redirect()->route('user.experience-form')->with('message', 'The information has been updated successfully!');
+    }
+
+    public function userExperienceForm()
+    {
+        $users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('frontend.user.share-experience', compact('users', 'agents', 'destinations', 'employers', 'industries'));
+    }
+
+    public function shareExperience(Request $request)
+    {
+
+//        $user = User::create(['name' => 'John']);
+        $user_id = Auth::id();
+        $experience = Experience::create([
+            'user_id' => $user_id,
+            'visa_type' => $request->visa_type,
+            'agent_id' => $request->agent_id,
+            'expenses_paid' => $request->expenses_paid,
+            'visa_application_rating' => $request->visa_application_rating,
+            'language_training_rating' => $request->language_training_rating,
+            'agent_rating' => $request->agent_rating,
+            'employer_id' => $request->employer,
+            'employer_location' => $request->employer_location,
+            'industry_id' => $request->industry_id,
+            'employment_date' => $request->employment_date,
+            'employment_period' => $request->employment_period,
+            'monthly_salary' => $request->monthly_salary,
+            'monthly_living_expenses' => $request->monthly_living_expenses,
+            'weekly_working_hours' => $request->weekly_working_hours,
+            'monthly_days_off' => $request->monthly_days_off,
+            'employer_rating' => $request->employer_rating,
+            'employer_feedback' => $request->employer_feedback,
+
+        ]);
+
+        return redirect()->route('user.my-profile')->with('message', 'Thanks for sharing your experience!');
     }
 }
 

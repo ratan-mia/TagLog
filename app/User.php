@@ -176,7 +176,7 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsTo(Country::class, 'destination_id');
     }
 
-    public function expected_industries()
+    public function industries()
     {
         return $this->belongsToMany(Industry::class);
     }

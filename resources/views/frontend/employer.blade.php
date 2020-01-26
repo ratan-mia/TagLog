@@ -75,6 +75,7 @@
                             </div>
                             <div class="row m-t-20">
                                 <div class="col-md-3">
+                                    @if(!$employer->location->isEmpty)
                                     <iframe
                                         width="100%"
                                         height="120px"
@@ -85,6 +86,8 @@
                                         src="https://www.google.com/maps/embed/v1/place?q={{$employer->location->latitude}},{{$employer->location->longitude}}&amp;key=AIzaSyC4seHvysGcv7ppFOPF0jNDRbVr97NuG0Y">
 
                                     </iframe>
+                                    @endif
+
                                     <br/>
                                 </div>
 

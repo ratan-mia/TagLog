@@ -47,26 +47,7 @@ class HomePageController extends Controller
         return view('frontend.results', compact('results'));
     }
 
-    public function navigation(Request $request, $type, $country)
-
-    {
-        $request->flash();
-
-
-        if ($type == 'organization') {
-
-            $request->session()->flash('type', 'organization');
-            $request->session()->flash('country_id', $country);
-            $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
-
-        } elseif (type == 'employer') {
-
-            $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
-        }
-
-
-        return view('frontend.results', compact('results'));
-    }
+    
 
 
     public function category(Category $category)

@@ -298,26 +298,26 @@
                     <span class="help-block">{{ trans('cruds.user.fields.user_status_helper') }}</span>
                 </div>
                 <div class="form-group">
-                    <label for="expected_industries">{{ trans('cruds.user.fields.expected_industries') }}</label>
+                    <label for="industries">{{ trans('cruds.user.fields.industries') }}</label>
                     <div style="padding-bottom: 4px">
                         <span class="btn btn-info btn-xs select-all"
                               style="border-radius: 0">{{ trans('global.select_all') }}</span>
                         <span class="btn btn-info btn-xs deselect-all"
                               style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                     </div>
-                    <select class="form-control select2 {{ $errors->has('expected_industries') ? 'is-invalid' : '' }}"
-                            name="expected_industries[]" id="expected_industries" multiple>
-                        @foreach($expected_industries as $id => $expected_industries)
+                    <select class="form-control select2 {{ $errors->has('industries') ? 'is-invalid' : '' }}"
+                            name="industries[]" id="industries" multiple>
+                        @foreach($industries as $id => $industries)
                             <option
-                                value="{{ $id }}" {{ (in_array($id, old('expected_industries', [])) || $user->expected_industries->contains($id)) ? 'selected' : '' }}>{{ $expected_industries }}</option>
+                                value="{{ $id }}" {{ (in_array($id, old('industries', [])) || $user->industries->contains($id)) ? 'selected' : '' }}>{{ $industries }}</option>
                         @endforeach
                     </select>
-                    @if($errors->has('expected_industries'))
+                    @if($errors->has('industries'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('expected_industries') }}
+                            {{ $errors->first('industries') }}
                         </div>
                     @endif
-                    <span class="help-block">{{ trans('cruds.user.fields.expected_industries_helper') }}</span>
+                    <span class="help-block">{{ trans('cruds.user.fields.industries_helper') }}</span>
                 </div>
                 <div class="form-group">
                     <label for="expected_salary">{{ trans('cruds.user.fields.expected_salary') }}</label>
@@ -375,22 +375,22 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.user.fields.agents_helper') }}</span>
                 </div>
-                <div class="form-group">
-                    <label for="indurstry_id">{{ trans('cruds.user.fields.indurstry') }}</label>
-                    <select class="form-control select2 {{ $errors->has('indurstry') ? 'is-invalid' : '' }}"
-                            name="indurstry_id" id="indurstry_id">
-                        @foreach($indurstries as $id => $indurstry)
-                            <option
-                                value="{{ $id }}" {{ ($user->indurstry ? $user->indurstry->id : old('indurstry_id')) == $id ? 'selected' : '' }}>{{ $indurstry }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('indurstry_id'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('indurstry_id') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.user.fields.indurstry_helper') }}</span>
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="indurstry_id">{{ trans('cruds.user.fields.indurstry') }}</label>--}}
+{{--                    <select class="form-control select2 {{ $errors->has('indurstry') ? 'is-invalid' : '' }}"--}}
+{{--                            name="indurstry_id" id="indurstry_id">--}}
+{{--                        @foreach($industries as $id => $indurstry)--}}
+{{--                            <option--}}
+{{--                                value="{{ $id }}" {{ ($user->indurstry ? $user->indurstry->id : old('indurstry_id')) == $id ? 'selected' : '' }}>{{ $indurstry }}</option>--}}
+{{--                        @endforeach--}}
+{{--                    </select>--}}
+{{--                    @if($errors->has('indurstry_id'))--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('indurstry_id') }}--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                    <span class="help-block">{{ trans('cruds.user.fields.indurstry_helper') }}</span>--}}
+{{--                </div>--}}
                 <div class="form-group">
                     <label for="profile_picture">{{ trans('cruds.user.fields.profile_picture') }}</label>
                     <div class="needsclick dropzone {{ $errors->has('profile_picture') ? 'is-invalid' : '' }}"

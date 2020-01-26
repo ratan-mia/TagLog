@@ -38,19 +38,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 
 
+<!--==========================       Registration page     ========================================-->
+<script src="{{asset('js/jquery.backstretch.min.js')}}"></script>
+<script src="{{asset('js/retina-1.1.0.min.js')}}"></script>
+<script src="{{asset('js/registration.js')}}"></script>
 <!--==========================       Login Page     ===============================================-->
+
 <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-{{--<script src="vendor/bootstrap/js/popper.js"></script>--}}
-{{--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>--}}
-{{--<script src="vendor/select2/select2.min.js"></script>--}}
-<!--===============================================================================================-->
 <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
 <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
 <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
 <script src="{{asset('js/login.js')}}"></script>
-
-
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/conditionize.flexible.jquery.js') }}"></script>
+
+<!--[if lt IE 10]>
+<script src="{{asset('js/placeholder.js')}"></script>
+<![endif]-->
 
 
