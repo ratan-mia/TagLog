@@ -8,6 +8,7 @@ use App\Employer;
 use App\Experience;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExperienceRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Industry;
 use App\Nationality;
 use App\User;
@@ -105,7 +106,7 @@ class UserProfileController extends Controller
     {
         $user_id = Auth::id();
         $user = User::find($user_id);
-        $user->destination_id = $request->destination_id;
+        $user->destination_area = $request->destination_area;
         $user->industries()->sync($request->input('expected_industries', []));
         $user->expected_salary = $request->expected_salary;
         $user->date_of_leaving = $request->date_of_leaving;
@@ -134,9 +135,10 @@ class UserProfileController extends Controller
 
 //        $user = User::create(['name' => 'John']);
         $user_id = Auth::id();
+        $user = User::find($user_id);
         $experience = Experience::create([
             'user_id' => $user_id,
-            'visa_type' => $request->visa_type,
+            'visa_type' => $user->visa_type,
             'agent_id' => $request->agent_id,
             'expenses_paid' => $request->expenses_paid,
             'visa_application_rating' => $request->visa_application_rating,
@@ -157,6 +159,28 @@ class UserProfileController extends Controller
         ]);
 
         return redirect()->route('user.my-profile')->with('message', 'Thanks for sharing your experience!');
+    }
+
+    public function updateProfilePicture(Request $request, User $user){
+//        $user->update($request->all());
+//        if ($request->input('profile_picture', false)) {
+//            if (!$user->profile_picture || $request->input('profile_picture') !== $user->profile_picture->file_name) {
+//                $user->addMedia(storage_path('tmp/uploads/' . $request->input('profile_picture')))->toMediaCollection('profile_picture');
+//            }
+//        } elseif ($user->profile_picture) {
+//            $user->profile_picture->delete();
+//        }
+
+//        if ($request->input('profile_picture')) {
+//            $user->addMedia($request->file('profile_picture'))->toMediaCollection('profile_picture');
+//
+//
+//        }
+
+        if($request->hasFile('profile_picture') && $request->file('profile_picture')->isValid()){
+            $user->addMediaFromRequest('profile_picture')->toMediaCollection('profile_picture');
+        }
+        return redirect()->route('user.my-profile');
     }
 }
 

@@ -7,12 +7,14 @@
                 <div class="row">
                     {{--                    <div class="col-md-2"></div>--}}
                     <div class="col-md-8 offset-md-2 form-box registration">
-                        <form role="form" action="{{ route('user.experience-form') }}" method="POST"
+                        <form role="form" action="{{ route('user.share-experience') }}" method="POST"
                               class="registration-form">
                             @csrf
                             <div class="form-top">
                                 <div class="form-top-left">
-{{--                                    <h3>Step 3 / 3</h3>--}}
+                                    @if (url()->previous() == 'http://127.0.0.1:8000/user/work-preference')
+                                        <h3>Step 3 / 3</h3>
+                                    @endif
                                     <p>Share Your Experience:</p>
                                 </div>
                                 <div class="form-top-right">
@@ -24,19 +26,19 @@
                                 <!--Name of Agent-->
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="agents_id">{{ trans('cruds.user.fields.agents_register') }}</label>
+                                           for="agent_id">{{ trans('cruds.user.fields.agents_register') }}</label>
                                     <div class="col-md-6">
                                         <select
-                                            class="form-control select2 {{ $errors->has('agents') ? 'is-invalid' : '' }}"
-                                            name="agents_id" id="agents_id">
-                                            @foreach($agents as $id => $agents)
+                                            class="form-control {{ $errors->has('agents') ? 'is-invalid' : '' }}"
+                                            name="agent_id" id="agent_id">
+                                            @foreach($agents as $id => $agent)
                                                 <option
-                                                    value="{{ $id }}" {{ old('agents_id') == $id ? 'selected' : '' }}>{{ $agents }}</option>
+                                                    value="{{ $id }}" {{ old('agent_id') == $id ? 'selected' : '' }}>{{ $agent }}</option>
                                             @endforeach
                                         </select>
-                                        @if($errors->has('agents_id'))
+                                        @if($errors->has('agent_id'))
                                             <div class="invalid-feedback">
-                                                {{ $errors->first('agents_id') }}
+                                                {{ $errors->first('agent_id') }}
                                             </div>
                                         @endif
                                         <span class="help-block">{{ trans('cruds.user.fields.agents_helper') }}</span>
@@ -147,7 +149,7 @@
                                            for="employer_id">{{ trans('cruds.experience.fields.employer') }}</label>
                                     <div class="col-md-6">
                                         <select
-                                            class="form-control select2 {{ $errors->has('employer_id') ? 'is-invalid' : '' }}"
+                                            class="form-control {{ $errors->has('employer_id') ? 'is-invalid' : '' }}"
                                             name="employer_id" id="employer_id">
                                             @foreach($employers ?? '' as $id => $employer)
                                                 <option
@@ -192,7 +194,7 @@
                                            for="industry_id">{{ trans('cruds.experience.fields.industry') }}</label>
                                     <div class="col-md-6">
                                         <select
-                                            class="form-control select2 {{ $errors->has('industry') ? 'is-invalid' : '' }}"
+                                            class="form-control{{ $errors->has('industry') ? 'is-invalid' : '' }}"
                                             name="industry_id" id="industry_id">
                                             @foreach($industries as $id => $industry)
                                                 <option

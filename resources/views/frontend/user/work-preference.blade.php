@@ -12,38 +12,44 @@
                             @csrf
                             <div class="form-top">
                                 <div class="form-top-left">
-{{--                                    <h3>Step 2 / 3</h3>--}}
-                                    <p>Work Preference:</p>
+                                    @if (url()->previous() == 'http://127.0.0.1:8000/register')
+                                        <h3>Step 2 / 3</h3>
+                                    @endif
+                                    <h4>Work Preference:</h4>
                                 </div>
                                 <div class="form-top-right">
-                                    <i class="fa fa-user"></i>
+                                    <i class="fa fa-briefcase"></i>
                                 </div>
                             </div>
                             <div class="form-bottom">
                                 <!--Work Preference(Technical Intern Trainee-->
                                 <!--Expected Destination Area-->
 
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right"
-                                           for="destination_id">{{ trans('cruds.user.fields.destination_area') }}</label>
-                                    <div class="col-md-6">
-                                        <select
-                                            class="form-control select2 {{ $errors->has('destination') ? 'is-invalid' : '' }}"
-                                            name="destination_id" id="destination_id">
-                                            @foreach($destinations as $id => $destination)
-                                                <option
-                                                    value="{{ $id }}" {{ old('destination_id') == $id ? 'selected' : '' }}>{{ $destination }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('destination_id'))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('destination_id') }}
-                                            </div>
-                                        @endif
-                                        <span
-                                            class="help-block">{{ trans('cruds.user.fields.destination_helper') }}</span>
-                                    </div>
-                                </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-4 col-form-label text-md-right"
+                                                for="destination_area">{{ trans('cruds.user.fields.destination_area') }}</label>
+                                            <div class="col-md-6">
+                                            <select
+                                                class="form-control {{ $errors->has('destination') ? 'is-invalid' : '' }}"
+                                                name="destination_area" id="destination_area">
+                                                @foreach($destination_areas as $id => $destination_area)
+                                                    <option
+                                                        value="{{ $id }}" {{ ($user->destination_area ? $user->area->id : old('destination_area')) == $id ? 'selected' : '' }}>{{ $destination_area }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('destination_area'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('destination_area') }}
+                                                </div>
+                                            @endif
+                                            <span
+                                                class="help-block">{{ trans('cruds.user.fields.destination_area_helper') }}</span>
+                                        </div>
+                                        </div>
+
+
+
+
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
                                            for="expected_industries">{{ trans('cruds.user.fields.expected_industries') }}</label>
@@ -117,8 +123,10 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-next">
-                                            {{ __('Submit') }}
+                                            {{ __('Next') }}
                                         </button>
+
+
                                     </div>
                                 </div>
                         </form>

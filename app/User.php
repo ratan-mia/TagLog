@@ -112,6 +112,7 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
+        $this->addMediaConversion('avatar')->width(100)->height(100);
     }
 
     public function userExperiences()
@@ -174,6 +175,11 @@ class User extends Authenticatable implements HasMedia
     public function destination()
     {
         return $this->belongsTo(Country::class, 'destination_id');
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(City::class, 'destination_area');
     }
 
     public function industries()

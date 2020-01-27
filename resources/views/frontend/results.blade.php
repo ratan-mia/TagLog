@@ -114,7 +114,7 @@
                                                                     @foreach($employer->industries as $industry)
                                                                         <li class="list-inline-item industry-type-item">
                                                                             <a
-                                                                                href="{{ route('industry', [$industry->id]) }}">{{ $industry->name }}</a>
+                                                                                href="#">{{ $industry->name }}</a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
@@ -208,7 +208,8 @@
                                                             @foreach($result->industries as $industry)
                                                                 <li class="list-inline-item industry-type-item">
                                                                     <a
-                                                                        href="{{ route('industry', [$industry->id]) }}">{{ $industry->name }}</a>
+{{--                                                                        href="{{ route('industry', [$industry->id]) }}">{{ $industry->name }}</a>--}}
+                                                                        href="#">{{ $industry->name }}</a>
                                                                 </li>
                                                             @endforeach
                                                         </ul>

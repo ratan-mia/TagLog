@@ -18,12 +18,11 @@
                             <!-- User Image -->
 
                             <div class="profile-thumb">
-                                <img src="{{$profile_picture}}" alt="" class="rounded-circle">
-                                <!-- File chooser -->
-                                {{--                                <div class="form-group choose-file">--}}
-                                {{--                                    <i class="fa fa-user text-center"></i>--}}
-                                {{--                                    <input type="file" class="form-control-file d-inline" id="input-file">--}}
-                                {{--                                </div>--}}
+                                @if($user->profile_picture)
+                                    <a href="{{ $user->profile_picture->getUrl() }}" target="_blank">
+                                        <img src="{{ $user->profile_picture->getUrl('avatar') }}" width="50px" height="50px">
+                                    </a>
+                                @endif
 
                             </div>
                             <!-- User Name -->
@@ -43,11 +42,14 @@
                                         Preference</a>
                                 </li>
                                 <li>
-                                    <a href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Share
+                                    <a href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Your
                                         Experience</a>
                                 </li>
+{{--                                <li>--}}
+{{--                                    <a href="#change_email" data-toggle="tab"><i class="fa fa-envelope"></i>Change Email</a>--}}
+{{--                                </li>--}}
                                 <li>
-                                    <a href="#change_email" data-toggle="tab"><i class="fa fa-envelope"></i>Change Email</a>
+                                    <a href="#change_photo" data-toggle="tab"><i class="fa fa-envelope"></i>Change Avatar</a>
                                 </li>
                                 <li>
                                     <a href="#change_password" data-toggle="tab"><i class="fa fa-briefcase"></i>Change
@@ -106,7 +108,7 @@
                                                class="col-sm-6 col-form-label">{{ trans('profile.basic-information.nationality') }}</label>
                                         <div class="col-sm-6">
                                             <select
-                                                class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}"
+                                                class="form-control{{ $errors->has('nationality') ? 'is-invalid' : '' }}"
                                                 name="nationality_id" id="nationality_id">
                                                 @foreach($nationalities as $id => $nationality)
                                                     <option
@@ -131,7 +133,7 @@
                                                class="col-sm-6 col-form-label">{{ trans('profile.basic-information.country') }}</label>
                                         <div class="col-sm-6">
                                             <select
-                                                class="form-control select2 {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
+                                                class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}"
                                                 name="country_id" id="country_id">
                                                 @foreach($countries as $id => $country)
                                                     <option
@@ -341,6 +343,7 @@
                                 @endif
                                 @if (is_null($user))
                                     <p>No Data Found</p>
+                                    <p><a class="btn taglog-button" href="{{route('user.work-preference-form')}}">Add Now</a></p>
                                 @else
 
                                     <form method="POST" action="{{ route("user.update-work-preference", [$user->id]) }}"
@@ -352,11 +355,15 @@
                                         <div class="form-group">
                                             <label
                                                 for="destination_area">{{ trans('cruds.user.fields.destination_area') }}</label>
-                                            <input
-                                                class="form-control {{ $errors->has('destination_area') ? 'is-invalid' : '' }}"
-                                                type="text" name="destination_area"
-                                                id="destination_area"
-                                                value="{{ old('destination_area', $user->destination_area) }}">
+
+                                            <select
+                                                class="form-control {{ $errors->has('destination') ? 'is-invalid' : '' }}"
+                                                name="destination_area" id="destination_area">
+                                                @foreach($destination_areas as $id => $destination_area)
+                                                    <option
+                                                        value="{{ $id }}" {{ ($user->destination_area ? $user->area->id : old('destination_area')) == $id ? 'selected' : '' }}>{{ $destination_area }}</option>
+                                                @endforeach
+                                            </select>
                                             @if($errors->has('destination_area'))
                                                 <div class="invalid-feedback">
                                                     {{ $errors->first('destination_area') }}
@@ -456,6 +463,38 @@
                                 </div>
                             </div>
 
+                            {{-------------------------------------Change Photo ------------------------------------------------------------
+                     --------------------------------------------------------------------------------------------------------------------}}
+                            <div class="tab-pane" id="change_photo">
+
+                                <!-- Change Email Address -->
+                                <div class="widget change-email mb-0">
+                                    <h3 class="widget-header user">Change Profile Picture</h3>
+                                    <form method="POST" action="{{ route("user.update-profile-picture", [$user->id]) }}" enctype="multipart/form-data">
+                                        {{--                                    @method('PUT')--}}
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="profile_picture">{{ trans('cruds.user.fields.profile_picture') }}</label>
+                                            {{--                                    <div class="needsclick dropzone {{ $errors->has('profile_picture') ? 'is-invalid' : '' }}"--}}
+                                            {{--                                         id="profile_picture-dropzone">--}}
+                                            {{--                                    </div>--}}
+                                            <input class="form-control" type="file" id="profile_picture" name="profile_picture" >
+                                            @if($errors->has('profile_picture'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('profile_picture') }}
+                                                </div>
+                                            @endif
+                                            <span class="help-block">{{ trans('cruds.user.fields.profile_picture_helper') }}</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn" type="submit">
+                                                {{ trans('global.save') }}
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             {{---------------------------------------Change Password------------------------------------------------------------
                             --------------------------------------------------------------------------------------------------------------------}}
                             <div class="tab-pane" id="change_password">
@@ -513,7 +552,7 @@
                                                 <label
                                                     for="agent_id">{{ trans('cruds.experience.fields.agent') }}</label>
                                                 <select
-                                                    class="form-control select2 {{ $errors->has('agent') ? 'is-invalid' : '' }}"
+                                                    class="form-control {{ $errors->has('agent') ? 'is-invalid' : '' }}"
                                                     name="agent_id" id="agent_id">
                                                     @foreach($agents as $id => $agent)
                                                         <option
@@ -620,7 +659,7 @@
                                                 <label
                                                     for="employer_id">{{ trans('cruds.experience.fields.employer') }}</label>
                                                 <select
-                                                    class="form-control select2 {{ $errors->has('employer') ? 'is-invalid' : '' }}"
+                                                    class="form-control {{ $errors->has('employer') ? 'is-invalid' : '' }}"
                                                     name="employer_id" id="employer_id">
                                                     @foreach($employers as $id => $employer)
                                                         <option
@@ -654,7 +693,7 @@
                                                 <label
                                                     for="industry_id">{{ trans('cruds.experience.fields.industry') }}</label>
                                                 <select
-                                                    class="form-control select2 {{ $errors->has('industry') ? 'is-invalid' : '' }}"
+                                                    class="form-control {{ $errors->has('industry') ? 'is-invalid' : '' }}"
                                                     name="industry_id" id="industry_id">
                                                     @foreach($industries as $id => $industry)
                                                         <option
@@ -804,7 +843,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <button class="btn" type="submit">
-                                                    {{ trans('global.save') }}
+                                                    {{ trans('global.update') }}
                                                 </button>
                                             </div>
                                         </form>

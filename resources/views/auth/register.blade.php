@@ -11,7 +11,7 @@
                             @csrf
                             <div class="form-top">
                                 <div class="form-top-left">
-{{--                                    <h3>Step 1 / 3</h3>--}}
+                                    <h3>Step 1 / 3</h3>
                                     <p>Tell us who you are:</p>
                                 </div>
                                 <div class="form-top-right">
@@ -95,7 +95,7 @@
                                            for="nationality_id">{{ trans('cruds.user.fields.nationality') }}</label>
                                     <div class="col-md-6">
                                         <select
-                                            class="form-control select2 {{ $errors->has('nationality') ? 'is-invalid' : '' }}"
+                                            class="form-control {{ $errors->has('nationality') ? 'is-invalid' : '' }}"
                                             name="nationality_id" id="nationality_id">
                                             @foreach($nationalities as $id => $nationality)
                                                 <option
@@ -117,7 +117,7 @@
                                            for="country_id">{{ trans('cruds.user.fields.country_register') }}</label>
                                     <div class="col-md-6">
                                         <select
-                                            class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                                            class="form-control {{ $errors->has('country') ? 'is-invalid' : '' }}"
                                             name="country_id" id="country_id">
                                             @foreach($countries as $id => $country)
                                                 <option
@@ -355,7 +355,7 @@
                                                                 <div class="form-group row mb-0">
                                                                     <div class="col-md-6 offset-md-4">
                                                                         <button type="submit" class="btn btn-next">
-                                                                            {{ __('Sign me up!') }}
+                                                                            {{ __('Next') }}
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -427,7 +427,7 @@
                                            class="form-google-plus form-control" id="form-google-plus">
                                 </div>
                                 <button type="button" class="btn btn-previous">Previous</button>
-                                <button type="submit" class="btn">Sign me up!</button>
+                                <button type="submit" class="btn">Next</button>
                             </div>
 
                     </form>

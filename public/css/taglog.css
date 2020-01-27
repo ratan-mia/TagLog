@@ -244,3 +244,29 @@ body {
     line-height:1.2;
      color:#505050;
 }
+
+
+/*--------------What we do----------
+------------------------------------*/
+
+.bg-business-partner {
+    background: url("../images/business-partners.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding:150px 0px !important;
+}
+
+.business-partner .sub-title {
+    font-family: "Product Sans";
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 15%;
+    margin-bottom: 15px;
+    color: #08B3E6;
+}
+.business-partner .paragraph {
+    font-family: "Product Sans";
+    font-size: 16px;
+    line-height:1.2;
+    color:#505050;
+}

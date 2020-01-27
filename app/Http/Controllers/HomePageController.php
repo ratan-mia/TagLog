@@ -8,6 +8,7 @@ use App\Country;
 use App\Destination;
 use App\Employer;
 use App\Experience;
+use App\Partner;
 use App\Visa;
 use Illuminate\Http\Request;
 use App\Company;
@@ -47,7 +48,7 @@ class HomePageController extends Controller
         return view('frontend.results', compact('results'));
     }
 
-    
+
 
 
     public function category(Category $category)
@@ -83,6 +84,12 @@ class HomePageController extends Controller
 
 
         return view('frontend.employer', compact('employer', 'industries', 'industries', 'agents'));
+    }
+
+
+    public function businessPartner(){
+        $partners = Partner::all();
+        return view('frontend.business-partner',compact('partners'));
     }
 
 }

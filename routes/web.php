@@ -4,9 +4,14 @@
 // Route For Frontend
 
 Route::get('/', 'HomePageController@index')->name('homepage');
+
 Route::get('/what-we-do',function(){
     return view('frontend.what-we-do');
 })->name('what-we-do');
+
+Route::get('/our-business-partners','HomePageController@businessPartner')->name('business-partner');
+
+
 
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
     //
@@ -131,5 +136,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middle
     Route::post('share-experience','UserProfileController@shareExperience')->name('share-experience');
     Route::get('work-preference','UserProfileController@workPreferenceForm')->name('work-preference-form');
     Route::post('work-preference','UserProfileController@workPreference')->name('work-preference');
+    Route::post('update-profile-picture/{user}','UserProfileController@updateProfilePicture')->name('update-profile-picture');
+
 
 });
