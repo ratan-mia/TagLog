@@ -90,8 +90,7 @@
             </div>
         </div>
         <div class="container">
-            <h2 class="m-t-20">Bangladesh <span>
-                    <img src="{{asset('flags/bangladesh.png')}}" width="30px" height="30px"></span>
+            <h2 class="m-t-20">Bangladesh <span><img src="{{asset('flags/bangladesh.png')}}" width="30px" height="30px"></span>
             </h2>
             <br>
             <div class="row border">
@@ -103,7 +102,7 @@
                     </div>
                     @if($partners->count()>0)
                         @foreach($partners as $partner)
-                            @if($partner ->country_id == 18)
+                            @if($partner ->country_id == $partner->country->id)
                                 <div class="row border">
                                     <div class="col-md-4 border-right">
                                         {{$partner->company}}

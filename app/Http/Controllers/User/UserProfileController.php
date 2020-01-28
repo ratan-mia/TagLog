@@ -48,6 +48,35 @@ class UserProfileController extends Controller
         return view('frontend.user.profile', compact('user', 'agents', 'experience', 'countries', 'destinations', 'expected_industries', 'employers', 'visas', 'nationalities', 'profile_picture'));
     }
 
+
+    public function userProfile( Request $request, User $user_id)
+    {
+        $user = User::where('id',$user_id)->first();
+        $experience = Experience::where('user_id', $user_id)->first() ? Experience::where('user_id', $user_id)->first() : '';
+        $visas = Visa::all()->pluck('name', 'id');
+        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $nationalities = Nationality::all()->pluck('country_enNationality', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $agents = Agent::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $destinations = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $employers = Employer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $expected_industries = Industry::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        if ($experience != null) {
+
+            $experience->load('user', 'agent', 'destination', 'employer', 'industry');
+
+        } else {
+
+            $$experience ='Check';
+        }
+
+
+        return view('frontend.user.profile', compact('user', 'agents', 'experience', 'countries', 'destinations', 'expected_industries', 'employers', 'visas', 'nationalities'));
+    }
+
     public function updateBasicInformation(Request $request)
     {
 

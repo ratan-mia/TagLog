@@ -127,9 +127,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 //User Profile routes
 
+
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middleware'=>['auth']], function () {
 
     Route::get('profile','UserProfileController@showProfile')->name('my-profile');
+    Route::get('profile/{user_id}','UserProfileController@userProfile')->name('user-profile');
     Route::put('profile/basic-information','UserProfileController@updateBasicInformation')->name('update-basic-information');
     Route::put('profile/work-preference','UserProfileController@updateWorkPreference')->name('update-work-preference');
     Route::get('your-experience','UserProfileController@userExperienceForm')->name('experience-form');

@@ -12,15 +12,15 @@
                 @csrf
                 <div class="form-group">
                     <label class="required">{{ trans('cruds.partner.fields.country') }}</label>
-                    <select class="form-control {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country" id="country" required>
-                        <option value disabled {{ old('country', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                        @foreach(App\Partner::COUNTRY_SELECT as $key => $label)
-                            <option value="{{ $key }}" {{ old('country', $partner->country) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    <select class="form-control {{ $errors->has('country_id') ? 'is-invalid' : '' }}" name="country_id" id="country_id" required>
+                        <option value disabled {{ old('country_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach($countries as $key => $label)
+                            <option value="{{ $key }}" {{ old('country_id', $partner->country_id) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                         @endforeach
                     </select>
-                    @if($errors->has('country'))
+                    @if($errors->has('country_id'))
                         <div class="invalid-feedback">
-                            {{ $errors->first('country') }}
+                            {{ $errors->first('country_id') }}
                         </div>
                     @endif
                     <span class="help-block">{{ trans('cruds.partner.fields.country_helper') }}</span>

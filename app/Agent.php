@@ -80,10 +80,7 @@ class Agent extends Model implements HasMedia
         return $this->belongsToMany(Employer::class);
     }
 
-    public function city()
-    {
-        return $this->belongsTo(City::class, 'city_id');
-    }
+   
 
     public function countries()
     {

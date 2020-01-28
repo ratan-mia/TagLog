@@ -42,6 +42,12 @@ class Partner extends Model implements HasMedia
         'deleted_at',
     ];
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class,'country_id');
+    }
+
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);

@@ -49,7 +49,7 @@
 
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="expenses_paid">{{ trans('cruds.experience.fields.expenses_paid') }}</label>
+                                           for="expenses_paid">{{ trans('cruds.experience.fields.expenses_paid') }} ($)</label>
                                     <div class="col-md-6">
                                         <input
                                             class="form-control {{ $errors->has('expenses_paid') ? 'is-invalid' : '' }}"
@@ -67,12 +67,12 @@
                                 <!--Visa Application Rating-->
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="visa_application_rating">{{ trans('cruds.experience.fields.visa_application_rating') }}</label>
+                                           for="visa_application_rating">{{ trans('cruds.experience.fields.visa_application_rating') }}(Min:1, Max:5)</label>
                                     <div class="col-md-6">
                                         <input
                                             class="form-control {{ $errors->has('visa_application_rating') ? 'is-invalid' : '' }}"
                                             type="number" name="visa_application_rating" id="visa_application_rating"
-                                            value="{{ old('visa_application_rating', '') }}" step="1">
+                                            value="{{ old('visa_application_rating', '') }}" step="1" min="1" max="5">
                                         @if($errors->has('visa_application_rating'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('visa_application_rating') }}
@@ -86,12 +86,12 @@
                                 <!--Language Training Rating-->
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="language_training_rating">{{ trans('cruds.experience.fields.language_training_rating') }}</label>
+                                           for="language_training_rating">{{ trans('cruds.experience.fields.language_training_rating') }}(Min:1, Max:5)</label>
                                     <div class="col-md-6">
                                         <input
                                             class="form-control {{ $errors->has('language_training_rating') ? 'is-invalid' : '' }}"
                                             type="number" name="language_training_rating" id="language_training_rating"
-                                            value="{{ old('language_training_rating', '') }}" step="1">
+                                            value="{{ old('language_training_rating', '') }}" step="1" min="1" max="5">
                                         @if($errors->has('language_training_rating'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('language_training_rating') }}
@@ -106,12 +106,12 @@
 
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="agent_rating">{{ trans('cruds.experience.fields.agent_rating') }}</label>
+                                           for="agent_rating">{{ trans('cruds.experience.fields.agent_rating') }} (Min:1, Max:5)</label>
                                     <div class="col-md-6">
                                         <input
                                             class="form-control {{ $errors->has('agent_rating') ? 'is-invalid' : '' }}"
                                             type="number" name="agent_rating" id="agent_rating"
-                                            value="{{ old('agent_rating') }}" step="1">
+                                            value="{{ old('agent_rating') }}" step="1" min="1" max="5">
                                         @if($errors->has('agent_rating'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('agent_rating') }}
@@ -238,7 +238,7 @@
                                         <input
                                             class="form-control {{ $errors->has('employment_period') ? 'is-invalid' : '' }}"
                                             type="number" name="employment_period" id="employment_period"
-                                            value="{{ old('employment_period') }}" step="1">
+                                            value="{{ old('employment_period') }}" step="1" min="1" max="100">
                                         @if($errors->has('employment_period'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('employment_period') }}
@@ -253,12 +253,12 @@
 
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="monthly_salary">{{ trans('cruds.experience.fields.monthly_salary') }}</label>
+                                           for="monthly_salary">{{ trans('cruds.experience.fields.monthly_salary') }} ($)</label>
                                     <div class="col-md-6">
                                         <input
                                             class="form-control {{ $errors->has('monthly_salary') ? 'is-invalid' : '' }}"
                                             type="number" name="monthly_salary" id="monthly_salary"
-                                            value="{{ old('monthly_salary') }}" step="0.01">
+                                            value="{{ old('monthly_salary') }}" step="1" min="1" max="1000000">
                                         @if($errors->has('monthly_salary'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('monthly_salary') }}
@@ -273,12 +273,12 @@
 
                                 <div class="form-group row">
                                     <label class="col-md-4 col-form-label text-md-right"
-                                           for="monthly_living_expenses">{{ trans('cruds.experience.fields.monthly_living_expenses') }}</label>
+                                           for="monthly_living_expenses">{{ trans('cruds.experience.fields.monthly_living_expenses') }} ($)</label>
                                     <div class="col-md-6">
                                         <input
                                             class="form-control {{ $errors->has('monthly_living_expenses') ? 'is-invalid' : '' }}"
                                             type="number" name="monthly_living_expenses" id="monthly_living_expenses"
-                                            value="{{ old('monthly_living_expenses') }}" step="0.01">
+                                            value="{{ old('monthly_living_expenses') }}" step="1" min="1" max="1000000">
                                         @if($errors->has('monthly_living_expenses'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('monthly_living_expenses') }}
@@ -323,7 +323,7 @@
                                         <input
                                             class="form-control {{ $errors->has('monthly_days_off') ? 'is-invalid' : '' }}"
                                             type="number" name="monthly_days_off" id="monthly_days_off"
-                                            value="{{ old('monthly_days_off') }}" step="1">
+                                            value="{{ old('monthly_days_off') }}" step="1" min="1" max="31">
                                         @if($errors->has('monthly_days_off'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('monthly_days_off') }}
@@ -343,7 +343,7 @@
                                         <input
                                             class="form-control {{ $errors->has('employer_rating') ? 'is-invalid' : '' }}"
                                             type="number" name="employer_rating" id="employer_rating"
-                                            value="{{ old('employer_rating') }}" step="1">
+                                            value="{{ old('employer_rating') }}" step="1" min="1" max="10">
                                         @if($errors->has('employer_rating'))
                                             <div class="invalid-feedback">
                                                 {{ $errors->first('employer_rating') }}

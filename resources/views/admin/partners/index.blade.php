@@ -52,7 +52,7 @@
                                 {{ $partner->id ?? '' }}
                             </td>
                             <td>
-                                {{ App\Partner::COUNTRY_SELECT[$partner->country] ?? '' }}
+                                {{ $partner->country->name ?? '' }}
                             </td>
                             <td>
                                 {{ $partner->company ?? '' }}
@@ -144,7 +144,7 @@
                 order: [[ 1, 'desc' ]],
                 pageLength: 50,
             });
-            $('.datatable-Partner.php:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+            $('.datatable-Partner:not(.ajaxTable)').DataTable({ buttons: dtButtons })
             $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
                 $($.fn.dataTable.tables(true)).DataTable()
                     .columns.adjust();

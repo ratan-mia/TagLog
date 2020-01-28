@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyPartnerRequest;
@@ -22,15 +23,15 @@ class PartnerController extends Controller
         abort_if(Gate::denies('partner_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $partners = Partner::all();
-
+        $partners->load('country');
         return view('admin.partners.index', compact('partners'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('partner_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('admin.partners.create');
+        $countries = Country::all()->pluck('name', 'id');
+        return view('admin.partners.create', compact('countries'));
     }
 
     public function store(StorePartnerRequest $request)
@@ -56,7 +57,9 @@ class PartnerController extends Controller
     {
         abort_if(Gate::denies('partner_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.partners.edit', compact('partner'));
+        $countries = Country::all()->pluck('name', 'id');
+
+        return view('admin.partners.edit', compact('partner', 'countries'));
     }
 
     public function update(UpdatePartnerRequest $request, Partner $partner)
@@ -109,10 +112,10 @@ class PartnerController extends Controller
     {
         abort_if(Gate::denies('partner_create') && Gate::denies('partner_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Partner();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Partner();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media', 'public');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media', 'public');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }

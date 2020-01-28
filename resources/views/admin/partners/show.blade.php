@@ -28,7 +28,7 @@
                             {{ trans('cruds.partner.fields.country') }}
                         </th>
                         <td>
-                            {{ App\Partner::COUNTRY_SELECT[$partner->country] ?? '' }}
+                            {{ $partner->country->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

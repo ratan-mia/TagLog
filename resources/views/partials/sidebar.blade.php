@@ -17,14 +17,6 @@
                     {{ trans('global.homepage') }}
                 </a>
             </li>
-
-            <li class="nav-item">
-                <a href="{{ route("user.experience-form") }}" class="nav-link" target="_blank">
-                    <i class="nav-icon fas fa-eye">
-                    </i>
-                    {{ trans('global.share-experience') }}
-                </a>
-            </li>
             @can('site_setting_access')
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link  nav-dropdown-toggle" href="#">
@@ -36,7 +28,8 @@
                     <ul class="nav-dropdown-items">
                         @can('setting_access')
                             <li class="nav-item">
-                                <a href="{{ route("admin.settings.index") }}" class="nav-link {{ request()->is('admin/settings') || request()->is('admin/settings/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.settings.index") }}"
+                                   class="nav-link {{ request()->is('admin/settings') || request()->is('admin/settings/*') ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-cogs nav-icon">
 
                                     </i>
@@ -50,7 +43,8 @@
 
             @can('country_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.countries.index") }}" class="nav-link {{ request()->is('admin/countries') || request()->is('admin/countries/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.countries.index") }}"
+                       class="nav-link {{ request()->is('admin/countries') || request()->is('admin/countries/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-flag nav-icon">
 
                         </i>
@@ -60,7 +54,8 @@
             @endcan
             @can('destination_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.destinations.index") }}" class="nav-link {{ request()->is('admin/destinations') || request()->is('admin/destinations/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.destinations.index") }}"
+                       class="nav-link {{ request()->is('admin/destinations') || request()->is('admin/destinations/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-cogs nav-icon">
 
                         </i>
@@ -70,7 +65,8 @@
             @endcan
             @can('city_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.cities.index") }}" class="nav-link {{ request()->is('admin/cities') || request()->is('admin/cities/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.cities.index") }}"
+                       class="nav-link {{ request()->is('admin/cities') || request()->is('admin/cities/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-cogs nav-icon">
 
                         </i>
@@ -80,7 +76,8 @@
             @endcan
             @can('company_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.companies.index") }}" class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.companies.index") }}"
+                       class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-cogs nav-icon">
 
                         </i>
@@ -91,7 +88,8 @@
 
             @can('visa_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.visas.index") }}" class="nav-link {{ request()->is('admin/visas') || request()->is('admin/visas/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.visas.index") }}"
+                       class="nav-link {{ request()->is('admin/visas') || request()->is('admin/visas/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-cogs nav-icon">
 
                         </i>
@@ -101,7 +99,8 @@
             @endcan
             @can('industry_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.industries.index") }}" class="nav-link {{ request()->is('admin/industries') || request()->is('admin/industries/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.industries.index") }}"
+                       class="nav-link {{ request()->is('admin/industries') || request()->is('admin/industries/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-chalkboard-teacher nav-icon">
 
                         </i>
@@ -111,7 +110,8 @@
             @endcan
             @can('category_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.categories.index") }}" class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.categories.index") }}"
+                       class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-cogs nav-icon">
 
                         </i>
@@ -121,7 +121,8 @@
             @endcan
             @can('agent_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.agents.index") }}" class="nav-link {{ request()->is('admin/agents') || request()->is('admin/agents/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.agents.index") }}"
+                       class="nav-link {{ request()->is('admin/agents') || request()->is('admin/agents/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-user nav-icon">
 
                         </i>
@@ -131,7 +132,8 @@
             @endcan
             @can('employer_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.employers.index") }}" class="nav-link {{ request()->is('admin/employers') || request()->is('admin/employers/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.employers.index") }}"
+                       class="nav-link {{ request()->is('admin/employers') || request()->is('admin/employers/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-briefcase nav-icon">
 
                         </i>
@@ -141,7 +143,8 @@
             @endcan
             @can('experience_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.experiences.index") }}" class="nav-link {{ request()->is('admin/experiences') || request()->is('admin/experiences/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.experiences.index") }}"
+                       class="nav-link {{ request()->is('admin/experiences') || request()->is('admin/experiences/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-crown nav-icon">
 
                         </i>
@@ -149,9 +152,19 @@
                     </a>
                 </li>
             @endcan
+            @can('share_experience')
+                <li class="nav-item">
+                    <a href="{{ route("user.experience-form") }}" class="nav-link" target="_blank">
+                        <i class="nav-icon fas fa-eye">
+                        </i>
+                        {{ trans('global.share-experience') }}
+                    </a>
+                </li>
+            @endcan
             @can('comment_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.comments.index") }}" class="nav-link {{ request()->is('admin/comments') || request()->is('admin/comments/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.comments.index") }}"
+                       class="nav-link {{ request()->is('admin/comments') || request()->is('admin/comments/*') ? 'active' : '' }}">
                         <i class="fa-fw far fa-chart-bar nav-icon">
 
                         </i>
@@ -161,7 +174,8 @@
             @endcan
             @can('partner_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.partners.index") }}" class="nav-link {{ request()->is('admin/partners') || request()->is('admin/partners/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.partners.index") }}"
+                       class="nav-link {{ request()->is('admin/partners') || request()->is('admin/partners/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-hands-helping nav-icon">
 
                         </i>
@@ -171,7 +185,8 @@
             @endcan
             @can('member_access')
                 <li class="nav-item">
-                    <a href="{{ route("admin.members.index") }}" class="nav-link {{ request()->is('admin/members') || request()->is('admin/members/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.members.index") }}"
+                       class="nav-link {{ request()->is('admin/members') || request()->is('admin/members/*') ? 'active' : '' }}">
                         <i class="fa-fw fas fa-cogs nav-icon">
 
                         </i>
@@ -190,7 +205,8 @@
                     <ul class="nav-dropdown-items">
                         @can('permission_access')
                             <li class="nav-item">
-                                <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.permissions.index") }}"
+                                   class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-unlock-alt nav-icon">
 
                                     </i>
@@ -200,7 +216,8 @@
                         @endcan
                         @can('role_access')
                             <li class="nav-item">
-                                <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.roles.index") }}"
+                                   class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-briefcase nav-icon">
 
                                     </i>
@@ -210,7 +227,8 @@
                         @endcan
                         @can('user_access')
                             <li class="nav-item">
-                                <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                                <a href="{{ route("admin.users.index") }}"
+                                   class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                                     <i class="fa-fw fas fa-user nav-icon">
 
                                     </i>
@@ -222,7 +240,8 @@
                 </li>
             @endcan
             <li class="nav-item">
-                <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                <a href="#" class="nav-link"
+                   onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-fw fa-sign-out-alt">
 
                     </i>

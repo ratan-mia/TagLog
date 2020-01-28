@@ -607,8 +607,8 @@ return [
         ],
     ],
     'partner' => [
-        'title' => 'Business Partners',
-        'title_singular' => 'Business Partner',
+        'title' => 'Partners',
+        'title_singular' => 'Partner',
         'fields' => [
             'id' => 'ID',
             'id_helper' => '',
@@ -633,8 +633,8 @@ return [
         ],
     ],
     'member' => [
-        'title' => 'Team Members',
-        'title_singular' => 'Team Member',
+        'title' => 'Members',
+        'title_singular' => 'Member',
         'fields' => [
             'id' => 'ID',
             'id_helper' => '',
