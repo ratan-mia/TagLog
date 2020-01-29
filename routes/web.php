@@ -11,7 +11,7 @@ Route::get('/what-we-do',function(){
 
 Route::get('/our-business-partners','HomePageController@businessPartner')->name('business-partner');
 
-
+Route::get('/about-us','HomePageController@aboutUs')->name('about-us');
 
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
     //

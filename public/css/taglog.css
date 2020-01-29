@@ -270,3 +270,35 @@ body {
     line-height:1.2;
     color:#505050;
 }
+
+/*--------------About Us----------
+------------------------------------*/
+
+.bg-about-us {
+    background: url("../images/about-us.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding:150px 0px !important;
+}
+
+.member-photo {
+    margin:20px 0px;
+}
+
+.member-name{
+    font-family: "Product Sans";
+    color:#3F3F3F;
+    font-size:20px;
+    line-height:1.2;
+    margin:10px 0px;
+}
+
+
+.member-position{
+    font-family: "Product Sans";
+    color:#3F3F3F;
+    font-size:15px;
+    line-height:1.2;
+    font-weight:normal;
+    margin:10px 0px;
+}

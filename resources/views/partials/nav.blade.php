@@ -20,6 +20,9 @@
                                     <a class="nav-link" href="{{route('admin.home')}}">Dashboard</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{route('about-us')}}">About Us</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{route('what-we-do')}}">What We Do</a>
                                 </li>
                                 <li class="nav-item">

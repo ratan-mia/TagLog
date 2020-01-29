@@ -8,6 +8,7 @@ use App\Country;
 use App\Destination;
 use App\Employer;
 use App\Experience;
+use App\Member;
 use App\Partner;
 use App\Visa;
 use Illuminate\Http\Request;
@@ -90,6 +91,11 @@ class HomePageController extends Controller
     public function businessPartner(){
         $partners = Partner::all();
         return view('frontend.business-partner',compact('partners'));
+    }
+
+    public function aboutUs(){
+        $members = Member::all();
+        return view('frontend.about-us',compact('members'));
     }
 
 }

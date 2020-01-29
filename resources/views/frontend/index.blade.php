@@ -41,45 +41,22 @@
 
 
     <!--==========================================
-    =            All Category Section            =
+    =           Mission Section           =
     ===========================================-->
 
-    <section class=" section">
+    <section class="section">
         <!-- Container Start -->
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <!-- Section title -->
-                    <div class="section-title">
-                        <h2>All Categories</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
-                    </div>
-                    <div class="row">
-                    @foreach ($categories->take(8) as $category)
-                        <!-- Category list -->
-                            <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                                <div class="category-block">
-                                    <div class="header">
-                                        <i class="{{ $category->icon }} icon-bg-{{ $category->id }}"></i>
-                                        <h4>
-                                            <a href="{{ route('category', [$category->id]) }}">{{ $category->name }}
-                                                <p style="display: inline">({{ $category->companies->count() }})</p>
-                                            </a>
-
-                                        </h4>
-                                    </div>
-                                    <ul class="category-list">
-                                        @foreach ( $category->companies->shuffle()->take(4) as $singleCompany)
-                                            <li>
-                                                <a href="{{ route('company', [$singleCompany->id]) }}">{{ $singleCompany->name}} </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div> <!-- /Category List -->
-                        @endforeach
-                    </div>
+                <div class="col-md-6">
+                    <img src="{{asset('images/home/mission-bg.jpg')}}">
                 </div>
+                <div class="col-md-6">
+                    <h2 class="title m-t-50">Mission</h2>
+                    <br>
+                    <p style="font-size: 1rem;color:#888;" class="paragraph">To build happy relationship between employers and foreigners, contributing to create better working environment in Japan</p>
+                </div>
+
             </div>
         </div>
         <!-- Container End -->
