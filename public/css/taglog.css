@@ -302,3 +302,24 @@ body {
     font-weight:normal;
     margin:10px 0px;
 }
+
+.member-overview p{
+    font-family: "Product Sans";
+    color:#828282;
+    font-size:14px;
+    line-height:15.6px;
+    font-weight:normal;
+    margin:10px 0px;
+}
+
+.social-links {
+    margin-top:20px;
+}
+.social-links li a{
+    font-size: 10px;
+    line-height:1;
+    color: #828282;
+    border: 1px solid #828282;
+    /*border-radius: 50%;*/
+    padding: 10px;
+}

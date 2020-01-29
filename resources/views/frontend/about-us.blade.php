@@ -35,8 +35,13 @@
                                 </a>
                             @endif
                             <h3 class="member-name">{{$member->name}}</h3>
-                            <h4 class="memnber-position">{{$member->position}}</h4>
-                            <p class="member-overview">{!!$member->overview!!}</p>
+                            <h4 class="member-position">{{$member->position}}</h4>
+                            <div class="member-overview">{!!$member->overview!!}</div>
+                            <ul class="list-inline social-links">
+                                <li class="list-inline-item"><a href="{{$member->twitter}}" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li class="list-inline-item"><a href="{{$member->instagram}}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li class="list-inline-item"><a href="{{$member->facebook}}" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            </ul>
             </div>
             @endforeach
             @endif
