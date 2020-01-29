@@ -62,13 +62,13 @@
                             {{ trans('cruds.user.fields.skype') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.destination_country') }}
+                            {{ trans('cruds.user.fields.destination') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.visa_type') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.expected_industries') }}
+                            {{ trans('cruds.user.fields.industries') }}
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.expected_salary') }}
@@ -141,13 +141,13 @@
                                 {{ $user->skype ?? '' }}
                             </td>
                             <td>
-                                {{ $user->destination_country->name ?? '' }}
+                                {{ $user->destination->name ?? '' }}
                             </td>
                             <td>
                                 {{ App\User::VISA_TYPE_SELECT[$user->visa_type] ?? '' }}
                             </td>
                             <td>
-                                @foreach($user->expected_industries as $key => $item)
+                                @foreach($user->industries as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>

@@ -29,6 +29,9 @@
                             {{ trans('cruds.city.fields.name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.city.fields.country') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +47,9 @@
                             </td>
                             <td>
                                 {{ $city->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $city->country->name ?? '' }}
                             </td>
                             <td>
                                 @can('city_show')

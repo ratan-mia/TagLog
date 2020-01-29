@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class Experience extends Model
 {
@@ -13,7 +14,8 @@ class Experience extends Model
     public $table = 'experiences';
 
     const VISA_TYPE_SELECT = [
-
+        '1' => 'Technical Intern Trainee',
+        '2' => 'Specified Skilled Worker',
     ];
 
     const ACCOMMODATION_TYPE_SELECT = [
@@ -21,7 +23,11 @@ class Experience extends Model
     ];
 
     const WEEKLY_WORKING_HOURS_SELECT = [
-
+        '1' => '48',
+        '2'  => '54',
+        '3'  => '60',
+        '4'  => '66',
+        '5'  => '72',
     ];
 
     const NEXT_YEAR_OPPORTUNITY_RADIO = [
@@ -55,8 +61,11 @@ class Experience extends Model
         'created_at',
         'deleted_at',
         'employer_id',
+        'employer_location',
         'industry_id',
         'agent_rating',
+        'visa_application_rating',
+        'language_training_rating',
         'expenses_paid',
         'language_level',
         'agent_feedback',
@@ -70,7 +79,7 @@ class Experience extends Model
         'accommodation_type',
         'weekly_working_hours',
         'next_year_opportunity',
-        'destination_country_id',
+        'destination_id',
         'monthly_living_expenses',
     ];
 
@@ -84,9 +93,9 @@ class Experience extends Model
         return $this->belongsTo(Agent::class, 'agent_id');
     }
 
-    public function destination_country()
+    public function destination()
     {
-        return $this->belongsTo(Country::class, 'destination_country_id');
+        return $this->belongsTo(Country::class, 'destination_id');
     }
 
     public function employer()
@@ -108,4 +117,6 @@ class Experience extends Model
     {
         $this->attributes['emloyment_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
+
+
 }

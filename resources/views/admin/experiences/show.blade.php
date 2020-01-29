@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.experience.fields.destination_country') }}
+                            {{ trans('cruds.experience.fields.destination') }}
                         </th>
                         <td>
-                            {{ $experience->destination_country->name ?? '' }}
+                            {{ $experience->destination->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

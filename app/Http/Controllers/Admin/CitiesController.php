@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\City;
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyCityRequest;
 use App\Http\Requests\StoreCityRequest;
@@ -18,15 +19,16 @@ class CitiesController extends Controller
         abort_if(Gate::denies('city_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $cities = City::all();
+        $countries = Country::all()->pluck('name', 'id');
 
-        return view('admin.cities.index', compact('cities'));
+        return view('admin.cities.index', compact('cities','countries'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('city_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('admin.cities.create');
+        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('admin.cities.create',compact('countries'));
     }
 
     public function store(StoreCityRequest $request)
@@ -39,13 +41,14 @@ class CitiesController extends Controller
     public function edit(City $city)
     {
         abort_if(Gate::denies('city_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('admin.cities.edit', compact('city'));
+        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('admin.cities.edit', compact('city','countries'));
     }
 
     public function update(UpdateCityRequest $request, City $city)
     {
         $city->update($request->all());
+
 
         return redirect()->route('admin.cities.index');
     }

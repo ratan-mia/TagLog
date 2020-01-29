@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+
 @include('partials.head')
 
 </head>
@@ -9,12 +10,13 @@
 <body class="body-wrapper">
 
 
-@include('partials.topbar')
+@include('partials.nav')
 
 @yield('content')
 
 @include('partials.footer')
 
+@yield('scripts')
 </body>
 </html>
 

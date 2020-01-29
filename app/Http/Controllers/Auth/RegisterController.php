@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Agent;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/user/your-experience';
+    protected $redirectTo = '/user/work-preference';
 
     /**
      * Create a new controller instance.
@@ -64,9 +66,27 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'user_status' => $data['user_status'],
+            'visa_type' => $data['visa_type'],
             'name' => $data['name'],
+            'gender' => $data['gender'],
+            'education_background' => $data['education_background'],
+            'language_level' => $data['language_level'],
+            'phone' => $data['phone'],
+            'date_of_birth' => $data['date_of_birth'],
+            'facebook' => $data['facebook'],
+            'skype' => $data['skype'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'nationality_id' => $data['nationality_id'],
+            'country_id' => $data['country_id'],
+            'city' => $data['city'],
+
+
+        ]);
+
+        return Agent::create([
+            'name' => $data['agent_name'],
         ]);
     }
 }

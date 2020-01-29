@@ -21,7 +21,15 @@ class User extends Authenticatable implements HasMedia
     public $table = 'users';
 
     const VISA_TYPE_SELECT = [
+        '1' => 'Technical Intern Trainee',
+        '2' => 'Specified Skilled Worker',
+    ];
 
+    const USER_STATUS_SELECT = [
+        '1' => 'Looking for Sending Organization',
+        '2' => 'Currently belong to Sending Organization',
+        '3' => 'Current Technical Intern Trainee',
+        '4' => 'Technical Intern Trainee Alumni',
     ];
 
     protected $appends = [
@@ -34,9 +42,8 @@ class User extends Authenticatable implements HasMedia
     ];
 
     const GENDER_RADIO = [
-        'male'   => 'Male',
+        'male' => 'Male',
         'female' => 'Female',
-        'none'   => 'None of These',
     ];
 
     protected $dates = [
@@ -51,8 +58,24 @@ class User extends Authenticatable implements HasMedia
     const EDUCATION_LEVEL_SELECT = [
         'secondary_school' => 'Secondary School',
         'higher_secondary' => 'Higher Secondary',
-        'bachelor_degree'  => 'Bachelor’s degree',
-        'masters_degress'  => 'Master\'s Degree',
+        'bachelor_degree' => 'Bachelor’s degree',
+        'masters_degress' => 'Master\'s Degree',
+    ];
+
+    const EDUCATION_BACKGROUND_SELECT = [
+        'science' => 'Science',
+        'commerce' => 'Commerce',
+        'arts' => 'Arts',
+    ];
+
+
+    const LANGUAGE_LEVEL_SELECT = [
+        'N1' => 'The ability to understand Japanese used in a variety of circumstances.',
+        'N2' => 'The ability to understand Japanese used in everyday situations, and in a variety of circumstances to a certain degree.',
+        'N3' => 'The ability to understand Japanese used in everyday situations to a certain degree.',
+        'N4' => 'The ability to understand basic Japanese.',
+        'N5' => 'The ability to understand some basic Japanese.',
+
     ];
 
     protected $fillable = [
@@ -65,8 +88,10 @@ class User extends Authenticatable implements HasMedia
         'facebook',
         'password',
         'visa_type',
+        'user_status',
         'agents_id',
         'country_id',
+        'nationality_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -75,15 +100,19 @@ class User extends Authenticatable implements HasMedia
         'date_of_birth',
         'remember_token',
         'education_level',
+        'education_background',
+        'language_level',
         'expected_salary',
         'date_of_leaving',
         'email_verified_at',
-        'destination_country_id',
+        'destination_id',
+        'destination_area',
     ];
 
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
+        $this->addMediaConversion('avatar')->width(100)->height(100);
     }
 
     public function userExperiences()
@@ -128,6 +157,11 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function nationality()
+    {
+        return $this->belongsTo(Nationality::class, 'nationality_id');
+    }
+
     public function getDateOfBirthAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
@@ -138,14 +172,25 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['date_of_birth'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function destination_country()
+    public function destination()
     {
-        return $this->belongsTo(Country::class, 'destination_country_id');
+        return $this->belongsTo(Country::class, 'destination_id');
     }
 
-    public function expected_industries()
+    public function area()
+    {
+        return $this->belongsTo(City::class, 'destination_area');
+    }
+
+    public function industries()
     {
         return $this->belongsToMany(Industry::class);
+    }
+
+    public function visa()
+    {
+
+        return $this->belongsTo(Visa::class, 'visa_type');
     }
 
     public function getDateOfLeavingAttribute($value)
@@ -178,7 +223,7 @@ class User extends Authenticatable implements HasMedia
         $file = $this->getMedia('profile_picture')->last();
 
         if ($file) {
-            $file->url       = $file->getUrl();
+            $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 

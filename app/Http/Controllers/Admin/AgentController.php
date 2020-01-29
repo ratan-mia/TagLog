@@ -3,16 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Agent;
+use App\City;
 use App\Country;
+use App\Destination;
+use App\Employer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyAgentRequest;
 use App\Http\Requests\StoreAgentRequest;
 use App\Http\Requests\UpdateAgentRequest;
 use App\Industry;
+use App\Location;
 use App\User;
+use App\Visa;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AgentController extends Controller
@@ -32,21 +38,45 @@ class AgentController extends Controller
     {
         abort_if(Gate::denies('agent_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $destinations = Country::all()->pluck('name', 'id');
+        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::all()->pluck('name', 'id');
+        $destinations = Destination::all()->pluck('name', 'id');
 
         $industries = Industry::all()->pluck('name', 'id');
 
-        $employers = User::all()->pluck('name', 'id');
+        $visas = Visa::all()->pluck('name', 'id');
 
-        return view('admin.agents.create', compact('destinations', 'industries', 'employers'));
+        $employers = Employer::all()->pluck('name', 'id');
+
+
+
+
+        return view('admin.agents.create', compact('cities','countries', 'destinations', 'industries', 'visas', 'employers'));
     }
 
     public function store(StoreAgentRequest $request)
     {
+
+//        sync( array(
+//            related_id => array( 'pivot_field' => value ),
+//        ...
+//        ));
+
+        $user_id = Auth::id();
         $agent = Agent::create($request->all());
         $agent->destinations()->sync($request->input('destinations', []));
+
         $agent->industries()->sync($request->input('industries', []));
+        $agent->visas()->sync($request->input('visas', []));
         $agent->employers()->sync($request->input('employers', []));
+        $agent->countries()->sync($request->input('countries', []));
+
+        $agent->location()->create([
+            'address' => $request->input('address'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+        ]);
+
 
         if ($request->input('logo', false)) {
             $agent->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
@@ -66,16 +96,19 @@ class AgentController extends Controller
     public function edit(Agent $agent)
     {
         abort_if(Gate::denies('agent_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $destinations = Country::all()->pluck('name', 'id');
+        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::all()->pluck('name', 'id');
+        $destinations = Destination::all()->pluck('name', 'id');
 
         $industries = Industry::all()->pluck('name', 'id');
 
-        $employers = User::all()->pluck('name', 'id');
+        $employers = Employer::all()->pluck('name', 'id');
 
-        $agent->load('destinations', 'industries', 'employers');
+        $visas = Visa::all()->pluck('name', 'id');
 
-        return view('admin.agents.edit', compact('destinations', 'industries', 'employers', 'agent'));
+        $agent->load('destinations', 'industries', 'employers','location');
+
+        return view('admin.agents.edit', compact('cities','countries', 'destinations', 'industries', 'visas', 'employers', 'agent'));
     }
 
     public function update(UpdateAgentRequest $request, Agent $agent)
@@ -83,7 +116,15 @@ class AgentController extends Controller
         $agent->update($request->all());
         $agent->destinations()->sync($request->input('destinations', []));
         $agent->industries()->sync($request->input('industries', []));
+        $agent->visas()->sync($request->input('visas', []));
         $agent->employers()->sync($request->input('employers', []));
+        $agent->countries()->sync($request->input('countries', []));
+
+        $agent->location()->update([
+            'address' => $request->input('address'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+        ]);
 
         if ($request->input('logo', false)) {
             if (!$agent->logo || $request->input('logo') !== $agent->logo->file_name) {
@@ -124,7 +165,7 @@ class AgentController extends Controller
     {
         abort_if(Gate::denies('agent_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $agent->load('destinations', 'industries', 'employers', 'agentExperiences', 'agentsEmployers');
+        $agent->load('destinations', 'industries', 'employers', 'experiences', 'employers');
 
         return view('admin.agents.show', compact('agent'));
     }

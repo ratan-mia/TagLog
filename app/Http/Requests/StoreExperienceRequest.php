@@ -22,8 +22,8 @@ class StoreExperienceRequest extends FormRequest
             'agent_rating'      => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:1',
+                'max:5',
             ],
             'emloyment_date'    => [
                 'date_format:' . config('panel.date_format'),
@@ -32,20 +32,20 @@ class StoreExperienceRequest extends FormRequest
             'employment_period' => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:1',
+                'max:5',
             ],
             'monthly_days_off'  => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:1',
+                'max:31',
             ],
             'employer_rating'   => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:1',
+                'max:5',
             ],
         ];
     }

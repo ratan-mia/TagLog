@@ -223,13 +223,13 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="employer_users">
-            @includeIf('admin.employers.relationships.employerUsers', ['users' => $employer->employerUsers])
+            @includeIf('admin.employers.relationships.employers', ['users' => $employer->employers])
         </div>
         <div class="tab-pane" role="tabpanel" id="agents_users">
-            @includeIf('admin.employers.relationships.agentsUsers', ['users' => $employer->agentsUsers])
+            @includeIf('admin.employers.relationships.users', ['users' => $employer->users])
         </div>
         <div class="tab-pane" role="tabpanel" id="employer_experiences">
-            @includeIf('admin.employers.relationships.employerExperiences', ['experiences' => $employer->employerExperiences])
+            @includeIf('admin.employers.relationships.experiences', ['experiences' => $employer->experiences])
         </div>
     </div>
 </div>

@@ -31,7 +31,7 @@
                             {{ trans('cruds.experience.fields.agent') }}
                         </th>
                         <th>
-                            {{ trans('cruds.experience.fields.destination_country') }}
+                            {{ trans('cruds.experience.fields.destination') }}
                         </th>
                         <th>
                             {{ trans('cruds.experience.fields.visa_type') }}
@@ -93,7 +93,7 @@
                                 {{ $experience->agent->name ?? '' }}
                             </td>
                             <td>
-                                {{ $experience->destination_country->name ?? '' }}
+                                {{ $experience->destination->name ?? '' }}
                             </td>
                             <td>
                                 {{ App\Experience::VISA_TYPE_SELECT[$experience->visa_type] ?? '' }}

@@ -4,9 +4,29 @@
 // Route For Frontend
 
 Route::get('/', 'HomePageController@index')->name('homepage');
-Route::get('search', 'HomePageController@table')->name('search');
+
+Route::get('/what-we-do',function(){
+    return view('frontend.what-we-do');
+})->name('what-we-do');
+
+Route::get('/our-business-partners','HomePageController@businessPartner')->name('business-partner');
+
+Route::get('/about-us','HomePageController@aboutUs')->name('about-us');
+
+Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
+    //
+});
+Route::get('results/{type?}/{country?}', 'HomePageController@navigation')->name('navigation');
+Route::post('results/{type?}/{country?}', 'HomePageController@search')->name('search');
 Route::get('categories/{category}', 'HomePageController@category')->name('category');
 Route::get('companies/{company}', 'HomePageController@company')->name('company');
+Route::get('agents/{agent}', 'HomePageController@agent')->name('agent');
+Route::get('employers/{employer}', 'HomePageController@employer')->name('employer');
+Route::get('industries/{industry}', 'HomePageController@industry')->name('industry');
+
+Route::get('login2',function(){
+    return view('auth.login2');
+});
 
 
 
@@ -91,11 +111,34 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Visas
     Route::delete('visas/destroy', 'VisaController@massDestroy')->name('visas.massDestroy');
     Route::resource('visas', 'VisaController');
+
+    // Partners
+    Route::delete('partners/destroy', 'PartnerController@massDestroy')->name('partners.massDestroy');
+    Route::post('partners/media', 'PartnerController@storeMedia')->name('partners.storeMedia');
+    Route::post('partners/ckmedia', 'PartnerController@storeCKEditorImages')->name('partners.storeCKEditorImages');
+    Route::resource('partners', 'PartnerController');
+
+    // Members
+    Route::delete('members/destroy', 'MemberController@massDestroy')->name('members.massDestroy');
+    Route::post('members/media', 'MemberController@storeMedia')->name('members.storeMedia');
+    Route::post('members/ckmedia', 'MemberController@storeCKEditorImages')->name('members.storeCKEditorImages');
+    Route::resource('members', 'MemberController');
 });
 
 //User Profile routes
 
+
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middleware'=>['auth']], function () {
 
     Route::get('profile','UserProfileController@showProfile')->name('my-profile');
+    Route::get('profile/{user_id}','UserProfileController@userProfile')->name('user-profile');
+    Route::put('profile/basic-information','UserProfileController@updateBasicInformation')->name('update-basic-information');
+    Route::put('profile/work-preference','UserProfileController@updateWorkPreference')->name('update-work-preference');
+    Route::get('your-experience','UserProfileController@userExperienceForm')->name('experience-form');
+    Route::post('share-experience','UserProfileController@shareExperience')->name('share-experience');
+    Route::get('work-preference','UserProfileController@workPreferenceForm')->name('work-preference-form');
+    Route::post('work-preference','UserProfileController@workPreference')->name('work-preference');
+    Route::post('update-profile-picture/{user}','UserProfileController@updateProfilePicture')->name('update-profile-picture');
+
+
 });

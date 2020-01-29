@@ -65,6 +65,16 @@
                             {{ $user->country->name ?? '' }}
                         </td>
                     </tr>
+
+                    <tr>
+                        <th>
+                            {{ trans('cruds.user.fields.nationality') }}
+                        </th>
+                        <td>
+                            {{ $user->nationality->name ?? '' }}
+                        </td>
+                    </tr>
+
                     <tr>
                         <th>
                             {{ trans('cruds.user.fields.city') }}
@@ -123,10 +133,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.destination_country') }}
+                            {{ trans('cruds.user.fields.destination') }}
                         </th>
                         <td>
-                            {{ $user->destination_country->name ?? '' }}
+                            {{ $user->destination->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -134,16 +144,16 @@
                             {{ trans('cruds.user.fields.visa_type') }}
                         </th>
                         <td>
-                            {{ App\User::VISA_TYPE_SELECT[$user->visa_type] ?? '' }}
+                            {{ $user->visa->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.user.fields.expected_industries') }}
+                            {{ trans('cruds.user.fields.industries') }}
                         </th>
                         <td>
-                            @foreach($user->expected_industries as $key => $expected_industries)
-                                <span class="label label-info">{{ $expected_industries->name }}</span>
+                            @foreach($user->industries as $key => $industries)
+                                <span class="label label-info">{{ $industries->name }}</span>
                             @endforeach
                         </td>
                     </tr>

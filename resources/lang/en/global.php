@@ -16,6 +16,7 @@ return [
     'filterDate'                           => 'Filter by date',
     'forgot_password'                      => 'Forgot your password?',
     'home'                                 => 'Home',
+    'share-experience'                     => 'Share Experience',
     'list'                                 => 'List',
     'login'                                => 'Login',
     'login_email'                          => 'Email',
@@ -250,4 +251,5 @@ return [
     'no_alerts'                            => 'No alerts',
     'calendar'                             => 'Calendar',
     'messenger'                            => 'Messenger',
+    'homepage'                             => 'View Site',
 ];

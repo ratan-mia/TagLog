@@ -19,6 +19,7 @@ class City extends Model
 
     protected $fillable = [
         'name',
+        'country_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -27,5 +28,9 @@ class City extends Model
     public function companies()
     {
         return $this->hasMany(Company::class, 'city_id', 'id');
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
     }
 }

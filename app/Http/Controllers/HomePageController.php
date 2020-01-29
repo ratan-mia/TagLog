@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
+use App\City;
+use App\Country;
+use App\Destination;
+use App\Employer;
+use App\Experience;
+use App\Member;
+use App\Partner;
+use App\Visa;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Category;
@@ -11,15 +20,37 @@ class HomePageController extends Controller
 
     public function index()
     {
-        return view('frontend.index');
+
+        $visas = Visa::all()->pluck('name', 'id')->prepend(trans('Visa Type'), '');
+        $countries = Country::all()->pluck('name', 'id')->prepend(trans('Country Currently Living'), '');
+        $destinations = Destination::all()->pluck('name', 'id')->prepend(trans('Destination Country'), '');
+        $cities = City::all()->pluck('name', 'id')->prepend(trans('City Currently Living'), '');
+        $categories = Category::all();
+
+        return view('frontend.index', compact('visas', 'countries', 'destinations', 'cities', 'categories'));
     }
 
-    public function table(Request $request)
+
+    public function search(Request $request)
+
     {
-        $companies = Company::filterByRequest($request)->paginate(9);
 
-        return view('frontend.search', compact('companies'));
+        $request->flash();
+
+
+        if ($request->input('type') == 'employer') {
+            $results = Employer::filterByRequest($request)->with('countries','destinations','visas')->paginate(9);
+
+
+        } elseif ($request->input('type') == 'organization') {
+            $results = Agent::filterByRequest($request)->with('countries')->paginate(9);
+        }
+
+        return view('frontend.results', compact('results'));
     }
+
+
+
 
     public function category(Category $category)
     {
@@ -32,7 +63,39 @@ class HomePageController extends Controller
 
     public function company(Company $company)
     {
-        return view('frontend.company', compact ('company'));
+        $cities = City::all();
+        return view('frontend.company', compact('company', 'cities'));
+    }
+
+    public function agent(Agent $agent)
+    {
+        $industries = $agent->load('industries')->get();
+        $employers = $agent->load('employers');
+        $agent->load('location', 'experiences');
+
+        return view('frontend.agent', compact('agent', 'industries', 'employers'));
+    }
+
+
+    public function employer(Employer $employer)
+    {
+        $industries = $employer->load('industries')->get();
+        $agents = $employer->load('agents');
+        $employer->load('location', 'experiences');
+
+
+        return view('frontend.employer', compact('employer', 'industries', 'industries', 'agents'));
+    }
+
+
+    public function businessPartner(){
+        $partners = Partner::all();
+        return view('frontend.business-partner',compact('partners'));
+    }
+
+    public function aboutUs(){
+        $members = Member::all();
+        return view('frontend.about-us',compact('members'));
     }
 
 }

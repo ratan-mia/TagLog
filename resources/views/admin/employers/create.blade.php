@@ -39,15 +39,51 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.employer.fields.phone_helper') }}</span>
             </div>
+
             <div class="form-group">
-                <label for="address">{{ trans('cruds.employer.fields.address') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('address') ? 'is-invalid' : '' }}" name="address" id="address">{!! old('address') !!}</textarea>
+                <label class='required' for="address">{{ trans('cruds.agent.fields.address') }}</label>
+                <input id="searchMapInput" class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address') }}" required>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.employer.fields.address_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.agent.fields.address_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class='required' for="latitude">{{ trans('cruds.agent.fields.latitude') }}</label>
+                <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="text" name="latitude" id="latitude" value="{{ old('latitude') }}" required>
+                @if($errors->has('latitude'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('latitude') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.agent.fields.latitude_helper') }}</span>
+            </div>
+
+            <div class="form-group">
+                <label class="required" for="longitude">{{ trans('cruds.agent.fields.longitude') }}</label>
+                <input class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}" type="text" name="longitude" id="longitude" value="{{ old('longitude') }}" required>
+                @if($errors->has('longitude'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('longitude') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.agent.fields.longitude_helper') }}</span>
+            </div>
+
+            <div class="form-group {{ $errors->has('city_id') ? 'has-error' : '' }}">
+                <label for="city">{{ trans('cruds.agent.fields.city') }}</label>
+                <select name="city_id" id="city" class="form-control select2">
+                    @foreach($cities as $id => $city)
+                        <option value="{{ $id }}" {{ (isset($agent) && $agent->city ? $agent->city->id : old('city_id')) == $id ? 'selected' : '' }}>{{ $city }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('city_id'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('city_id') }}
+                    </em>
+                @endif
             </div>
             <div class="form-group">
                 <label for="description">{{ trans('cruds.employer.fields.description') }}</label>
@@ -60,6 +96,24 @@
                 <span class="help-block">{{ trans('cruds.employer.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="destinations">{{ trans('cruds.employer.fields.destinations') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('destinations') ? 'is-invalid' : '' }}" name="destinations[]" id="destinations" multiple>
+                    @foreach($destinations as $id => $destinations)
+                        <option value="{{ $id }}" {{ in_array($id, old('destinations', [])) ? 'selected' : '' }}>{{ $destinations }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('destinations'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('destinations') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.employer.fields.destinations_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="recruiting_workers">{{ trans('cruds.employer.fields.recruiting_workers') }}</label>
                 <input class="form-control {{ $errors->has('recruiting_workers') ? 'is-invalid' : '' }}" type="number" name="recruiting_workers" id="recruiting_workers" value="{{ old('recruiting_workers') }}" step="1">
                 @if($errors->has('recruiting_workers'))
@@ -69,24 +123,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.employer.fields.recruiting_workers_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="countries">{{ trans('cruds.employer.fields.countries') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('countries') ? 'is-invalid' : '' }}" name="countries[]" id="countries" multiple>
-                    @foreach($countries as $id => $countries)
-                        <option value="{{ $id }}" {{ in_array($id, old('countries', [])) ? 'selected' : '' }}>{{ $countries }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('countries'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('countries') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.employer.fields.countries_helper') }}</span>
-            </div>
+
             <div class="form-group">
                 <label for="agents">{{ trans('cruds.employer.fields.agents') }}</label>
                 <div style="padding-bottom: 4px">
@@ -122,6 +159,24 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.employer.fields.industries_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="visas">{{ trans('cruds.agent.fields.visa') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('visas') ? 'is-invalid' : '' }}" name="visas[]" id="visas" multiple>
+                    @foreach($visas as $id => $visa)
+                        <option value="{{ $id }}" {{ in_array($id, old('visas', [])) ? 'selected' : '' }}>{{ $visa }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('visas'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('visas') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.agent.fields.visa_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="monthly_salary">{{ trans('cruds.employer.fields.monthly_salary') }}</label>
@@ -461,4 +516,20 @@ Dropzone.options.slidersDropzone = {
      }
 }
 </script>
+// Google Map Suggestion
+<script>
+    function initMap() {
+        var input = document.getElementById('searchMapInput');
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            // document.getElementById('address').value = place.formatted_address;
+            document.getElementById('latitude').value = place.geometry.location.lat();
+            document.getElementById('longitude').value = place.geometry.location.lng();
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD33mG6FBa2qlnMV7VnASFAdgBg2EQeDZ8&libraries=places&callback=initMap" async defer></script>
 @endsection

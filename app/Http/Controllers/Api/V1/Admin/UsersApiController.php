@@ -20,14 +20,14 @@ class UsersApiController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource(User::with(['roles', 'country', 'destination_country', 'expected_industries', 'employer', 'agents', 'indurstry'])->get());
+        return new UserResource(User::with(['roles', 'country', 'destination', 'industries', 'employer', 'agents', 'indurstry'])->get());
     }
 
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->all());
         $user->roles()->sync($request->input('roles', []));
-        $user->expected_industries()->sync($request->input('expected_industries', []));
+        $user->industries()->sync($request->input('industries', []));
 
         if ($request->input('profile_picture', false)) {
             $user->addMedia(storage_path('tmp/uploads/' . $request->input('profile_picture')))->toMediaCollection('profile_picture');
@@ -42,14 +42,14 @@ class UsersApiController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource($user->load(['roles', 'country', 'destination_country', 'expected_industries', 'employer', 'agents', 'indurstry']));
+        return new UserResource($user->load(['roles', 'country', 'destination', 'industries', 'employer', 'agents', 'indurstry']));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->update($request->all());
         $user->roles()->sync($request->input('roles', []));
-        $user->expected_industries()->sync($request->input('expected_industries', []));
+        $user->industries()->sync($request->input('industries', []));
 
         if ($request->input('profile_picture', false)) {
             if (!$user->profile_picture || $request->input('profile_picture') !== $user->profile_picture->file_name) {

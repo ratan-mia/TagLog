@@ -201,12 +201,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#destination_country_users" role="tab" data-toggle="tab">
+            <a class="nav-link" href="#destination_users" role="tab" data-toggle="tab">
                 {{ trans('cruds.user.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#destination_country_experiences" role="tab" data-toggle="tab">
+            <a class="nav-link" href="#destination_experiences" role="tab" data-toggle="tab">
                 {{ trans('cruds.experience.title') }}
             </a>
         </li>
@@ -225,10 +225,10 @@
         <div class="tab-pane" role="tabpanel" id="country_users">
             @includeIf('admin.countries.relationships.countryUsers', ['users' => $country->countryUsers])
         </div>
-        <div class="tab-pane" role="tabpanel" id="destination_country_users">
+        <div class="tab-pane" role="tabpanel" id="destination_users">
             @includeIf('admin.countries.relationships.destinationCountryUsers', ['users' => $country->destinationCountryUsers])
         </div>
-        <div class="tab-pane" role="tabpanel" id="destination_country_experiences">
+        <div class="tab-pane" role="tabpanel" id="destination_experiences">
             @includeIf('admin.countries.relationships.destinationCountryExperiences', ['experiences' => $country->destinationCountryExperiences])
         </div>
         <div class="tab-pane" role="tabpanel" id="destination_agents">

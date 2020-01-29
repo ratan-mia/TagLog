@@ -37,10 +37,10 @@ class UpdateUserRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'expected_industries.*' => [
+            'industries.*' => [
                 'integer',
             ],
-            'expected_industries'   => [
+            'industries'   => [
                 'array',
             ],
             'date_of_leaving'       => [

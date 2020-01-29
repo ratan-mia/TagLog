@@ -20,9 +20,9 @@ class IndustryController extends Controller
     {
         abort_if(Gate::denies('industry_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $industries = Industry::all();
+        $all_industries = Industry::all();
 
-        return view('admin.industries.index', compact('industries'));
+        return view('admin.industries.index', compact('all_industries'));
     }
 
     public function create()

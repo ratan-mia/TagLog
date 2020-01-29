@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
@@ -15,11 +16,13 @@ class Agent extends Model implements HasMedia
     public $table = 'agents';
 
     const LANGUAGE_LEVEL_SELECT = [
-
+        'six_months' => 'Six Months',
+        'one_year' => 'One Year',
     ];
 
     const LEAVING_PERIOD_SELECT = [
-
+        'six_months' => 'Six Months',
+        'one_year' => 'One Year',
     ];
 
     protected $appends = [
@@ -36,18 +39,17 @@ class Agent extends Model implements HasMedia
 
     const INTERVIEW_PERIOD_SELECT = [
         'six_months' => 'Six Months',
-        'one_year'   => 'One Year',
+        'one_year' => 'One Year',
     ];
 
     protected $fillable = [
         'map',
         'name',
+        'overview',
         'email',
         'phone',
         'address',
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'city_id',
         'banner_text',
         'workers_sent',
         'total_expense',
@@ -55,26 +57,39 @@ class Agent extends Model implements HasMedia
         'language_level',
         'leaving_period',
         'interview_period',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+
+
     ];
+
 
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
 
-    public function agentExperiences()
+    public function experiences()
     {
         return $this->hasMany(Experience::class, 'agent_id', 'id');
     }
 
-    public function agentsEmployers()
+    public function employers()
     {
         return $this->belongsToMany(Employer::class);
     }
 
-    public function destinations()
+   
+
+    public function countries()
     {
         return $this->belongsToMany(Country::class);
+    }
+
+    public function destinations()
+    {
+        return $this->belongsToMany(Destination::class);
     }
 
     public function industries()
@@ -82,9 +97,63 @@ class Agent extends Model implements HasMedia
         return $this->belongsToMany(Industry::class);
     }
 
-    public function employers()
+    public function visas()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Visa::class);
+    }
+
+    public function location()
+    {
+        return $this->morphOne(Location::class, 'location');
+    }
+
+
+    public $destination_id = '';
+    public $country_id = '';
+    public $visa_type = '';
+
+    public function scopeFilterByRequest($query, Request $request)
+    {
+        $this->destination_id = $request->input('destination_id');
+        $this->country_id = $request->input('country_id');
+        $this->visa_type = $request->input('visa_type');
+
+        if ($request->input('destination_id')) {
+
+            $query->whereHas('destinations', function ($query) {
+
+                $query->where('destination_id', $this->destination_id);
+            });
+        }
+
+
+        if ($request->input('visa_type')) {
+
+            $query->whereHas('visas', function ($query) {
+
+                $query->where('visa_id', $this->visa_type);
+            });
+        }
+
+//        if ($request->input('visa_type')) {
+//            $query->where('visa_type', $request->input('visa_type'));
+//        }
+        if ($request->input('country_id')) {
+
+            $query->whereHas('countries', function ($query) {
+
+                $query->where('country_id', $this->country_id);
+            });
+
+
+        }
+
+        if ($request->input('city_id')) {
+            $query->where('city_id', $request->input('city_id'));
+        }
+
+
+        return $query;
     }
 
     public function getLogoAttribute()
@@ -92,7 +161,7 @@ class Agent extends Model implements HasMedia
         $file = $this->getMedia('logo')->last();
 
         if ($file) {
-            $file->url       = $file->getUrl();
+            $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
@@ -104,7 +173,7 @@ class Agent extends Model implements HasMedia
         $file = $this->getMedia('banner_image')->last();
 
         if ($file) {
-            $file->url       = $file->getUrl();
+            $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
         }
 
@@ -115,10 +184,12 @@ class Agent extends Model implements HasMedia
     {
         $files = $this->getMedia('sliders');
         $files->each(function ($item) {
-            $item->url       = $item->getUrl();
+            $item->url = $item->getUrl();
             $item->thumbnail = $item->getUrl('thumb');
         });
 
         return $files;
     }
+
+
 }
