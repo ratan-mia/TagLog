@@ -136,16 +136,8 @@
                                                     <span>{{$experience->industry->name}}</span></p>
                                             </div>
                                         </div>
+                                    @endforeach
                                 </div>
-
-                                {{--                                @php--}}
-                                {{--                                    echo '<pre>';--}}
-                                {{--                                    var_dump($experience->user);--}}
-                                {{--                                     echo '</pre>';--}}
-                                {{--                                @endphp--}}
-
-
-                                @endforeach
                             </div>
                         </div>
                 </div>
