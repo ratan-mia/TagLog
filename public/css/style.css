@@ -906,6 +906,7 @@ ul.pagination .active a {
 
 .hero-area .advance-search button {
     display: block;
+    border:1px solid #fff;
 }
 
 @media (max-width: 480px) {
