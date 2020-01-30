@@ -10,12 +10,13 @@ use App\Employer;
 use App\Experience;
 use App\Member;
 use App\Partner;
+use App\Setting;
 use App\Visa;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Category;
 
-class HomePageController extends Controller
+class PageController extends Controller
 {
 
     public function index()
@@ -95,7 +96,8 @@ class HomePageController extends Controller
 
     public function aboutUs(){
         $members = Member::all();
-        return view('frontend.about-us',compact('members'));
+        $setting= Setting::first();
+        return view('frontend.about-us',compact('members','setting'));
     }
 
 }

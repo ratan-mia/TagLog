@@ -37,4 +37,16 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Members
     Route::post('members/media', 'MemberApiController@storeMedia')->name('members.storeMedia');
     Route::apiResource('members', 'MemberApiController');
+
+    // Partners
+    Route::post('partners/media', 'PartnerApiController@storeMedia')->name('partners.storeMedia');
+    Route::apiResource('partners', 'PartnerApiController');
+
+    // Members
+    Route::post('members/media', 'MemberApiController@storeMedia')->name('members.storeMedia');
+    Route::apiResource('members', 'MemberApiController');
+
+    // Interviews
+    Route::post('interviews/media', 'InterviewApiController@storeMedia')->name('interviews.storeMedia');
+    Route::apiResource('interviews', 'InterviewApiController');
 });

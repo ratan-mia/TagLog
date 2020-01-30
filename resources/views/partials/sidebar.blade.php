@@ -239,6 +239,16 @@
                     </ul>
                 </li>
             @endcan
+            @can('interview_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.interviews.index") }}" class="nav-link {{ request()->is('admin/interviews') || request()->is('admin/interviews/*') ? 'active' : '' }}">
+                        <i class="fa-fw far fa-calendar-alt nav-icon">
+
+                        </i>
+                        {{ trans('cruds.interview.title') }}
+                    </a>
+                </li>
+            @endcan
             <li class="nav-item">
                 <a href="#" class="nav-link"
                    onclick="event.preventDefault(); document.getElementById('logoutform').submit();">

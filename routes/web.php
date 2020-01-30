@@ -3,26 +3,26 @@
 
 // Route For Frontend
 
-Route::get('/', 'HomePageController@index')->name('homepage');
+Route::get('/', 'PageController@index')->name('homepage');
 
 Route::get('/what-we-do',function(){
     return view('frontend.what-we-do');
 })->name('what-we-do');
 
-Route::get('/our-business-partners','HomePageController@businessPartner')->name('business-partner');
+Route::get('/our-business-partners','PageController@businessPartner')->name('business-partner');
 
-Route::get('/about-us','HomePageController@aboutUs')->name('about-us');
+Route::get('/about-us','PageController@aboutUs')->name('about-us');
 
 Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
     //
 });
-Route::get('results/{type?}/{country?}', 'HomePageController@navigation')->name('navigation');
-Route::post('results/{type?}/{country?}', 'HomePageController@search')->name('search');
-Route::get('categories/{category}', 'HomePageController@category')->name('category');
-Route::get('companies/{company}', 'HomePageController@company')->name('company');
-Route::get('agents/{agent}', 'HomePageController@agent')->name('agent');
-Route::get('employers/{employer}', 'HomePageController@employer')->name('employer');
-Route::get('industries/{industry}', 'HomePageController@industry')->name('industry');
+Route::get('results/{type?}/{country?}', 'PageController@navigation')->name('navigation');
+Route::post('results/{type?}/{country?}', 'PageController@search')->name('search');
+Route::get('categories/{category}', 'PageController@category')->name('category');
+Route::get('companies/{company}', 'PageController@company')->name('company');
+Route::get('agents/{agent}', 'PageController@agent')->name('agent');
+Route::get('employers/{employer}', 'PageController@employer')->name('employer');
+Route::get('industries/{industry}', 'PageController@industry')->name('industry');
 
 Route::get('login2',function(){
     return view('auth.login2');
@@ -123,6 +123,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('members/media', 'MemberController@storeMedia')->name('members.storeMedia');
     Route::post('members/ckmedia', 'MemberController@storeCKEditorImages')->name('members.storeCKEditorImages');
     Route::resource('members', 'MemberController');
+    // Interviews
+    Route::delete('interviews/destroy', 'InterviewController@massDestroy')->name('interviews.massDestroy');
+    Route::post('interviews/media', 'InterviewController@storeMedia')->name('interviews.storeMedia');
+    Route::post('interviews/ckmedia', 'InterviewController@storeCKEditorImages')->name('interviews.storeCKEditorImages');
+    Route::resource('interviews', 'InterviewController');
 });
 
 //User Profile routes

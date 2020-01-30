@@ -33,13 +33,16 @@ class Setting extends Model implements HasMedia
         'email',
         'phone',
         'address',
+        'business_title',
+        'business_sentence',
+        'mission_title',
+        'mission_sentence',
+        'philosophy_title',
+        'philosophy_sentence',
+        'map',
         'created_at',
         'updated_at',
         'deleted_at',
-        'business_title',
-        'philosophy_title',
-        'business_sentence',
-        'philosophy_sentence',
     ];
 
     public function registerMediaConversions(Media $media = null)

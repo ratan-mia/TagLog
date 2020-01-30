@@ -103,6 +103,26 @@
                 <span class="help-block">{{ trans('cruds.setting.fields.philosophy_image_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="mission_title">{{ trans('cruds.setting.fields.mission_title') }}</label>
+                <input class="form-control {{ $errors->has('mission_title') ? 'is-invalid' : '' }}" type="text" name="mission_title" id="mission_title" value="{{ old('mission_title', $setting->mission_title) }}">
+                @if($errors->has('mission_title'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('mission_title') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.mission_title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="mission_sentence">{{ trans('cruds.setting.fields.mission_sentence') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('mission_sentence') ? 'is-invalid' : '' }}" name="mission_sentence" id="mission_sentence">{!! old('mission_sentence', $setting->mission_sentence) !!}</textarea>
+                @if($errors->has('mission_sentence'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('mission_sentence') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.mission_sentence_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="business_title">{{ trans('cruds.setting.fields.business_title') }}</label>
                 <input class="form-control {{ $errors->has('business_title') ? 'is-invalid' : '' }}" type="text" name="business_title" id="business_title" value="{{ old('business_title', $setting->business_title) }}">
                 @if($errors->has('business_title'))
@@ -114,13 +134,23 @@
             </div>
             <div class="form-group">
                 <label for="business_sentence">{{ trans('cruds.setting.fields.business_sentence') }}</label>
-                <input class="form-control {{ $errors->has('business_sentence') ? 'is-invalid' : '' }}" type="text" name="business_sentence" id="business_sentence" value="{{ old('business_sentence', $setting->business_sentence) }}">
+                <textarea class="form-control ckeditor {{ $errors->has('business_sentence') ? 'is-invalid' : '' }}" name="business_sentence" id="business_sentence">{!! old('business_sentence', $setting->business_sentence) !!}</textarea>
                 @if($errors->has('business_sentence'))
                     <div class="invalid-feedback">
                         {{ $errors->first('business_sentence') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.business_sentence_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="map">{{ trans('cruds.setting.fields.map') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('map') ? 'is-invalid' : '' }}" name="map" id="map">{!! old('map', $setting->map) !!}</textarea>
+                @if($errors->has('map'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('map') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.setting.fields.map_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="business_image">{{ trans('cruds.setting.fields.business_image') }}</label>
