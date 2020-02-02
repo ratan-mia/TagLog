@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.23)
 # Database: taglog
-# Generation Time: 2020-02-02 12:42:46 +0000
+# Generation Time: 2020-02-02 13:04:14 +0000
 # ************************************************************
 
 
@@ -984,6 +984,7 @@ DROP TABLE IF EXISTS `inquiries`;
 CREATE TABLE `inquiries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `inquiry` longtext COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1004,9 +1005,12 @@ CREATE TABLE `inquiries` (
 LOCK TABLES `inquiries` WRITE;
 /*!40000 ALTER TABLE `inquiries` DISABLE KEYS */;
 
-INSERT INTO `inquiries` (`id`, `name`, `address`, `inquiry`, `created_at`, `updated_at`, `deleted_at`, `user_id`, `country_id`, `agent_id`)
+INSERT INTO `inquiries` (`id`, `name`, `email`, `address`, `inquiry`, `created_at`, `updated_at`, `deleted_at`, `user_id`, `country_id`, `agent_id`)
 VALUES
-	(1,'Ratan Mia','7th Floor, House: 105, Road: 2, Block: B, Mohanagar Project',NULL,'2020-02-02 10:28:56','2020-02-02 10:29:04',NULL,1,20,4);
+	(1,'Ratan Mia','shorifull@gmail.com','7th Floor, House: 105, Road: 2, Block: B, Mohanagar Project',NULL,'2020-02-02 10:28:56','2020-02-02 12:52:36',NULL,1,18,4),
+	(2,'Ratan Mia','shorifull@gmail.com','7th Floor, House: 105, Road: 2, Block: B, Mohanagar Project','Test','2020-02-02 12:55:08','2020-02-02 12:55:08',NULL,NULL,18,NULL),
+	(3,'Ratan Mia','shorifull@gmail.com','7th Floor, House: 105, Road: 2, Block: B, Mohanagar Project','ghjlk;','2020-02-02 12:59:36','2020-02-02 12:59:36',NULL,NULL,18,NULL),
+	(4,'Ratan Mia','shorifull@gmail.com','7th Floor, House: 105, Road: 2, Block: B, Mohanagar Project','ghjlk;','2020-02-02 13:00:27','2020-02-02 13:00:27',NULL,NULL,18,NULL);
 
 /*!40000 ALTER TABLE `inquiries` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2239,7 +2243,7 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `email`, `visa_type`, `user_status`, `name`, `nationality_id`, `country_id`, `city`, `gender`, `date_of_birth`, `education_background`, `language_level`, `phone`, `facebook`, `skype`, `email_verified_at`, `password`, `remember_token`, `education_level`, `destination_area`, `destination_id`, `agents_id`, `indurstry_id`, `employer_id`, `expected_salary`, `date_of_leaving`, `created_at`, `updated_at`, `deleted_at`)
 VALUES
-	(1,'admin@admin.com','1','1','Shorifull Islam Ratan',19,NULL,'Chittagong','male','1991-11-12','commerce','N1','01751010966','shorifull.ratan','ratan.mia','2019-12-15 07:00:00','$2y$10$JJX.jF2T74lKNHDaB4yqWeZjPSAwEV.RjBVX5ZLX.wKV1u4WwsZTa','hmF6g1tF8Ggz8dxpQ54DtCtHWvGfsmAjAz02RllLLfMozjznx2SfIt5MMMAA','bachelor_degree','5',NULL,1,NULL,NULL,3500.00,'2020-01-28',NULL,'2020-01-30 04:13:33',NULL),
+	(1,'admin@admin.com','1','1','Shorifull Islam Ratan',19,NULL,'Chittagong','male','1991-11-12','commerce','N1','01751010966','shorifull.ratan','ratan.mia','2019-12-15 07:00:00','$2y$10$JJX.jF2T74lKNHDaB4yqWeZjPSAwEV.RjBVX5ZLX.wKV1u4WwsZTa','0bTmkUQarioFWp09U7ARksidV9iANR5j5XOZsJzOVAxsa9DZRruuutTXyrKS','bachelor_degree','5',NULL,1,NULL,NULL,3500.00,'2020-01-28',NULL,'2020-01-30 04:13:33',NULL),
 	(3,'shorifull@gmail.com','1','1','Ratan Mia',19,18,'Dhaka','male','1991-11-12','science','N1','01751010966','shorifull.ratan','shorifull',NULL,'$2y$10$oMjkO5mcQonXTkF7OA.foeLZ6KgpAZvdETU464hu/KUXM1D9R0nSC',NULL,NULL,'5',NULL,NULL,NULL,NULL,3000.00,'2020-03-24','2020-01-26 15:27:47','2020-01-27 06:47:10',NULL);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
