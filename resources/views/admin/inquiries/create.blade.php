@@ -24,6 +24,17 @@
                     <span class="help-block">{{ trans('cruds.inquiry.fields.user_helper') }}</span>
                 </div>
                 <div class="form-group">
+                    <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
+                    <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email"
+                           id="email" value="{{ old('email') }}" required>
+                    @if($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
+                </div>
+                <div class="form-group">
                     <label for="agent_id">{{ trans('cruds.inquiry.fields.agent') }}</label>
                     <select class="form-control select2 {{ $errors->has('agent') ? 'is-invalid' : '' }}" name="agent_id" id="agent_id">
                         @foreach($agents as $id => $agent)

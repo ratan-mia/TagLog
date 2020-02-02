@@ -29,6 +29,9 @@
                             {{ trans('cruds.inquiry.fields.user') }}
                         </th>
                         <th>
+                            {{ trans('cruds.user.fields.email') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.inquiry.fields.agent') }}
                         </th>
                         <th>
@@ -62,6 +65,9 @@
                             </td>
                             <td>
                                 {{ $inquiry->agent->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $inquiry->email ?? '' }}
                             </td>
                             <td>
                                 {{ $inquiry->name ?? '' }}

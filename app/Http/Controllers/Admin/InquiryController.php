@@ -50,7 +50,7 @@ class InquiryController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $inquiry->id]);
         }
 
-        return redirect()->route('admin.inquiries.index');
+        return redirect()->('Your inquery has been submitted. We will contact you within short time.');
     }
 
     public function edit(Inquiry $inquiry)

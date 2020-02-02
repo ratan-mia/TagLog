@@ -49,6 +49,17 @@
                     <span class="help-block">{{ trans('cruds.inquiry.fields.name_helper') }}</span>
                 </div>
                 <div class="form-group">
+                    <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
+                    <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email"
+                           id="email" value="{{ old('email', $inquiry->email) }}" required>
+                    @if($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
+                </div>
+                <div class="form-group">
                     <label for="country_id">{{ trans('cruds.inquiry.fields.country') }}</label>
                     <select class="form-control select2 {{ $errors->has('country') ? 'is-invalid' : '' }}" name="country_id" id="country_id">
                         @foreach($countries as $id => $country)

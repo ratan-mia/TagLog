@@ -22,6 +22,7 @@ class Inquiry extends Model implements HasMedia
 
     protected $fillable = [
         'name',
+        'email',
         'user_id',
         'address',
         'inquiry',
