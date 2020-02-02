@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExperienceRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Industry;
+use App\Interview;
 use App\Nationality;
 use App\User;
 use App\Visa;
@@ -23,6 +24,8 @@ class UserProfileController extends Controller
         $user_id = Auth::id();
         $user = User::find($user_id);
         $experience = Experience::where('user_id', $user_id)->first() ? Experience::where('user_id', $user_id)->first() : '';
+        $experiences = Experience::where('user_id', $user_id)->get();
+        $interviews = Interview::where('user_id',$user_id)->get();
         $visas = Visa::all()->pluck('name', 'id');
         $profile_picture = $user->getMedia('profile_picture')->first() ? $user->getMedia('profile_picture')->first()->getUrl() : '';
         $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -45,7 +48,7 @@ class UserProfileController extends Controller
         }
 
 
-        return view('frontend.user.profile', compact('user', 'agents', 'experience', 'countries', 'destinations', 'expected_industries', 'employers', 'visas', 'nationalities', 'profile_picture'));
+        return view('frontend.user.profile', compact('user', 'agents', 'experience', 'experiences','interviews','countries', 'destinations', 'expected_industries', 'employers', 'visas', 'nationalities', 'profile_picture'));
     }
 
 

@@ -1,0 +1,5 @@
+id,"title","created_at","updated_at","deleted_at"
+1,"Admin",NULL,NULL,NULL
+2,"User",NULL,NULL,NULL
+3,"Super Admin","2020-01-08 16:38:32","2020-01-08 16:39:18","2020-01-08 16:39:18"
+4,"Super Admin","2020-01-30 04:13:02","2020-01-30 04:13:02",NULL

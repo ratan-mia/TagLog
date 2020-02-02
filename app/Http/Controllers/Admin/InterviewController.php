@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Agent;
+use App\Employer;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyInterviewRequest;
 use App\Http\Requests\StoreInterviewRequest;
 use App\Http\Requests\UpdateInterviewRequest;
+use App\Industry;
 use App\Interview;
 use App\User;
+use App\Visa;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\Models\Media;
@@ -31,9 +35,13 @@ class InterviewController extends Controller
     {
         abort_if(Gate::denies('interview_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $users      = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $visas      = Visa::all()->pluck('name', 'id');
+        $industries = Industry::all()->pluck('name', 'id');
+        $agents     = Agent::all()->pluck('name', 'id');
+        $employers  = Employer::all()->pluck('name', 'id');
 
-        return view('admin.interviews.create', compact('users'));
+        return view('admin.interviews.create', compact('users','visas','industries','agents','employers'));
     }
 
     public function store(StoreInterviewRequest $request)
@@ -52,10 +60,14 @@ class InterviewController extends Controller
         abort_if(Gate::denies('interview_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $users = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $visas      = Visa::all()->pluck('name', 'id');
+        $industries = Industry::all()->pluck('name', 'id');
+        $agents     = Agent::all()->pluck('name', 'id');
+        $employers  = Employer::all()->pluck('name', 'id');
 
-        $interview->load('user');
+        $interview->load('user','visa','agent','employer');
 
-        return view('admin.interviews.edit', compact('users', 'interview'));
+        return view('admin.interviews.edit', compact('users', 'interview','visas','industries','agents','employers'));
     }
 
     public function update(UpdateInterviewRequest $request, Interview $interview)

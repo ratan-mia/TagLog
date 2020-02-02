@@ -20,7 +20,8 @@ class Interview extends Model implements HasMedia
     ];
 
     const RESULT_SELECT = [
-        'passed'     => 'Passed',
+        'short_listed' => 'Short Listed',
+        'passed' => 'Passed',
         'not_passed' => 'Not Passed',
     ];
 
@@ -33,8 +34,8 @@ class Interview extends Model implements HasMedia
     ];
 
     const INDUSTRY_SELECT = [
-        'car_industry'  => 'Car Industry',
-        'garments'      => 'Garments',
+        'car_industry' => 'Car Industry',
+        'garments' => 'Garments',
         'constructions' => 'Contstructions',
     ];
 
@@ -45,11 +46,11 @@ class Interview extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'agent',
+        'agent_id',
         'result',
         'user_id',
-        'industry',
-        'employer',
+        'industry_id',
+        'employer_id',
         'visa_type',
         'start_date',
         'created_at',
@@ -61,8 +62,8 @@ class Interview extends Model implements HasMedia
 
     const AGENT_SELECT = [
         'poly_trade_international' => 'Poly Trade International',
-        'asian_imports_limited'    => 'Asian Imports Limited',
-        'continental_motors'       => 'Continenal Motors',
+        'asian_imports_limited' => 'Asian Imports Limited',
+        'continental_motors' => 'Continenal Motors',
     ];
 
     public function registerMediaConversions(Media $media = null)
@@ -73,6 +74,28 @@ class Interview extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class, 'industry_id');
+    }
+
+    public function visa()
+    {
+
+        return $this->belongsTo(Visa::class, 'visa_type');
+    }
+
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class, 'agent_id');
+    }
+
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class, 'employer_id');
     }
 
     public function getInterviewDateAttribute($value)

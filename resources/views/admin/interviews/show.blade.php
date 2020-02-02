@@ -44,7 +44,7 @@
                             {{ trans('cruds.interview.fields.industry') }}
                         </th>
                         <td>
-                            {{ App\Interview::INDUSTRY_SELECT[$interview->industry] ?? '' }}
+                            {{ $interview->industry->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                             {{ trans('cruds.interview.fields.agent') }}
                         </th>
                         <td>
-                            {{ App\Interview::AGENT_SELECT[$interview->agent] ?? '' }}
+                            {{ $interview->agent->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +60,7 @@
                             {{ trans('cruds.interview.fields.employer') }}
                         </th>
                         <td>
-                            {{ App\Interview::EMPLOYER_SELECT[$interview->employer] ?? '' }}
+                            {{ $interview->employer->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

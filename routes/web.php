@@ -8,6 +8,9 @@ Route::get('/', 'PageController@index')->name('homepage');
 Route::get('/what-we-do',function(){
     return view('frontend.what-we-do');
 })->name('what-we-do');
+Route::get('/inquery',function(){
+    return view('frontend.inquery');
+})->name('inquery');
 
 Route::get('/our-business-partners','PageController@businessPartner')->name('business-partner');
 
@@ -128,6 +131,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('interviews/media', 'InterviewController@storeMedia')->name('interviews.storeMedia');
     Route::post('interviews/ckmedia', 'InterviewController@storeCKEditorImages')->name('interviews.storeCKEditorImages');
     Route::resource('interviews', 'InterviewController');
+
+    // Inquiries
+    Route::delete('inquiries/destroy', 'InquiryController@massDestroy')->name('inquiries.massDestroy');
+    Route::post('inquiries/media', 'InquiryController@storeMedia')->name('inquiries.storeMedia');
+    Route::post('inquiries/ckmedia', 'InquiryController@storeCKEditorImages')->name('inquiries.storeCKEditorImages');
+    Route::resource('inquiries', 'InquiryController');
 });
 
 //User Profile routes
@@ -147,3 +156,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middle
 
 
 });
+
+//Ajax Request
+
+Route::get('search', 'AjaxRequestController@ajaxRelevantCity')->name('ajax-relevant-city');

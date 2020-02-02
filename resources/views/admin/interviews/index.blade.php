@@ -70,13 +70,13 @@
                                 {{ $interview->user->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Interview::INDUSTRY_SELECT[$interview->industry] ?? '' }}
+                                {{ $interview->industry->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Interview::AGENT_SELECT[$interview->agent] ?? '' }}
+                                {{ $interview->agent->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Interview::EMPLOYER_SELECT[$interview->employer] ?? '' }}
+                                {{ $interview->employer->name ?? '' }}
                             </td>
                             <td>
                                 {{ $interview->interview_date ?? '' }}

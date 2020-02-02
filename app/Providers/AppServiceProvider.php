@@ -10,6 +10,7 @@ use App\Destination;
 use App\Employer;
 use App\Industry;
 use App\Nationality;
+use App\Setting;
 use App\Visa;
 use Illuminate\Support\ServiceProvider;
 
@@ -90,6 +91,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('frontend.search', function ($view) {
             $view->with('search_cities', City::all());
             $view->with('categories_all', Category::all());
+
+        });
+
+        //Settings
+
+        view()->composer('*', function ($view) {
+            $view->with('setting', Setting::first());
+
 
         });
 

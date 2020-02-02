@@ -1,0 +1,5 @@
+id,"name","short_code","language","currency","religion","description","safe_food","food","safe_medicine","health_insurance","healthcare","taxi_available","transport","culture","politics","created_at","updated_at","deleted_at"
+2,"Japan","jp",NULL,NULL,NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>","<p>&nbsp;</p>","2020-01-23 10:42:47","2020-01-24 08:30:28","2020-01-24 08:30:28"
+18,"Bangladesh","bd",NULL,NULL,NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>","<p>&nbsp;</p>","2020-01-23 10:36:34","2020-01-23 10:36:34",NULL
+19,"Japan","jp",NULL,NULL,NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>","<p>&nbsp;</p>","2020-01-28 08:49:43","2020-01-28 08:49:43",NULL
+20,"Vietnam","vn",NULL,NULL,NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>",NULL,"<p>&nbsp;</p>","<p>&nbsp;</p>","<p>&nbsp;</p>","2020-01-28 08:50:57","2020-01-28 08:50:57",NULL

@@ -194,6 +194,16 @@
                     </a>
                 </li>
             @endcan
+            @can('inquiry_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.inquiries.index") }}" class="nav-link {{ request()->is('admin/inquiries') || request()->is('admin/inquiries/*') ? 'active' : '' }}">
+                        <i class="fa-fw far fa-envelope nav-icon">
+
+                        </i>
+                        {{ trans('cruds.inquiry.title') }}
+                    </a>
+                </li>
+            @endcan
             @can('user_management_access')
                 <li class="nav-item nav-dropdown">
                     <a class="nav-link  nav-dropdown-toggle" href="#">

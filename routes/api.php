@@ -49,4 +49,8 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Interviews
     Route::post('interviews/media', 'InterviewApiController@storeMedia')->name('interviews.storeMedia');
     Route::apiResource('interviews', 'InterviewApiController');
+
+    // Inquiries
+    Route::post('inquiries/media', 'InquiryApiController@storeMedia')->name('inquiries.storeMedia');
+    Route::apiResource('inquiries', 'InquiryApiController');
 });

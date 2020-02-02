@@ -1,0 +1,6 @@
+id,"location_type",location_id,"address","latitude","longitude","created_at","updated_at"
+1,"App\\Agent",4,"Asian Imports Limited, Tejgaon I/A, Dhaka, Bangladesh","23.76660289999999","90.40479549999999","2020-01-17 12:18:57","2020-01-20 14:09:18"
+2,"App\\Agent",6,"Shaheed Tajuddin Ahmad Medical College, Circuit House Road, Gazipur, Bangladesh","23.99164859999999","90.42465","2020-01-20 08:14:38","2020-01-20 08:37:10"
+3,"App\\Employer",2,"Dubai - United Arab Emirates","25.2048493","55.2707828","2020-01-22 14:44:23","2020-01-24 03:56:51"
+4,"App\\Employer",1,"<p>HEG Building, 5-22-26 Honcho, Shiki City, Saitama, JAPAN</p>","25.2048493","55.2707828","2020-01-22 14:44:23","2020-01-24 04:02:16"
+5,"App\\Employer",4,"Tejgaon, Dhaka, Bangladesh","23.759815","90.39131719999999","2020-01-25 13:16:59","2020-01-25 13:16:59"

@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 @section('content')
@@ -20,7 +19,8 @@
                             <div class="profile-thumb">
                                 @if($user->profile_picture)
                                     <a href="{{ $user->profile_picture->getUrl() }}" target="_blank">
-                                        <img src="{{ $user->profile_picture->getUrl('avatar') }}" width="50px" height="50px">
+                                        <img src="{{ $user->profile_picture->getUrl('avatar') }}" width="50px"
+                                             height="50px">
                                     </a>
                                 @endif
 
@@ -45,11 +45,16 @@
                                     <a href="#share_experience" data-toggle="tab"><i class="fa fa-briefcase"></i> Your
                                         Experience</a>
                                 </li>
-{{--                                <li>--}}
-{{--                                    <a href="#change_email" data-toggle="tab"><i class="fa fa-envelope"></i>Change Email</a>--}}
-{{--                                </li>--}}
                                 <li>
-                                    <a href="#change_photo" data-toggle="tab"><i class="fa fa-envelope"></i>Change Avatar</a>
+                                    <a href="#interview_schedule" data-toggle="tab"><i class="fa fa-briefcase"></i>
+                                        Interview Schedule</a>
+                                </li>
+                                {{--                                <li>--}}
+                                {{--                                    <a href="#change_email" data-toggle="tab"><i class="fa fa-envelope"></i>Change Email</a>--}}
+                                {{--                                </li>--}}
+                                <li>
+                                    <a href="#change_photo" data-toggle="tab"><i class="fa fa-envelope"></i>Change
+                                        Avatar</a>
                                 </li>
                                 <li>
                                     <a href="#change_password" data-toggle="tab"><i class="fa fa-briefcase"></i>Change
@@ -343,7 +348,8 @@
                                 @endif
                                 @if (is_null($user))
                                     <p>No Data Found</p>
-                                    <p><a class="btn taglog-button" href="{{route('user.work-preference-form')}}">Add Now</a></p>
+                                    <p><a class="btn taglog-button" href="{{route('user.work-preference-form')}}">Add
+                                            Now</a></p>
                                 @else
 
                                     <form method="POST" action="{{ route("user.update-work-preference", [$user->id]) }}"
@@ -470,21 +476,25 @@
                                 <!-- Change Email Address -->
                                 <div class="widget change-email mb-0">
                                     <h3 class="widget-header user">Change Profile Picture</h3>
-                                    <form method="POST" action="{{ route("user.update-profile-picture", [$user->id]) }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route("user.update-profile-picture", [$user->id]) }}"
+                                          enctype="multipart/form-data">
                                         {{--                                    @method('PUT')--}}
                                         @csrf
                                         <div class="form-group">
-                                            <label for="profile_picture">{{ trans('cruds.user.fields.profile_picture') }}</label>
+                                            <label
+                                                for="profile_picture">{{ trans('cruds.user.fields.profile_picture') }}</label>
                                             {{--                                    <div class="needsclick dropzone {{ $errors->has('profile_picture') ? 'is-invalid' : '' }}"--}}
                                             {{--                                         id="profile_picture-dropzone">--}}
                                             {{--                                    </div>--}}
-                                            <input class="form-control" type="file" id="profile_picture" name="profile_picture" >
+                                            <input class="form-control" type="file" id="profile_picture"
+                                                   name="profile_picture">
                                             @if($errors->has('profile_picture'))
                                                 <div class="invalid-feedback">
                                                     {{ $errors->first('profile_picture') }}
                                                 </div>
                                             @endif
-                                            <span class="help-block">{{ trans('cruds.user.fields.profile_picture_helper') }}</span>
+                                            <span
+                                                class="help-block">{{ trans('cruds.user.fields.profile_picture_helper') }}</span>
                                         </div>
                                         <div class="form-group">
                                             <button class="btn" type="submit">
@@ -522,6 +532,64 @@
                                     </form>
                                 </div>
                             </div>
+
+                            {{-------------------------------------Interview Schedule ------------------------------------------------------------
+                  --------------------------------------------------------------------------------------------------------------------}}
+                            <div class="tab-pane" id="interview_schedule">
+
+                                <!-- Internet Schedule-->
+                                <div class="widget change-email mb-0">
+                                    <h3 class="widget-header user">Interview Schedule</h3>
+                                    @if(!$interviews->isEmpty())
+                                        @foreach($interviews as $interview)
+                                            <div class="row">
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Visa Type</p>
+                                                    <p class="interview-value">{{$interview->visa->name}}</p>
+                                                </div>
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Interview Date</p>
+                                                    <p class="interview-value">{{$interview->interview_date}}</p>
+                                                </div>
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Sending Org.</p>
+                                                    <p class="interview-value">{{$interview->agent->name}}</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Industry</p>
+                                                    <p class="interview-value">{{$interview->industry->name}}</p>
+                                                </div>
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Start On</p>
+                                                    <p class="interview-value">{{$interview->start_date}}</p>
+                                                </div>
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Employer</p>
+                                                    <p class="interview-value">{{$interview->employer->name}}</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 border p-1">
+                                                    <p class="interview-attr">Result</p>
+                                                    <p class="interview-value">{{App\Interview::RESULT_SELECT[$interview->result] }}</p>
+
+                                                </div>
+                                                <div class="col-md-8 border p-1">
+                                                    <p class="interview-attr">Contact to TagLog</p>
+                                                    <p class="interview-value">{!! $interview->contact_to_taglog !!}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <p>Sorry! No Interview Schedule Yet.</p>
+                                    @endif
+                                </div>
+                            </div>
+
                             {{---------------------------------------Share Experience ------------------------------------------------------------
                             --------------------------------------------------------------------------------------------------------------------}}
 
@@ -537,9 +605,124 @@
                                     @endif
                                     @if (empty($experience))
                                         <p>You didn't share your experience yet.</p>
-                                    <br>
-                                        <p><a class="btn taglog-button" href="{{route('user.experience-form')}}">Share Now</a></p>
+                                        <br>
+                                        <p><a class="btn taglog-button" href="{{route('user.experience-form')}}">Share
+                                                Now</a></p>
                                     @else
+
+{{--                                        <div class="card">--}}
+{{--                                            <div class="card-header">--}}
+{{--                                                {{ trans('cruds.experience.title_singular') }} {{ trans('global.list') }}--}}
+{{--                                            </div>--}}
+
+{{--                                            <div class="card-body">--}}
+{{--                                                <div class="table-responsive">--}}
+{{--                                                    <table class=" table table-bordered table-striped table-hover datatable datatable-Experience">--}}
+{{--                                                        <thead>--}}
+{{--                                                        <tr>--}}
+{{--                                                            <th width="10">--}}
+
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.id') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.agent') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.expenses_paid') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.agent_rating') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.employer') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.industry') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.monthly_salary') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.monthly_living_expenses') }}--}}
+{{--                                                            </th>--}}
+
+{{--                                                            <th>--}}
+{{--                                                                {{ trans('cruds.experience.fields.employer_rating') }}--}}
+{{--                                                            </th>--}}
+{{--                                                            <th>--}}
+{{--                                                                &nbsp;--}}
+{{--                                                            </th>--}}
+{{--                                                        </tr>--}}
+{{--                                                        </thead>--}}
+{{--                                                        <tbody>--}}
+{{--                                                        @foreach($experiences as $key => $experience)--}}
+{{--                                                            <tr data-entry-id="{{ $experience->id }}">--}}
+{{--                                                                <td>--}}
+
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->id ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->agent->name ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->expenses_paid ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->agent_rating ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->employer->name ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->industry->name ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->monthly_salary ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->monthly_living_expenses ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    {{ $experience->employer_rating ?? '' }}--}}
+{{--                                                                </td>--}}
+{{--                                                                <td>--}}
+{{--                                                                    @can('experience_show')--}}
+{{--                                                                        <a class="btn btn-xs btn-primary" href="{{ route('admin.experiences.show', $experience->id) }}">--}}
+{{--                                                                            {{ trans('global.view') }}--}}
+{{--                                                                        </a>--}}
+{{--                                                                    @endcan--}}
+
+{{--                                                                    @can('experience_edit')--}}
+{{--                                                                        <a class="btn btn-xs btn-info" href="{{ route('admin.experiences.edit', $experience->id) }}">--}}
+{{--                                                                            {{ trans('global.edit') }}--}}
+{{--                                                                        </a>--}}
+{{--                                                                    @endcan--}}
+
+{{--                                                                    @can('experience_delete')--}}
+{{--                                                                        <form action="{{ route('admin.experiences.destroy', $experience->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">--}}
+{{--                                                                            <input type="hidden" name="_method" value="DELETE">--}}
+{{--                                                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+{{--                                                                            <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">--}}
+{{--                                                                        </form>--}}
+{{--                                                                    @endcan--}}
+
+{{--                                                                </td>--}}
+
+{{--                                                            </tr>--}}
+{{--                                                        @endforeach--}}
+{{--                                                        </tbody>--}}
+{{--                                                    </table>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+
+
+                                        {{---------------------------------------End All Experiences------------------------------------------------------------
+                                        --------------------------------------------------------------------------------------------------------------------}}
                                         <form method="POST"
                                               action="{{ route("admin.experiences.update", [$experience->id]) }}"
                                               enctype="multipart/form-data">
@@ -848,7 +1031,7 @@
                                             </div>
                                         </form>
 
-                                        @endif
+                                    @endif
 
 
                                 </div>

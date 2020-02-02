@@ -11,21 +11,6 @@
                 @method('PUT')
                 @csrf
                 <div class="form-group">
-                    <label>{{ trans('cruds.interview.fields.visa_type') }}</label>
-                    <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
-                        <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                        @foreach(App\Interview::VISA_TYPE_SELECT as $key => $label)
-                            <option value="{{ $key }}" {{ old('visa_type', $interview->visa_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has(''))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.interview.fields.visa_type_helper') }}</span>
-                </div>
-                <div class="form-group">
                     <label for="user_id">{{ trans('cruds.interview.fields.user') }}</label>
                     <select class="form-control select2 {{ $errors->has('user') ? 'is-invalid' : '' }}" name="user_id" id="user_id">
                         @foreach($users as $id => $user)
@@ -40,11 +25,27 @@
                     <span class="help-block">{{ trans('cruds.interview.fields.user_helper') }}</span>
                 </div>
                 <div class="form-group">
+                    <label>{{ trans('cruds.interview.fields.visa_type') }}</label>
+                    <select class="form-control {{ $errors->has('visa_type') ? 'is-invalid' : '' }}" name="visa_type" id="visa_type">
+                        <option value disabled {{ old('visa_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach($visas as $key => $label)
+                            <option value="{{ $key }}" {{ old('visa_type', $interview->visa_type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has(''))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.interview.fields.visa_type_helper') }}</span>
+                </div>
+                <div class="form-group">
                     <label>{{ trans('cruds.interview.fields.industry') }}</label>
-                    <select class="form-control {{ $errors->has('industry') ? 'is-invalid' : '' }}" name="industry" id="industry">
-                        <option value disabled {{ old('industry', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                        @foreach(App\Interview::INDUSTRY_SELECT as $key => $label)
-                            <option value="{{ $key }}" {{ old('industry', $interview->industry) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    <select class="form-control {{ $errors->has('industry_id') ? 'is-invalid' : '' }}" name="industry_id" id="industry_id">
+                        <option value disabled {{ old('industry_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach($industries as $id => $industry)
+
+                            <option value="{{ $id }}" {{ ($interview->industry ? $interview->industry->id : old('industry_id')) == $id ? 'selected' : '' }}>{{ $industry }}</option>
                         @endforeach
                     </select>
                     @if($errors->has(''))
@@ -56,10 +57,11 @@
                 </div>
                 <div class="form-group">
                     <label>{{ trans('cruds.interview.fields.agent') }}</label>
-                    <select class="form-control {{ $errors->has('agent') ? 'is-invalid' : '' }}" name="agent" id="agent">
+                    <select class="form-control {{ $errors->has('agent_id') ? 'is-invalid' : '' }}" name="agent_id" id="agent_id">
                         <option value disabled {{ old('agent', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                        @foreach(App\Interview::AGENT_SELECT as $key => $label)
-                            <option value="{{ $key }}" {{ old('agent', $interview->agent) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @foreach($agents as $key => $label)
+{{--                            <option value="{{ $key }}" {{ old('agent_id', $interview->agent) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>--}}
+                            <option value="{{$key}}" {{ ($interview->agent ? $interview->agent->id : old('agent_id')) == $key ? 'selected' : '' }}> {{$label}} </option>
                         @endforeach
                     </select>
                     @if($errors->has(''))
@@ -71,10 +73,11 @@
                 </div>
                 <div class="form-group">
                     <label>{{ trans('cruds.interview.fields.employer') }}</label>
-                    <select class="form-control {{ $errors->has('employer') ? 'is-invalid' : '' }}" name="employer" id="employer">
-                        <option value disabled {{ old('employer', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                        @foreach(App\Interview::EMPLOYER_SELECT as $key => $label)
-                            <option value="{{ $key }}" {{ old('employer', $interview->employer) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    <select class="form-control {{ $errors->has('employer_id') ? 'is-invalid' : '' }}" name="employer_id" id="employer_id">
+                        <option value disabled {{ old('employer_id', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach($employers as $key => $label)
+{{--                            <option value="{{ $key }}" {{ old('employer_id', $interview->employer) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>--}}
+                            <option value="{{$key}}" {{ ($interview->employer ? $interview->employer->id : old('employer_id')) == $key ? 'selected' : '' }}> {{$label}} </option>
                         @endforeach
                     </select>
                     @if($errors->has(''))

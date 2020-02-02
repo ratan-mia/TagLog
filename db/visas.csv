@@ -1,0 +1,4 @@
+id,"name","type","countries_without_visa",duration,"work_permit",working_limit,"industries","language_traning",training_duration,"countries_restrictred","created_at","updated_at","deleted_at"
+1,"Technical Intern Trainee",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"2019-12-18 09:50:52","2019-12-18 09:50:52",NULL
+2,"Specified Skilled Worker",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"2019-12-18 09:51:19","2019-12-18 09:51:19",NULL
+3,"Student Visa",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"2019-12-18 10:05:54","2019-12-18 10:05:54",NULL

@@ -4,7 +4,7 @@
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg  navigation">
                         <a class="navbar-brand" href="/">
-                            <img src="/images/logo.png" alt="">
+                            <img src="{{asset('/images/logo.png')}}" alt="TagLog">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -16,9 +16,11 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{route('homepage')}}">Home</a>
                                 </li>
+                                @can('dashboard_access')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('admin.home')}}">Dashboard</a>
                                 </li>
+                                @endcan
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('about-us')}}">About Us</a>
                                 </li>

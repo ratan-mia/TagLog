@@ -1,0 +1,248 @@
+id,"code","country","name","created_at","updated_at"
+1,"AF","Afghanistan","Afghan",NULL,NULL
+2,"AL","Albania","Albanian",NULL,NULL
+3,"AX","Aland Islands","Aland Islander",NULL,NULL
+4,"DZ","Algeria","Algerian",NULL,NULL
+5,"AS","American Samoa","American Samoan",NULL,NULL
+6,"AD","Andorra","Andorran",NULL,NULL
+7,"AO","Angola","Angolan",NULL,NULL
+8,"AI","Anguilla","Anguillan",NULL,NULL
+9,"AQ","Antarctica","Antarctican",NULL,NULL
+10,"AG","Antigua and Barbuda","Antiguan",NULL,NULL
+11,"AR","Argentina","Argentinian",NULL,NULL
+12,"AM","Armenia","Armenian",NULL,NULL
+13,"AW","Aruba","Aruban",NULL,NULL
+14,"AU","Australia","Australian",NULL,NULL
+15,"AT","Austria","Austrian",NULL,NULL
+16,"AZ","Azerbaijan","Azerbaijani",NULL,NULL
+17,"BS","Bahamas","Bahamian",NULL,NULL
+18,"BH","Bahrain","Bahraini",NULL,NULL
+19,"BD","Bangladesh","Bangladeshi",NULL,NULL
+20,"BB","Barbados","Barbadian",NULL,NULL
+21,"BY","Belarus","Belarusian",NULL,NULL
+22,"BE","Belgium","Belgian",NULL,NULL
+23,"BZ","Belize","Belizean",NULL,NULL
+24,"BJ","Benin","Beninese",NULL,NULL
+25,"BL","Saint Barthelemy","Saint Barthelmian",NULL,NULL
+26,"BM","Bermuda","Bermudan",NULL,NULL
+27,"BT","Bhutan","Bhutanese",NULL,NULL
+28,"BO","Bolivia","Bolivian",NULL,NULL
+29,"BA","Bosnia and Herzegovina","Bosnian / Herzegovinian",NULL,NULL
+30,"BW","Botswana","Botswanan",NULL,NULL
+31,"BV","Bouvet Island","Bouvetian",NULL,NULL
+32,"BR","Brazil","Brazilian",NULL,NULL
+33,"IO","British Indian Ocean Territory","British Indian Ocean Territory",NULL,NULL
+34,"BN","Brunei Darussalam","Bruneian",NULL,NULL
+35,"BG","Bulgaria","Bulgarian",NULL,NULL
+36,"BF","Burkina Faso","Burkinabe",NULL,NULL
+37,"BI","Burundi","Burundian",NULL,NULL
+38,"KH","Cambodia","Cambodian",NULL,NULL
+39,"CM","Cameroon","Cameroonian",NULL,NULL
+40,"CA","Canada","Canadian",NULL,NULL
+41,"CV","Cape Verde","Cape Verdean",NULL,NULL
+42,"KY","Cayman Islands","Caymanian",NULL,NULL
+43,"CF","Central African Republic","Central African",NULL,NULL
+44,"TD","Chad","Chadian",NULL,NULL
+45,"CL","Chile","Chilean",NULL,NULL
+46,"CN","China","Chinese",NULL,NULL
+47,"CX","Christmas Island","Christmas Islander",NULL,NULL
+48,"CC","Cocos (Keeling) Islands","Cocos Islander",NULL,NULL
+49,"CO","Colombia","Colombian",NULL,NULL
+50,"KM","Comoros","Comorian",NULL,NULL
+51,"CG","Congo","Congolese",NULL,NULL
+52,"CK","Cook Islands","Cook Islander",NULL,NULL
+53,"CR","Costa Rica","Costa Rican",NULL,NULL
+54,"HR","Croatia","Croatian",NULL,NULL
+55,"CU","Cuba","Cuban",NULL,NULL
+56,"CY","Cyprus","Cypriot",NULL,NULL
+57,"CW","Curaçao","Curacian",NULL,NULL
+58,"CZ","Czech Republic","Czech",NULL,NULL
+59,"DK","Denmark","Danish",NULL,NULL
+60,"DJ","Djibouti","Djiboutian",NULL,NULL
+61,"DM","Dominica","Dominican",NULL,NULL
+62,"DO","Dominican Republic","Dominican",NULL,NULL
+63,"EC","Ecuador","Ecuadorian",NULL,NULL
+64,"EG","Egypt","Egyptian",NULL,NULL
+65,"SV","El Salvador","Salvadoran",NULL,NULL
+66,"GQ","Equatorial Guinea","Equatorial Guinean",NULL,NULL
+67,"ER","Eritrea","Eritrean",NULL,NULL
+68,"EE","Estonia","Estonian",NULL,NULL
+69,"ET","Ethiopia","Ethiopian",NULL,NULL
+70,"FK","Falkland Islands (Malvinas)","Falkland Islander",NULL,NULL
+71,"FO","Faroe Islands","Faroese",NULL,NULL
+72,"FJ","Fiji","Fijian",NULL,NULL
+73,"FI","Finland","Finnish",NULL,NULL
+74,"FR","France","French",NULL,NULL
+75,"GF","French Guiana","French Guianese",NULL,NULL
+76,"PF","French Polynesia","French Polynesian",NULL,NULL
+77,"TF","French Southern and Antarctic Lands","French",NULL,NULL
+78,"GA","Gabon","Gabonese",NULL,NULL
+79,"GM","Gambia","Gambian",NULL,NULL
+80,"GE","Georgia","Georgian",NULL,NULL
+81,"DE","Germany","German",NULL,NULL
+82,"GH","Ghana","Ghanaian",NULL,NULL
+83,"GI","Gibraltar","Gibraltar",NULL,NULL
+84,"GG","Guernsey","Guernsian",NULL,NULL
+85,"GR","Greece","Greek",NULL,NULL
+86,"GL","Greenland","Greenlandic",NULL,NULL
+87,"GD","Grenada","Grenadian",NULL,NULL
+88,"GP","Guadeloupe","Guadeloupe",NULL,NULL
+89,"GU","Guam","Guamanian",NULL,NULL
+90,"GT","Guatemala","Guatemalan",NULL,NULL
+91,"GN","Guinea","Guinean",NULL,NULL
+92,"GW","Guinea-Bissau","Guinea-Bissauan",NULL,NULL
+93,"GY","Guyana","Guyanese",NULL,NULL
+94,"HT","Haiti","Haitian",NULL,NULL
+95,"HM","Heard and Mc Donald Islands","Heard and Mc Donald Islanders",NULL,NULL
+96,"HN","Honduras","Honduran",NULL,NULL
+97,"HK","Hong Kong","Hongkongese",NULL,NULL
+98,"HU","Hungary","Hungarian",NULL,NULL
+99,"IS","Iceland","Icelandic",NULL,NULL
+100,"IN","India","Indian",NULL,NULL
+101,"IM","Isle of Man","Manx",NULL,NULL
+102,"ID","Indonesia","Indonesian",NULL,NULL
+103,"IR","Iran","Iranian",NULL,NULL
+104,"IQ","Iraq","Iraqi",NULL,NULL
+105,"IE","Ireland","Irish",NULL,NULL
+106,"IL","Israel","Israeli",NULL,NULL
+107,"IT","Italy","Italian",NULL,NULL
+108,"CI","Ivory Coast","Ivory Coastian",NULL,NULL
+109,"JE","Jersey","Jersian",NULL,NULL
+110,"JM","Jamaica","Jamaican",NULL,NULL
+111,"JP","Japan","Japanese",NULL,NULL
+112,"JO","Jordan","Jordanian",NULL,NULL
+113,"KZ","Kazakhstan","Kazakh",NULL,NULL
+114,"KE","Kenya","Kenyan",NULL,NULL
+115,"KI","Kiribati","I-Kiribati",NULL,NULL
+116,"KP","Korea(North Korea)","North Korean",NULL,NULL
+117,"KR","Korea(South Korea)","South Korean",NULL,NULL
+118,"XK","Kosovo","Kosovar",NULL,NULL
+119,"KW","Kuwait","Kuwaiti",NULL,NULL
+120,"KG","Kyrgyzstan","Kyrgyzstani",NULL,NULL
+121,"LA","Lao PDR","Laotian",NULL,NULL
+122,"LV","Latvia","Latvian",NULL,NULL
+123,"LB","Lebanon","Lebanese",NULL,NULL
+124,"LS","Lesotho","Basotho",NULL,NULL
+125,"LR","Liberia","Liberian",NULL,NULL
+126,"LY","Libya","Libyan",NULL,NULL
+127,"LI","Liechtenstein","Liechtenstein",NULL,NULL
+128,"LT","Lithuania","Lithuanian",NULL,NULL
+129,"LU","Luxembourg","Luxembourger",NULL,NULL
+130,"LK","Sri Lanka","Sri Lankian",NULL,NULL
+131,"MO","Macau","Macanese",NULL,NULL
+132,"MK","Macedonia","Macedonian",NULL,NULL
+133,"MG","Madagascar","Malagasy",NULL,NULL
+134,"MW","Malawi","Malawian",NULL,NULL
+135,"MY","Malaysia","Malaysian",NULL,NULL
+136,"MV","Maldives","Maldivian",NULL,NULL
+137,"ML","Mali","Malian",NULL,NULL
+138,"MT","Malta","Maltese",NULL,NULL
+139,"MH","Marshall Islands","Marshallese",NULL,NULL
+140,"MQ","Martinique","Martiniquais",NULL,NULL
+141,"MR","Mauritania","Mauritanian",NULL,NULL
+142,"MU","Mauritius","Mauritian",NULL,NULL
+143,"YT","Mayotte","Mahoran",NULL,NULL
+144,"MX","Mexico","Mexican",NULL,NULL
+145,"FM","Micronesia","Micronesian",NULL,NULL
+146,"MD","Moldova","Moldovan",NULL,NULL
+147,"MC","Monaco","Monacan",NULL,NULL
+148,"MN","Mongolia","Mongolian",NULL,NULL
+149,"ME","Montenegro","Montenegrin",NULL,NULL
+150,"MS","Montserrat","Montserratian",NULL,NULL
+151,"MA","Morocco","Moroccan",NULL,NULL
+152,"MZ","Mozambique","Mozambican",NULL,NULL
+153,"MM","Myanmar","Myanmarian",NULL,NULL
+154,"NA","Namibia","Namibian",NULL,NULL
+155,"NR","Nauru","Nauruan",NULL,NULL
+156,"NP","Nepal","Nepalese",NULL,NULL
+157,"NL","Netherlands","Dutch",NULL,NULL
+158,"AN","Netherlands Antilles","Dutch Antilier",NULL,NULL
+159,"NC","New Caledonia","New Caledonian",NULL,NULL
+160,"NZ","New Zealand","New Zealander",NULL,NULL
+161,"NI","Nicaragua","Nicaraguan",NULL,NULL
+162,"NE","Niger","Nigerien",NULL,NULL
+163,"NG","Nigeria","Nigerian",NULL,NULL
+164,"NU","Niue","Niuean",NULL,NULL
+165,"NF","Norfolk Island","Norfolk Islander",NULL,NULL
+166,"MP","Northern Mariana Islands","Northern Marianan",NULL,NULL
+167,"NO","Norway","Norwegian",NULL,NULL
+168,"OM","Oman","Omani",NULL,NULL
+169,"PK","Pakistan","Pakistani",NULL,NULL
+170,"PW","Palau","Palauan",NULL,NULL
+171,"PS","Palestine","Palestinian",NULL,NULL
+172,"PA","Panama","Panamanian",NULL,NULL
+173,"PG","Papua New Guinea","Papua New Guinean",NULL,NULL
+174,"PY","Paraguay","Paraguayan",NULL,NULL
+175,"PE","Peru","Peruvian",NULL,NULL
+176,"PH","Philippines","Filipino",NULL,NULL
+177,"PN","Pitcairn","Pitcairn Islander",NULL,NULL
+178,"PL","Poland","Polish",NULL,NULL
+179,"PT","Portugal","Portuguese",NULL,NULL
+180,"PR","Puerto Rico","Puerto Rican",NULL,NULL
+181,"QA","Qatar","Qatari",NULL,NULL
+182,"RE","Reunion Island","Reunionese",NULL,NULL
+183,"RO","Romania","Romanian",NULL,NULL
+184,"RU","Russian","Russian",NULL,NULL
+185,"RW","Rwanda","Rwandan",NULL,NULL
+186,"KN","Saint Kitts and Nevis","Kittitian/Nevisian",NULL,NULL
+187,"MF","Saint Martin (French part)","St. Martian(French)",NULL,NULL
+188,"SX","Sint Maarten (Dutch part)","St. Martian(Dutch)",NULL,NULL
+189,"LC","Saint Pierre and Miquelon","St. Pierre and Miquelon",NULL,NULL
+190,"VC","Saint Vincent and the Grenadines","Saint Vincent and the Grenadines",NULL,NULL
+191,"WS","Samoa","Samoan",NULL,NULL
+192,"SM","San Marino","Sammarinese",NULL,NULL
+193,"ST","Sao Tome and Principe","Sao Tomean",NULL,NULL
+194,"SA","Saudi Arabia","Saudi Arabian",NULL,NULL
+195,"SN","Senegal","Senegalese",NULL,NULL
+196,"RS","Serbia","Serbian",NULL,NULL
+197,"SC","Seychelles","Seychellois",NULL,NULL
+198,"SL","Sierra Leone","Sierra Leonean",NULL,NULL
+199,"SG","Singapore","Singaporean",NULL,NULL
+200,"SK","Slovakia","Slovak",NULL,NULL
+201,"SI","Slovenia","Slovenian",NULL,NULL
+202,"SB","Solomon Islands","Solomon Island",NULL,NULL
+203,"SO","Somalia","Somali",NULL,NULL
+204,"ZA","South Africa","South African",NULL,NULL
+205,"GS","South Georgia and the South Sandwich","South Georgia and the South Sandwich",NULL,NULL
+206,"SS","South Sudan","South Sudanese",NULL,NULL
+207,"ES","Spain","Spanish",NULL,NULL
+208,"SH","Saint Helena","St. Helenian",NULL,NULL
+209,"SD","Sudan","Sudanese",NULL,NULL
+210,"SR","Suriname","Surinamese",NULL,NULL
+211,"SJ","Svalbard and Jan Mayen","Svalbardian/Jan Mayenian",NULL,NULL
+212,"SZ","Swaziland","Swazi",NULL,NULL
+213,"SE","Sweden","Swedish",NULL,NULL
+214,"CH","Switzerland","Swiss",NULL,NULL
+215,"SY","Syria","Syrian",NULL,NULL
+216,"TW","Taiwan","Taiwanese",NULL,NULL
+217,"TJ","Tajikistan","Tajikistani",NULL,NULL
+218,"TZ","Tanzania","Tanzanian",NULL,NULL
+219,"TH","Thailand","Thai",NULL,NULL
+220,"TL","Timor-Leste","Timor-Lestian",NULL,NULL
+221,"TG","Togo","Togolese",NULL,NULL
+222,"TK","Tokelau","Tokelaian",NULL,NULL
+223,"TO","Tonga","Tongan",NULL,NULL
+224,"TT","Trinidad and Tobago","Trinidadian/Tobagonian",NULL,NULL
+225,"TN","Tunisia","Tunisian",NULL,NULL
+226,"TR","Turkey","Turkish",NULL,NULL
+227,"TM","Turkmenistan","Turkmen",NULL,NULL
+228,"TC","Turks and Caicos Islands","Turks and Caicos Islands",NULL,NULL
+229,"TV","Tuvalu","Tuvaluan",NULL,NULL
+230,"UG","Uganda","Ugandan",NULL,NULL
+231,"UA","Ukraine","Ukrainian",NULL,NULL
+232,"AE","United Arab Emirates","Emirati",NULL,NULL
+233,"GB","United Kingdom","British",NULL,NULL
+234,"US","United States","American",NULL,NULL
+235,"UM","US Minor Outlying Islands","US Minor Outlying Islander",NULL,NULL
+236,"UY","Uruguay","Uruguayan",NULL,NULL
+237,"UZ","Uzbekistan","Uzbek",NULL,NULL
+238,"VU","Vanuatu","Vanuatuan",NULL,NULL
+239,"VE","Venezuela","Venezuelan",NULL,NULL
+240,"VN","Vietnam","Vietnamese",NULL,NULL
+241,"VI","Virgin Islands (U.S.)","American Virgin Islander",NULL,NULL
+242,"VA","Vatican City","Vatican",NULL,NULL
+243,"WF","Wallis and Futuna Islands","Wallisian/Futunan",NULL,NULL
+244,"EH","Western Sahara","Sahrawian",NULL,NULL
+245,"YE","Yemen","Yemeni",NULL,NULL
+246,"ZM","Zambia","Zambian",NULL,NULL
+247,"ZW","Zimbabwe","Zimbabwean",NULL,NULL
