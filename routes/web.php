@@ -137,6 +137,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('inquiries/media', 'InquiryController@storeMedia')->name('inquiries.storeMedia');
     Route::post('inquiries/ckmedia', 'InquiryController@storeCKEditorImages')->name('inquiries.storeCKEditorImages');
     Route::resource('inquiries', 'InquiryController');
+
+
 });
 
 //User Profile routes
@@ -160,3 +162,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User','middle
 //Ajax Request
 
 Route::get('search', 'AjaxRequestController@ajaxRelevantCity')->name('ajax-relevant-city');
+
+
+// New contact/inquiry submit
+Route::post('inquiries/submit', 'GuestController@newEnquerySubmit')->name('inquiries.new.submission');

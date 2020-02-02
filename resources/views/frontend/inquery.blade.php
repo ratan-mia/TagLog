@@ -75,16 +75,16 @@
                     <!-- form message -->
                     <div class="row">
                         <div class="col-12">
-                            @if(Session::has('success'))
-                                <div class="alert alert-success">
-                                    {{Session::get('success')}}
-                                </div>
-                            @endif
+                                @if(session()->has('message'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
                         </div>
                     </div>
                     <!-- end message -->
                     <!-- Contacts Form -->
-                    <form method="POST" action="{{ route("admin.inquiries.store") }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route("inquiries.new.submission") }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Input -->

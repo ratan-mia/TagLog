@@ -49,8 +49,7 @@ class InquiryController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $inquiry->id]);
         }
-
-        return redirect()->('Your inquery has been submitted. We will contact you within short time.');
+        return redirect()->back()->with('message', 'Your inquiry has been submitted. We will contact you within short time.');
     }
 
     public function edit(Inquiry $inquiry)
@@ -111,4 +110,6 @@ class InquiryController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+
+
 }

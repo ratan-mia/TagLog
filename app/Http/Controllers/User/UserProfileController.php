@@ -194,26 +194,14 @@ class UserProfileController extends Controller
     }
 
     public function updateProfilePicture(Request $request, User $user){
-//        $user->update($request->all());
-//        if ($request->input('profile_picture', false)) {
-//            if (!$user->profile_picture || $request->input('profile_picture') !== $user->profile_picture->file_name) {
-//                $user->addMedia(storage_path('tmp/uploads/' . $request->input('profile_picture')))->toMediaCollection('profile_picture');
-//            }
-//        } elseif ($user->profile_picture) {
-//            $user->profile_picture->delete();
-//        }
 
-//        if ($request->input('profile_picture')) {
-//            $user->addMedia($request->file('profile_picture'))->toMediaCollection('profile_picture');
-//
-//
-//        }
 
         if($request->hasFile('profile_picture') && $request->file('profile_picture')->isValid()){
             $user->addMediaFromRequest('profile_picture')->toMediaCollection('profile_picture');
         }
         return redirect()->route('user.my-profile');
     }
+
 }
 
 
