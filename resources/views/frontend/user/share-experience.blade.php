@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                             <input class="form-control {{ $errors->has('form_type') ? 'is-invalid' : '' }}" type="text"
-                                   name="form_type" id="form_type" value="{{ old('form_type') }}" required>
+                                   name="form_type" id="form_type" value="{{ old('form_type','agent') }}" required>
                             <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="text"
                                    name="latitude" id="latitude" value="{{ old('latitude') }}" required>
                             <input class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}"
