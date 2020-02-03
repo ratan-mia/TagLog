@@ -80,12 +80,12 @@
                                         class="help-block">{{ trans('cruds.agent.fields.address_helper') }}</span>
                                 </div>
                             </div>
-                            <input class="form-control {{ $errors->has('form_type') ? 'is-invalid' : '' }}" type="text"
+                            <input class="form-control {{ $errors->has('form_type') ? 'is-invalid' : '' }}" type="hidden"
                                    name="form_type" id="form_type" value="{{ old('form_type') }}" required>
-                            <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="text"
+                            <input class="form-control {{ $errors->has('latitude') ? 'is-invalid' : '' }}" type="hidden"
                                    name="latitude" id="latitude" value="{{ old('latitude') }}" required>
                             <input class="form-control {{ $errors->has('longitude') ? 'is-invalid' : '' }}"
-                                   type="text" name="longitude" id="longitude" value="{{ old('longitude') }}"
+                                   type="hidden" name="longitude" id="longitude" value="{{ old('longitude') }}"
                                    required>
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
@@ -908,7 +908,6 @@
                 // $('#agent-form').hide();
                 $('#agent-form').show();
                 $('#form_type').val('employer');
-                $('.form-title').text('Add New Employer');
                 $('html, body').animate({
                     scrollTop: 0
                 }, 800);

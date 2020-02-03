@@ -8,9 +8,7 @@ Route::get('/', 'PageController@index')->name('homepage');
 Route::get('/what-we-do',function(){
     return view('frontend.what-we-do');
 })->name('what-we-do');
-Route::get('/inquery',function(){
-    return view('frontend.inquery');
-})->name('inquery');
+
 
 Route::get('/our-business-partners','PageController@businessPartner')->name('business-partner');
 
@@ -165,4 +163,7 @@ Route::get('search', 'AjaxRequestController@ajaxRelevantCity')->name('ajax-relev
 
 
 // New contact/inquiry submit
+
+Route::get('/inquiry/{agent_id?}', 'GuestController@inquiryForm')->name('inquiry');
 Route::post('inquiries/submit', 'GuestController@newEnquerySubmit')->name('inquiries.new.submission');
+Route::post('organization/submit', 'GuestController@storeOrganization')->name('experience.new.organization');

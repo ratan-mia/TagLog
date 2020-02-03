@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 @section('content')
 
@@ -13,7 +14,7 @@
                     <!-- Header Contetnt -->
                     <div id="taglog" class="content-block">
                         {{-- <h1 class="title">TAGLOG</h1>--}}
-                        <h2 class="title">Inquery</h2>
+                        <h2 class="title">Inquiry</h2>
                     </div>
                 </div>
             </div>
@@ -58,12 +59,10 @@
                 <div class="col-md-8 col-lg-6 offset-3">
                     <!-- Heading -->
                     <h2 class="section-title mb-2 ">
-                        Leave a <span class="font-weight-normal">inquery</span>
+                        Leave a <span class="font-weight-normal">inquiry</span>
                     </h2>
-
-
                     <!-- Subheading -->
-                    <p class="mb-5 ">
+                    <p class="text-center ">
                         Whether you have questions or you would just like to say hello, contact us.
                     </p>
 
@@ -87,6 +86,10 @@
                     <form method="POST" action="{{ route("inquiries.new.submission") }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
+                            @if(Auth()->check())
+                                <input class="form-control" type="hidden" name="user_id" value ="{{Auth()->id()}}">
+                            @endif
+                            <input class="form-control" type="hidden" name="agent_id" value ="{{$agent_id ? $agent_id->id :''}}">
                             <!-- Input -->
                             <div class="col-sm-6 mb-6">
                                 <div class="form-group">

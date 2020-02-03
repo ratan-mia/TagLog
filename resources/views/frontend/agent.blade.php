@@ -7,7 +7,7 @@
                     <!-- Advance Search -->
                     <div class="advance-search">
                         <h4 class="search-title">Find Sending Organizations in your area</h4>
-                    @include('frontend.agent-form')
+                        @include('frontend.agent-form')
 
                     </div>
                 </div>
@@ -84,6 +84,13 @@
 
                                     </iframe>
                                     <br/>
+                                    <br>
+
+
+                                    <a href="{{route('inquiry', ['agent_id' => $agent->id])}}"
+                                       class="btn taglog-button">Contact The Compay</a>
+
+
                                 </div>
 
                                 <div class="col-md-9">

@@ -26,9 +26,9 @@
                 <ul class="taglog-footer-list">
                     <li> > My page</li>
                     <li> > Contact Us</li>
-                    <li>>  About Us</li>
-                    <li>>  Privacy</li>
-                    <li>>  Terms of Use</li>
+                    <li>> About Us</li>
+                    <li>> Privacy</li>
+                    <li>> Terms of Use</li>
                 </ul>
             </div>
 
@@ -87,28 +87,28 @@
 <script src="{{ asset('js/conditionize.flexible.jquery.js') }}"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
-  $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-  $("#country_id").change(function(e){
-e.preventDefault();
-      var country_id = $('#country_id').val();
+        $("#country_id").change(function (e) {
+            e.preventDefault();
+            var country_id = $('#country_id').val();
 
-      $.ajax({
-          type:'GET',
-          url:"{{ route('ajax-relevant-city') }}",
-          data:{country_id:country_id},
-          success:function(data){
-              $('#city_id').html(data);
-          }
-      });
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('ajax-relevant-city') }}",
+                data: {country_id: country_id},
+                success: function (data) {
+                    $('#city_id').html(data);
+                }
+            });
 
-  });
-});
+        });
+    });
 
 
 </script>

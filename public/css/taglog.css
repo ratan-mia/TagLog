@@ -416,3 +416,17 @@ body {
     height: 400px;
     width: 100%;
 }
+
+#employer-form {
+    display:none;
+    background: #eee;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#agent-form {
+    /*display:none;*/
+    background: #eee;
+    padding: 20px;
+    border-radius: 5px;
+}

@@ -90,7 +90,7 @@ class AgentController extends Controller
             $agent->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('sliders');
         }
 
-        return redirect()->route('admin.agents.index');
+        return redirect()->back()->with('message', 'The information has been updated successfully!');
     }
 
     public function edit(Agent $agent)
